@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./index.js" defer></script>
+</head>
+<body>
+    <label for="name">Nome:</label>
+    <input type="text" id="name" name="name" onmouseleave="onMouseLeaveTextbox()"> <!-- onmouseleave è un evento che si attiva quando il mouse esce dalla textbox -->
+    <label for="surname">Cognome:</label>
+    <input type="text" id="surname" name="surname">
+    <button onclick="stampaNomeCompleto()">Stampa nome completo</button> <!-- Al bottone dobbiamo associare un evento. Un evento è una funzione javascript
+                                               che definiamo nel nostro index.js e verrà eseguita ad ogni click del bottone.
+                                               Gli eventi possono essere associati anche ad altre azioni, non solo il click -->
+    <h3 id="h3NomeCompleto" class="h3NomeCompletoNonVisibile">Nome completo: </h3>
+    <p id="nomeCompleto"></p>
+</body>
+</html>

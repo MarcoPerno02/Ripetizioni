@@ -1,0 +1,19 @@
+Esercizio 1:
+Crea una classe Java chiamata Persona con i seguenti attributi:
+- nome (String, privato)
+- eta (int, privato)
+Aggiungi un costruttore pubblico, i metodi getter e setter per entrambi gli attributi e un metodo pubblico stampaInfo() che stampa nome ed età.
+
+Esercizio 2:
+Crea una classe Java chiamata Contatore con:
+- un attributo statico privato chiamato totale (int) che tiene traccia di quante istanze sono state create.
+- un costruttore pubblico che incrementa totale ogni volta che viene creata una nuova istanza.
+- un metodo statico pubblico getTotale() che restituisce il valore di totale.
+
+Esercizio 3:
+Crea una classe Rettangolo con:
+- base (double, privato)
+- altezza (double, privato)
+- un costruttore pubblico
+- un metodo pubblico calcolaArea() che restituisce l’area del rettangolo.
+- un metodo statico pubblico descrizione() che stampa "Questa classe rappresenta un rettangolo."

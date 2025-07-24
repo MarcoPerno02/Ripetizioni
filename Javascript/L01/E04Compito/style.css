@@ -1,0 +1,23 @@
+td {
+    border: 1px solid black;
+}
+
+img {
+    width: 25px;
+    height: 25px;
+}
+
+.libroCompletato {
+    background-color: green;
+    color: white;
+}
+
+.libroInCorso {
+    background-color: yellow;
+    color: black;
+}
+
+.libroDaIniziare {
+    background-color: red;
+    color: white;
+}

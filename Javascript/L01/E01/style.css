@@ -1,0 +1,7 @@
+.h3NomeCompletoNonVisibile {
+    visibility: hidden;
+}
+
+.h3NomeCompletoVisibile {
+    visibility: visible;
+}

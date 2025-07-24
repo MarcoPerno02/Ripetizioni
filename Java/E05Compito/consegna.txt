@@ -1,0 +1,57 @@
+Esercizio 1:
+Conta quanti numeri interi pari ci sono in un array. La dimensione dell'array va chiesta all'inizio.
+Gestire con le tecniche opportune input non validi cioè:
+    -   Lunghezza del vettore maggiore uguale di 1 e ovviamente intera
+    -   Inserimento di SOLO numeri interi
+Nel caso in input non fosse valido richiederlo sempre, il programma non deve lanciare eccezioni gestisco,
+cioè non si deve bloccare/crashare/piantarsi.
+
+Esercizio 2:
+Data il seguente vettore di stringhe (String[] parole = {"cane", "gatto", "elefante", "lupo", "tigre"}),
+stamapre solo le parole con almeno 5 caratteri (>= 5).
+
+Esercizio 3:
+Data il seguente vettore di stringhe (String[] nomi = {"Anna", "Alessio", "Marco", "Andrea", "Giorgia"}),
+dire quali nomi iniziano con la lettera 'A'.
+Fare una prima versione senza e una con il metodo offerto da String "startsWith".
+
+Esercizio 4:
+Data il seguente vettore di stringhe (String[] parole = {"rosso", "verde", "blu", "giallo", "blu"}) fare un programma
+che chiede all'utente una parola da cercare (verificare che non sia lunga 0 caratteri e nel caso richiederla)
+e dica se è stata trovata e quante volte.
+
+Esercizio 5:
+Scrivi un programma che, dato un array di numeri interi, calcoli la somma dei numeri dispari e la media dei numeri pari. L'utente deve inserire la dimensione dell'array (maggiore di 0) e i valori (solo interi). Gestire input non validi.
+
+Esercizio 6:
+Scrivi un programma che chiede all'utente di inserire una sequenza di numeri interi terminata dal valore 0. Il programma deve stampare quanti numeri positivi e quanti negativi sono stati inseriti (escludendo lo 0 finale).
+
+Esercizio 7:
+Il fattoriale di un numero intero n (indicato come n!) è il prodotto di tutti i numeri interi positivi minori o uguali a n. 
+Per definizione, 0! = 1 e 1! = 1.
+
+Esempi:
+5! = 5 × 4 × 3 × 2 × 1 = 120
+3! = 3 × 2 × 1 = 6
+0! = 1
+
+Scrivi un programma per il calcolo del fattoriale. 
+Chiedi all'utente di inserire un numero intero n (n >= 0). 
+Se l'input non è valido, richiedilo. 
+Stampa il risultato del fattoriale di n.
+
+Esempi:
+Input: 5
+Output: 120
+
+Input: 0
+Output: 1
+
+Input: -3
+Output: (richiedi di nuovo il numero finché non è valido)
+
+Esercizio 8 (avanzato):
+Data una stringa inserita dall'utente, stampa tutte le sottostringhe di lunghezza 3 che non contengono caratteri ripetuti. Gestire input non valido (stringa troppo corta).
+
+Esercizio 9 (avanzato):
+Scrivi un programma che, data una lista di parole inserite dall'utente (termina con la parola "fine"), stampa tutte le parole che sono anagrammi l'una dell'altra (cioè contengono le stesse lettere, anche in ordine diverso).
