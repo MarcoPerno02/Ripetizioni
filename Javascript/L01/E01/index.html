@@ -11,7 +11,7 @@
     <label for="name">Nome:</label>
     <input type="text" id="name" name="name" onmouseleave="onMouseLeaveTextbox()"> <!-- onmouseleave è un evento che si attiva quando il mouse esce dalla textbox -->
     <label for="surname">Cognome:</label>
-    <input type="text" id="surname" name="surname">
+    <input type="text" id="surname" onmouseleave="onMouseLeaveTextbox()" name="surname">
     <button onclick="stampaNomeCompleto()">Stampa nome completo</button> <!-- Al bottone dobbiamo associare un evento. Un evento è una funzione javascript
                                                che definiamo nel nostro index.js e verrà eseguita ad ogni click del bottone.
                                                Gli eventi possono essere associati anche ad altre azioni, non solo il click -->

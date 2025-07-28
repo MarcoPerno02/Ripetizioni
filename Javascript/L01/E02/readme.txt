@@ -1,5 +1,5 @@
 Creare un sito web che registri le informazioni di un utente.
-L'obbiettivo del sito è verficare se è idoeneo o meno al ricevere un bonus monetario erogato dallo stato.
+L'obbiettivo del sito è verficare se è idoneo o meno al ricevere un bonus monetario erogato dallo stato.
 Oltre a nome, cognome e data di nascita, il sito dovrà anche chiedere:
     - quanti figli ha
     - scegliere da un select tra due possibili opzioni: "disoccupato" e "lavoratore"
