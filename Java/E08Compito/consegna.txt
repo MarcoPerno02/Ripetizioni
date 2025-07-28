@@ -3,12 +3,37 @@ Crea una classe Java chiamata Persona con i seguenti attributi:
 - nome (String, privato)
 - eta (int, privato)
 Aggiungi un costruttore pubblico, i metodi getter e setter per entrambi gli attributi e un metodo pubblico stampaInfo() che stampa nome ed età.
+Non si richiede per ora la verifica dei valori.
 
 Esercizio 2:
 Crea una classe Java chiamata Contatore con:
 - un attributo statico privato chiamato totale (int) che tiene traccia di quante istanze sono state create.
 - un costruttore pubblico che incrementa totale ogni volta che viene creata una nuova istanza.
 - un metodo statico pubblico getTotale() che restituisce il valore di totale.
+- un getter per cont non statico
+Dato questo main: 
+public static void main(String[] args) {
+    System.out.println("Inizialmente cont vale: " + Contatore.getTotale());
+
+    // Creiamo un'istanzia di Contatore
+    Contatore c1 = new Contatore();
+    System.out.println("Ora cont vale: " + Contatore.getTotale());
+    // Proviamo anche il getter per vedere che sia 1
+    System.out.println("Contatore c1: " + c1.getCont());
+
+    // Creiamo un'altra istanza di Contatore
+    new Contatore();
+
+    // Proviamo a vedere se c1 vede la modifica di cont a causa della nuova istanzia
+    System.out.println("Ora cont dopo la nuova istanzia vede: " + Contatore.getTotale());
+    System.out.println("Contatore c1 dopo nuova istanzia: " + c1.getCont());
+}
+si dovrebbe ottenere questo output:
+Inizialmente cont vale: 0
+Ora cont vale: 1
+Contatore c1: 1
+Ora cont dopo la nuova istanzia vede: 2
+Contatore c1 dopo nuova istanzia: 2
 
 Esercizio 3:
 Crea una classe Rettangolo con:

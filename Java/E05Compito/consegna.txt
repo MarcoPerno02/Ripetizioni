@@ -50,8 +50,41 @@ Output: 1
 Input: -3
 Output: (richiedi di nuovo il numero finché non è valido)
 
-Esercizio 8 (avanzato):
-Data una stringa inserita dall'utente, stampa tutte le sottostringhe di lunghezza 3 che non contengono caratteri ripetuti. Gestire input non valido (stringa troppo corta).
+Esercizio 8:
+Scrivi un programma che calcoli il perimetro di poligoni.
+I poligoni non hanno neccesseriamente tutti i lati uguali, quindi chiedi all'utente di inserire il numero di lati
+e successivamente chiedi la lunghezza di ciascun lato.
+Un poligono ha almeno 3 lati e se vengono inseriti meno di 3 lati, richiedi l'input.
+Inoltre, se viene inserita una lunghezza negativa, richiedi l'input.
+Stampa la lunghezza del perimetro e se i lati erano tutti uguali dì anche che era un poligono omogeneo.
 
-Esercizio 9 (avanzato):
-Scrivi un programma che, data una lista di parole inserite dall'utente (termina con la parola "fine"), stampa tutte le parole che sono anagrammi l'una dell'altra (cioè contengono le stesse lettere, anche in ordine diverso).
+Esercizio 9:
+Crea un programma per l'analisi dati.
+Il programma deve chiedere all'utente una misura per 5 volte.
+Dopo avere salvato le 5 misurazioni il programma calcolerà la varianza e la stamperà.
+Questa versione di varianza si calcola come segue:
+1 - Calcola la media delle misurazioni.
+2 - Per ogni misurazione, calcola la differenza tra la misurazione e la media, poi eleva al quadrato questa differenza.
+3 - Calcola la media di queste differenze al quadrato.
+
+Esempio:
+Misurazioni: 2, 4, 6, 8, 10
+Media: (2 + 4 + 6 + 8 + 10) / 5 = 6
+Varianza: ((2-6)² + (4-6)² + (6-6)² + (8-6)² + (10-6)²) / 5
+         = (16 + 4 + 0 + 4 + 16) / 5
+         = 40 / 5
+         = 8
+4 - Stampare la varianza.
+
+Esercizio 10:
+Scrivi un programma che aiuti un docente a capire se uno studente va bocciato, rimandato o promosso.
+L'utente inserirà uno dopo l'altro i voti. Il numero di voti non è noto a priori, ma se viene inserito un numero minore di 0,
+il programma smette di chiedere voti e calcola la media.
+Se la media è inferiore a 5, lo studente va bocciato.
+Se la media è compresa tra 5 e 6 e ha più di 2 insufficienze, lo studente è bocciato.
+Se la media è compresa tra 5 e 6 e ha meno o uguale di 2 insufficienze, lo studente è rimandato.
+Se la media è superiore a 6, lo studente è promosso.
+ATTENZIONE: Non considerare i voti negativi per il calcolo della media, ma solo quelli validi (0-10).
+Inoltre, se l'utente inserisce un voto maggiore di 10 va richiesto un nuovo voto.
+Poi, se i voti inseriti sono 0 il programma deve dare un messaggio di errore e richiedere nuovamente i voti
+ed essendo che non si sa quanti voti verrano inseriti non puoi dichiare un vettore per i voti.
