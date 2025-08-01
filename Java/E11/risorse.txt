@@ -1,0 +1,5 @@
+DVD;0;Avengers;AVN123;200
+Libro;1;Harry Potter;HP123;Fantasy
+Libro;2;Il Signore degli Anelli;LOTR456;Fantasy
+Rivista;3;National Geographic;NG789;Mensile
+Rivista;4;Time;TM101;Giornaliero
