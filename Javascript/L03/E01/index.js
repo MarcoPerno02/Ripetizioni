@@ -84,7 +84,7 @@ function calculateResult() {
         // Resetta gli operatori ma conserva il risultato come input attuale
         lastOperator = "";
         lastValue = "";
-        currentInput = result;
+        currentInput = `${result}`;
     }
 }
 
