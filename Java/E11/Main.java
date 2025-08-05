@@ -119,6 +119,8 @@ public class Main {
             } else {
                 System.out.println("Scelta non valida.");
             }
+
+            scanner.close();
         }
     }
 }

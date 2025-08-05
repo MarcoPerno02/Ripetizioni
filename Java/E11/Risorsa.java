@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
-import java.util.*;
 
 public abstract class Risorsa {
     // Contatore statica per gli identificativi.
