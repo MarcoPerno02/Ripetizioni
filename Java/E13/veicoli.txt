@@ -1,0 +1,4 @@
+Auto,Ford,Focus,2012,5
+Moto,Yamaha,MT-07,2019,689
+Camion,Mercedes,Actros,2020,12000
+Auto,Tesla,Model 3,2021,4
