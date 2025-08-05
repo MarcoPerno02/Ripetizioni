@@ -27,8 +27,9 @@ Scrivi un **programma in C++** che chieda all’utente di **inserire una singola
 
 ### PASSI PRINCIPALI
 1. Leggere il carattere da tastiera
-2. Verificare se appartiene all’insieme `{a, e, i, o, u, A, E, I, O, U}`
-3. Stampare il messaggio corrispondente
+2. Verifica se l’input è davvero una lettera (usa la funzione `isalpha`, ricordati di inserire all'inzio `#include <cctype>`)
+3. Verificare se appartiene all’insieme `{a, e, i, o, u, A, E, I, O, U}`
+4. Stampare il messaggio corrispondente
 
 ---
 
@@ -58,7 +59,6 @@ Input non valido
 ---
 
 ## ✨ BONUS (FACOLTATIVO)
-- Verifica se l’input è davvero una lettera (`isalpha`)
 - Ripetere il controllo finché l’utente lo desidera
 - Mostrare se la vocale è **maiuscola** o **minuscola**
 - Creare una funzione `bool isVocale(char c)` per modularizzare la logica
