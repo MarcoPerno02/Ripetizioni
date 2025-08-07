@@ -1,19 +1,28 @@
-# 🖥️ ESERCIZIO: Gestione Ordini con DataGridView, Vettori e File in WinForms (Con Struct)
+# 🖥️ ESERCIZIO: Gestione Ordini con DataGridView (Non modificabile), Vettore di Struct e File in WinForms
 
 ## DESCRIZIONE  
-Crea una **applicazione WinForms** per gestire un elenco di ordini usando un **vettore di struct** in memoria.  
-L'app permette di **caricare**, **visualizzare**, **modificare** e **salvare** gli ordini tramite un DataGridView e file di testo.
+Crea una **applicazione WinForms** per gestire ordini usando un **vettore di struct** in memoria.  
+Il `DataGridView` deve essere **solo lettura** (non modificabile manualmente dall'utente).  
+Per aggiungere un ordine, l'utente inserisce i dati in delle `TextBox` dedicate e poi clicca un bottone per aggiungere il record.
+
+L'app permette di **caricare**, **visualizzare**, **aggiungere** (da TextBox) e **salvare** gli ordini tramite file di testo.
 
 ---
 
 ## 📌 REQUISITI OBBLIGATORI
 
 ### 1. STRUTTURA UI (WinForms):
-- Un controllo `DataGridView` (`dgvOrders`) per mostrare e modificare gli ordini
+- Un controllo `DataGridView` (`dgvOrders`) **impostato a ReadOnly = true**  
+- Quattro `TextBox` per inserire i dati del nuovo ordine:  
+  - `txtCustomerName`  
+  - `txtProduct`  
+  - `txtQuantity`  
+  - `txtPrice`  
+- Quattro etichette per identificare ogni textbox  
 - Tre bottoni:  
-  - `Carica` → carica gli ordini da file  
-  - `Salva` → salva gli ordini su file  
-  - `Aggiungi Ordine` → aggiunge un nuovo ordine vuoto al vettore e aggiorna la griglia
+  - `Carica` → carica ordini da file  
+  - `Aggiungi Ordine` → aggiunge nuovo ordine con dati presi dalle TextBox  
+  - `Salva` → salva ordini su file
 
 ---
 
@@ -26,53 +35,50 @@ L'app permette di **caricare**, **visualizzare**, **modificare** e **salvare** g
   - `int Quantity`  
   - `decimal Price`
 
-- Usa un vettore fisso `Order[] orders = new Order[100]`  
-- Mantieni un contatore `orderCount` che indica quanti ordini sono presenti
+- Mantieni un vettore fisso `Order[] orders = new Order[100]` e un contatore `orderCount`
 
-- Al click su **Carica**:
-  - Legge dal file `orders.txt`  
-  - Riempe `orders[]` aggiornando `orderCount`  
-  - Popola il DataGridView con i dati
+- Al click su **Carica**:  
+  - Legge il file `orders.txt`  
+  - Popola il vettore `orders` e aggiorna `orderCount`  
+  - Aggiorna il DataGridView (in sola lettura)
 
-- Il DataGridView consente la modifica diretta dei campi
+- L'utente inserisce i dati del nuovo ordine nelle TextBox e clicca **Aggiungi Ordine**:  
+  - Controlla validità dati (es. quantità e prezzo positivi)  
+  - Aggiunge l’ordine nel vettore (assegna un `OrderID` autoincrementale)  
+  - Aggiorna il DataGridView con il nuovo ordine
 
-- Al click su **Salva**:
-  - Scrive gli ordini contenuti nell'array su file, fino a `orderCount`
-
-- Al click su **Aggiungi Ordine**:
-  - Se c’è spazio, aggiunge un nuovo ordine con valori di default  
-  - Aggiorna DataGridView
+- Al click su **Salva**:  
+  - Salva gli ordini correnti in `orders` su file di testo
 
 ---
 
 ## 🔁 STRUTTURA LOGICA DEL CODICE
 
-### VARIABILI PRINCIPALI  
+### VARIABILI  
 - `Order[] orders = new Order[100]`  
-- `int orderCount = 0`
+- `int orderCount = 0`  
+- `int nextOrderID = 1` (per autoincrementare gli ID)
 
-### FUNZIONI PRINCIPALI  
+### FUNZIONI  
 - `LoadOrders()`  
-  ↳ Legge file e aggiorna `orders` e `orderCount`  
 - `SaveOrders()`  
-  ↳ Scrive `orders` su file  
 - `RefreshDataGrid()`  
-  ↳ Popola il DataGridView dai dati del vettore  
-- `AddOrder()`  
-  ↳ Inserisce un ordine di default nell’array, incrementa `orderCount` e aggiorna griglia
+- `AddOrder(string customerName, string product, int quantity, decimal price)`  
+  ↳ Validazione + inserimento + aggiornamento griglia
 
 ---
 
 ## ⚠️ GESTIONE CASI PARTICOLARI
 
-- File inesistente o vuoto → messaggio e DataGridView vuoto  
-- Controlla che `orderCount < orders.Length` prima di aggiungere  
-- Validazione base per quantità e prezzo (positivi) su modifica  
-- Gestione eccezioni in lettura/scrittura file
+- File mancante o vuoto → mostra messaggio, DataGridView vuoto  
+- Verifica che `orderCount < orders.Length` prima di aggiungere  
+- Validazione semplice per input da TextBox (numeri validi e positivi)  
+- Gestisci eccezioni di lettura/scrittura
 
 ---
 
 ## 💡 ESEMPIO FILE `orders.txt`
+
 
 ```
 1,Mario Rossi,Mouse,2,19.99
@@ -84,8 +90,8 @@ L'app permette di **caricare**, **visualizzare**, **modificare** e **salvare** g
 
 ## ✨ BONUS (FACOLTATIVO)
 
-- Ordinamento per `OrderID` o altri campi  
-- Filtro per cliente con textbox  
-- Uso di `OpenFileDialog` e `SaveFileDialog` per scegliere file  
-- Colonna calcolata "Totale" (Quantity * Price) in DataGridView  
-- Eliminazione ordini con bottone dedicato e gestione vettore
+- Disabilita il bottone Aggiungi se input non valido  
+- Usa `OpenFileDialog` e `SaveFileDialog` per scegliere file  
+- Aggiungi filtro per cliente  
+- Colonna "Totale" calcolata (Quantity * Price) nel DataGridView
+
