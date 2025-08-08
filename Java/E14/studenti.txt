@@ -1,0 +1,4 @@
+Superiore,Marco,Rossi,2005,Scientifico
+Universitario,Anna,Bianchi,2002,Informatica
+Superiore,Luca,Verdi,2004,Classico
+Universitario,Giulia,Neri,2001,Economia

@@ -1,0 +1,5 @@
+Marco,Rossi,Matematica,8
+Anna,Bianchi,Programmazione,9
+Luca,Verdi,Latino,7
+Giulia,Neri,Microeconomia,8
+Anna;Grosso;Latino;9
