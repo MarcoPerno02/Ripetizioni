@@ -6,6 +6,7 @@ Il `DataGridView` deve essere **solo lettura** (non modificabile manualmente dal
 Per aggiungere un ordine, l'utente inserisce i dati in delle `TextBox` dedicate e poi clicca un bottone per aggiungere il record.
 
 L'app permette di **caricare**, **visualizzare**, **aggiungere** (da TextBox) e **salvare** gli ordini tramite file di testo.
+All'avvio del problema verrano caricati da file gli ordini da file.
 
 ---
 
@@ -20,7 +21,6 @@ L'app permette di **caricare**, **visualizzare**, **aggiungere** (da TextBox) e 
   - `txtPrice`  
 - Quattro etichette per identificare ogni textbox  
 - Tre bottoni:  
-  - `Carica` → carica ordini da file  
   - `Aggiungi Ordine` → aggiunge nuovo ordine con dati presi dalle TextBox  
   - `Salva` → salva ordini su file
 
@@ -56,8 +56,7 @@ L'app permette di **caricare**, **visualizzare**, **aggiungere** (da TextBox) e 
 
 ### VARIABILI  
 - `Order[] orders = new Order[100]`  
-- `int orderCount = 0`  
-- `int nextOrderID = 1` (per autoincrementare gli ID)
+- `int orderCount = 0`
 
 ### FUNZIONI  
 - `LoadOrders()`  
@@ -81,9 +80,9 @@ L'app permette di **caricare**, **visualizzare**, **aggiungere** (da TextBox) e 
 
 
 ```
-1,Mario Rossi,Mouse,2,19.99
-2,Anna Bianchi,Tastiera,1,49.50
-3,Luigi Verdi,Monitor,1,199.99
+0,Mario Rossi,Mouse,2,19.99
+1,Anna Bianchi,Tastiera,1,49.50
+2,Luigi Verdi,Monitor,1,199.99
 ```
 
 ---

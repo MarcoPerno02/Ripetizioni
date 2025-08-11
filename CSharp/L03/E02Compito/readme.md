@@ -5,6 +5,7 @@ Crea una **app WinForms** per simulare operazioni di **trading azionario** con q
 - Visualizzazione delle operazioni in una **DataGridView di sola lettura**.
 - Inserimento di nuove operazioni mediante **TextBox**.
 - Salvataggio e caricamento delle operazioni da/per un **file di testo**.
+- Caricamento all'avvio del programma dei dati da file di testo.
 
 ---
 
@@ -18,7 +19,6 @@ Crea una **app WinForms** per simulare operazioni di **trading azionario** con q
     - `txtPrezzo` (decimale > 0)
     - `txtData` (formato: `gg/mm/aaaa`)
 - Tre pulsanti:
-    - **Carica Operazioni** – carica dati da file
     - **Aggiungi Operazione** – aggiunge una nuova operazione dal form
     - **Salva Operazioni** – salva i dati su file
 
@@ -76,8 +76,8 @@ int tradeCount = 0;
 Ogni riga rappresenta una Trade, con campi separati da virgole:
 
 ```
-AAPL,BUY,10,180.50,05/08/2025
-TSLA,SELL,5,720.00,06/08/2025
+AAPL;BUY;10;180,50;05/08/2025
+TSLA;SELL;5;720,00;06/08/2025
 ```
 
 ---
