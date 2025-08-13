@@ -1,0 +1,12 @@
+ #maze {
+    display: grid;
+    grid-template-columns: repeat(5, 40px);
+    gap: 2px;
+    margin-bottom: 20px;
+    width: 208px;
+    border: 1px solid black;
+  }
+  .cell-wall { background: black; width: 40px; height: 40px; }
+  .cell-path { background: rgb(164, 164, 164); width: 40px; height: 40px; }
+  .cell-player { background: blue; width: 40px; height: 40px; }
+  .cell-exit { background: green; width: 40px; height: 40px; }
