@@ -46,21 +46,62 @@ void free_grid(grid_T *grid) {
 }
 
 
-void print_sequence(uint8_t *seq, int k) {
+/* void print_sequence(uint8_t *seq, int k) {
     for (int i = 0; i < k; i++) {
         printf("%02X ", seq[i]);  // stampa in esadecimale
     }
     printf("\n");
-}
+} */
 
 // ritorna 1 se è valida, altrimenti 0
-int verify_substring_in_grid(substring, len_substring, grid) {
+int verify_substring_in_grid(uint8_t * substring, int len_substring, grid_T * grid) {
     // 
     int i = 0, j = 0, k = 0;
-    while()
+    int prima_riga_valida = 0;
+
+    // Primo elelmento nella prima riga
+    for(int j = 0; j < grid->N && prima_riga_valida == 0; j++) {
+        if(grid->cells[0][j] == substring[0]) {
+            prima_riga_valida = 1;
+            break;
+        }
+    }
+
+    if(prima_riga_valida == 0) {
+        return 0;
+    }
+
+    // Scorri tutti gli altri elementi
+    int valida = 1;
+    for(int k = 1; k < len_substring && valida == 1; k++) {
+        if(k%2 != 0) {
+            // Scorri per riga
+            for(i = 0; i < grid->N; i++) {
+                if(grid->cells[i][j] == substring[k]) {
+                    break;
+                }
+            }
+            if(i == grid->N) {
+                valida = 0;
+            }
+        }
+        else {
+            // Scorri per colonna
+            for(j = 0; j < grid->N; j++) {
+                if(grid->cells[i][j] == substring[k]) {
+                    break;
+                }
+            }
+            if(j == grid->N) {
+                valida = 0;
+            }
+        }
+    }
+
+    return valida;
 }
 
-void generate_substrings_to_verify(uint8_t * string, int len_string, int len_substring, grid_T * grid, BonusWrapper_T * bonus_wrapper) {
+/* void generate_substrings_to_verify(uint8_t * string, int len_string, int len_substring, grid_T * grid, BonusWrapper_T * bonus_wrapper) {
     for(int i = 0; i <= len_string - len_substring; i++) {
         uint8_t substring [len_substring];
         for(int k = 0; k < len_substring; k++) {
@@ -68,21 +109,15 @@ void generate_substrings_to_verify(uint8_t * string, int len_string, int len_sub
         }
         print_sequence(substring, len_substring);
 
-        verify_substring_in_grid(substring, len_substring, grid);
+        int valida = verify_substring_in_grid(substring, len_substring, grid);
     }
-}
+} */
 
 int check_solution(grid_T * grid, BonusWrapper_T * wrapper, uint8_t * solution, int len_solution) {
-    printf("Tutte le disposizioni:\n");
-    for(int j = 1; j <= len_solution; j++) {
-        generate_substrings_to_verify(solution, len_solution, j, grid, wrapper);
+    if(verify_substring_in_grid(solution, len_solution, grid) == 1) {
+        printf("Valida");
     }
-    printf("-----------------\n");
-    
-    
-    int final_score = 0;
-    for(int i = 0; i < wrapper->N; i++) {
-
-        
+    else {
+        printf("Non valida");
     }
 }

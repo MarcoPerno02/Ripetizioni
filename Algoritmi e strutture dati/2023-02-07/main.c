@@ -12,7 +12,9 @@ int main() {
     }
 
     // Use the grid...
-    uint8_t solution[] = { 0xAA, 0xEE, 0x00 };
+    uint8_t solution[] = {
+        { 0xDF, 0x00 },
+    };
     check_solution(grid, wrapper, solution, 3);
 
     free_grid(grid);
