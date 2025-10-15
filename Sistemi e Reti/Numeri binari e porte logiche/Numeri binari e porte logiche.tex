@@ -1,0 +1,681 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{longtable}
+\geometry{margin=2.5cm}
+
+\title{Numeri e Logica Digitale: Teoria ed Esercizi}
+\author{Corso di Sistemi e Reti}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Numeri in base 2 (binario)}
+
+Il sistema binario è la base dei calcolatori digitali, in quanto ogni bit può rappresentare solo due stati: 0 e 1.
+
+\subsection{Rappresentazione dei numeri binari}
+
+Ogni cifra in binario è detta \textbf{bit}. Ad esempio:
+\[
+1011_2 = 1 \cdot 2^3 + 0 \cdot 2^2 + 1 \cdot 2^1 + 1 \cdot 2^0 = 11_{10}
+\]
+Il pedice $_2$ indica che il numero è in base 2, mentre $_{10}$ indica la base decimale.
+$2^n$ rappresenta il peso di ogni bit, partendo da destra con $2^0$.
+Ricorda che:
+\[
+\begin{aligned}
+2^0 &= 1 \\
+2^1 &= 2 \\
+2^2 &= 4 \\
+2^3 &= 8 \\
+2^4 &= 16 \\
+2^5 &= 32 \\
+2^6 &= 64 \\
+2^7 &= 128 \\
+2^8 &= 256 \\
+2^9 &= 512 \\
+2^{10} &= 1024 = 1\text{K}  (1 Kilo) \\
+2^{20} &= 1048576 = 1\text{M}  (1 Mega) \\
+2^{30} &= 1073741824 = 1\text{G}  (1 Giga)
+\end{aligned}
+\]
+
+\subsection{Conversione tra decimale e binario}
+
+\textbf{Metodo della divisione per 2:}  
+Per convertire un numero decimale in binario, si divide per 2 ripetutamente e si prendono i resti dal basso verso l'alto.
+
+\textbf{Esempio:} Convertire $25_{10}$ in binario.
+\begin{align*}
+25 \div 2 &= 12 \text{ resto } 1 \\
+12 \div 2 &= 6 \text{ resto } 0 \\
+6 \div 2  &= 3 \text{ resto } 0 \\
+3 \div 2  &= 1 \text{ resto } 1 \\
+1 \div 2  &= 0 \text{ resto } 1
+\end{align*}
+Risultato: $25_{10} = 11001_2$
+
+\subsection{Conversione tra binario e decimale}
+\textbf{Metodo della somma ponderata:}
+Per convertire un numero binario in decimale, si sommano i pesi dei bit che sono 1.
+\textbf{Esempio:} Convertire $1101_2$ in decimale.
+\[1101_2 = 1 \cdot 2^3 + 1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0 = 8 + 4 + 0 + 1 = 13_{10}\]
+
+\subsection{Esercizi svolti}
+\begin{enumerate}
+\item Convertire $43_{10}$ in binario:
+\begin{align*}
+43 \div 2 &= 21 \text{ resto } 1 \\
+21 \div 2 &= 10 \text{ resto } 1 \\
+10 \div 2 &= 5 \text{ resto } 0 \\
+5 \div 2 &= 2 \text{ resto } 1 \\
+2 \div 2 &= 1 \text{ resto } 0 \\
+1 \div 2 &= 0 \text{ resto } 1
+\end{align*}
+Risultato: $43_{10} = 101011_2$
+
+\item Convertire $14_{10}$ in binario:
+\begin{align*}
+14 \div 2 &= 7 \text{ resto } 0 \\
+7 \div 2 &= 3 \text{ resto } 1 \\
+3 \div 2 &= 1 \text{ resto } 1 \\
+1 \div 2 &= 0 \text{ resto } 1
+\end{align*}
+Risultato: $14_{10} = 1110_2$
+
+\item Convertire $101011_2$ in decimale:
+\begin{align*}
+101011_2 &= 1 \cdot 2^5 + 0 \cdot 2^4 + 1 \cdot 2^3 + 0 \cdot 2^2 + 1 \cdot 2^1 + 1 \cdot 2^0 \\ 
+&= 32 + 0 + 8 + 0 + 2 + 1 = 43_{10}
+\end{align*}
+
+\item Convertire $1110_2$ in decimale:
+\begin{align*}
+1110_2 &= 1 \cdot 2^3 + 1 \cdot 2^2 + 1 \cdot 2^1 + 0 \cdot 2^0 \\
+&= 8 + 4 + 2 + 0 = 14_{10}
+\end{align*}
+\end{enumerate}
+
+\subsection{Esercizi da fare (finchè non si ha la nausea \texorpdfstring{:)}{(emoji felice)} )}
+\begin{enumerate}
+    \item Convertire $7_{10}$ in binario (111).
+    \item Convertire $5_{10}$ in binario (101).
+    \item Convertire $12_{10}$ in binario (1100).
+    \item Convertire $78_{10}$ in binario (1001110).
+    \item Convertire $255_{10}$ in binario (11111111).
+    \item Convertire $100_{10}$ in binario (1100100).
+    \item Convertire $200_{10}$ in binario (11001000).
+    \item Convertire $120_{10}$ in binario (1111000).
+    \item Convertire $111_2$ in decimale (7).
+    \item Convertire $101_2$ in decimale (5).
+    \item Convertire $1100_2$ in decimale (12).
+    \item Convertire $1001110_2$ in decimale (78).
+    \item Convertire $11111111_2$ in decimale (255).
+    \item Convertire $1100100_2$ in decimale (100).
+    \item Convertire $11001000_2$ in decimale (200).
+    \item Convertire $1111000_2$ in decimale (120).
+\end{enumerate}
+
+\newpage
+\section{Operazioni in binario}
+
+\subsection{Addizione binaria}
+
+Le regole fondamentali sono:
+\[
+0+0=0, \quad 0+1=1, \quad 1+0=1, \quad 1+1=10
+\]
+Quando si somma $1+1$, si scrive 0 e si riporta 1 alla colonna successiva.
+Quando si somma $1+1+1$ (incluso il riporto), si scrive 1 e si riporta 1 alla colonna successiva.
+
+\textbf{Esempio:} $1011_2 + 1101_2$
+\[
+\begin{array}{c c c c c}
+ & 1 & 0 & 1 & 1 \\
++ & 1 & 1 & 0 & 1 \\
+\hline
+1 & 1 & 0 & 0 & 0
+\end{array}
+\]
+Risultato: $11000_2$
+
+\textbf{Esempio:} $111_2 + 101_2$
+\[
+\begin{array}{c c c c}
+    & 1 & 1 & 1 \\
++   & 1 & 0 & 1 \\
+\hline
+1 & 1 & 0 & 0
+\end{array}
+\]
+Risultato: $1100_2$
+
+\textbf{Esempio:} $1111_2 + 1111_2$
+\[
+\begin{array}{c c c c c}
+    & 1 & 1 & 1 & 1 \\
++   & 1 & 1 & 1 & 1 \\
+\hline
+1 & 1 & 1 & 1 & 0
+\end{array}
+\]
+Risultato: $11110_2$
+Nota come la somma di due 1 dove c'è un riporto produce un ulteriore riporto.
+
+\subsection{Sottrazione binaria}
+
+Si usa spesso il \textbf{complemento a 2}:
+\begin{enumerate}
+    \item Invertire i bit del sottraendo (complemento a 1)
+    \item Sommare 1
+    \item Sommare il risultato al minuendo
+\end{enumerate}
+
+\textbf{Esempio:} $1011_2 - 0101_2$
+
+\[
+0101_2 \rightarrow \text{complemento a 1} = 1010_2
+\]
+
+\[
+1010_2 + 1 = 1011_2 \text{ (complemento a 2)}
+\]
+
+\[
+1011_2 + 1011_2 = 10110_2 \text{ (scartare il riporto)}
+\]
+Risultato: $0110_2 = 6_{10}$
+
+\subsection{Esercizi svolti}
+\begin{enumerate}
+    \item $1101_2 + 1011_2$
+    \[\begin{array}{c c c c c}
+     & 1 & 1 & 0 & 1 \\
+    + & 1 & 0 & 1 & 1 \\
+    \hline
+    1 & 1 & 0 & 0 & 0
+    \end{array}\]
+    Risultato: $11000_2$
+
+    \item $1001_2 - 0110_2$
+    \[
+    0110_2 \rightarrow \text{complemento a 1} = 1001_2
+    \]
+    \[
+    1001_2 + 1 = 1010_2 \text{ (complemento a 2)}
+    \]
+    \[
+    1001_2 + 1010_2 = 10011_2 \text{ (scartare il riporto)}
+    \]
+    \[
+    \begin{array}{c c c c c}
+        & 1 & 0 & 0 & 1 \\
+    +   & 1 & 0 & 1 & 0 \\
+    \hline
+    1 & 0 & 0 & 1 & 1
+    \end{array}
+    \]
+    Risultato: $0011_2 = 3_{10}$
+\end{enumerate}
+
+\subsection{Esercizi da fare}
+\begin{enumerate}
+    \item $1010_2 + 1101_2$ (risultato: $10111_2$)
+    \item $1110_2 + 1011_2$ (risultato: $11001_2$)
+    \item $10000_2 + 1111_2$ (risultato: $11111_2$)
+    \item $1101_2 - 0011_2$ (risultato: $0110_2$)
+    \item $1010_2 - 0101_2$ (risultato: $101_2$)
+    \item $1111_2 - 0110_2$ (risultato: $1001_2$)
+\end{enumerate}
+
+\newpage
+\section{Numeri esadecimali}
+
+\subsection{Concetti base}
+
+Il sistema esadecimale ha 16 simboli: $0,1,2,\dots,9,A,B,C,D,E,F$.  
+Ogni cifra esadecimale rappresenta 4 bit.
+
+Le lettere $A$--$F$ rappresentano i valori decimali $10$--$15$, cioè:
+$$A_{16}=10_{10},\; B_{16}=11_{10},\; C_{16}=12_{10},\; D_{16}=13_{10},\; E_{16}=14_{10},\; F_{16}=15_{10}.$$
+In binario:
+$$A=1010_2,\; B=1011_2,\; C=1100_2,\; D=1101_2,\; E=1110_2,\; F=1111_2.$$
+
+\subsection{Conversione binario \texorpdfstring{$\leftrightarrow$}{<->} esadecimale}
+
+\textbf{Esempio:} $11011101_2$  
+Dividere in gruppi di 4 bit: $1101\ 1101$  
+$1101_2 = D_{16}$, $1101_2 = D_{16}$  
+Risultato: $DD_{16}$
+
+\textbf{Esempio:} $10100011_2$
+Dividere in gruppi di 4 bit: $1010\ 0011$  
+$1010_2 = A_{16}$, $0011_2 = 3_{16}$  
+Risultato: $A3_{16}$
+
+\subsection{Conversione esadecimale \texorpdfstring{$\to$}{->} decimale}
+
+\[
+2F_{16} = 2\cdot16^1 + 15\cdot16^0 = 32 + 15 = 47_{10}
+\]
+
+\subsection{Convertire decimale in esadecimale}
+\textbf{Metodo della divisione per 16:}
+Per convertire un numero decimale in esadecimale, si divide
+per 16 ripetutamente e si prendono i resti dal basso verso l'alto.
+\textbf{Esempio:} Convertire $254_{10}$ in esadecimale.
+\begin{align*}
+254 \div 16 &= 15 \text{ resto } 14 (E) \\
+15 \div 16 &= 0 \text{ resto } 15 (F)
+\end{align*}
+Risultato: $254_{10} = FE_{16}$
+
+\subsection{Esercizi svolti}
+\begin{enumerate}
+    \item Convertire $3B_{16}$ in binario:
+    \[
+    3 = 0011, \quad B = 1011 \\
+    \Rightarrow 3B_{16} = 00111011_2
+    \]
+
+    \item Convertire $A7_{16}$ in binario:
+    \[
+    A = 1010, \quad 7 = 0111 \\
+    \Rightarrow A7_{16} = 10100111_2
+    \]
+
+    \item Convertire $7E_{16}$ in decimale:
+    \[
+    7E_{16} = 7\cdot16^1 + 14\cdot16^0 = 112 + 14 = 126_{10}
+    \]
+
+    \item Convertire $1F_{16}$ in decimale:
+    \[
+    1F_{16} = 1\cdot16^1 + 15\cdot16^0 = 16 + 15 = 31_{10}
+    \]
+
+    \item Convertire $10110101_2$ in esadecimale:
+    \[
+    1011\ 0101 \rightarrow B5_{16}
+    \]
+
+    \item Convertire $11110000_2$ in esadecimale:
+    \[
+    1111\ 0000 \rightarrow F0_{16}
+    \]
+
+    \item Convertire $255_{10}$ in esadecimale:
+    \begin{align*}
+    255 \div 16 &= 15 \text{ resto } 15 (F) \\
+    15 \div 16 &= 0 \text{ resto } 15 (F)
+    \end{align*}
+    Risultato: $FF_{16}$
+
+    \item Convertire $100_{10}$ in esadecimale:
+    \begin{align*}
+    100 \div 16 &= 6 \text{ resto } 4 \\
+    6 \div 16 &= 0 \text{ resto } 6
+    \end{align*}
+    Risultato: $64_{16}$
+
+\end{enumerate}
+
+
+\newpage
+\section{Floating Point (virgola mobile)}
+
+\subsection{Concetti base}
+
+I numeri reali si rappresentano in forma normalizzata:
+\[
+N = (-1)^S \cdot 1.M \cdot 2^E
+\]
+
+\begin{itemize}
+    \item $S$ = segno (0=positivo, 1=negativo)
+    \item $M$ = mantissa (parte significativa)
+    \item $E$ = esponente
+\end{itemize}
+
+\subsection{Standard IEEE 754 (32 bit)}
+
+\begin{itemize}
+    \item 1 bit per il segno
+    \item 8 bit per l’esponente
+    \item 23 bit per la mantissa
+\end{itemize}
+
+\subsection{Esempio}
+
+Rappresentare $-5.25$ in floating point:
+
+\[
+5.25_{10} = 101.01_2 = 1.0101_2 \times 2^2
+\]
+\[
+S=1, \quad E=2+127=129=10000001_2, \quad M=010100\ldots0
+\]
+
+\newpage
+\section{Porte logiche}
+
+Le porte logiche sono blocchi base dei circuiti digitali. Elaborano segnali 0 e 1.
+
+\subsection{Porte fondamentali}
+
+\begin{longtable}{|c|c|c|}
+\hline
+Porta & Simbolo & Funzione \\
+\hline
+AND & $\land$ & 1 se tutti ingressi = 1 \\
+OR & $\lor$ & 1 se almeno un ingresso = 1 \\
+NOT & $\lnot$ & inversione 0 $\leftrightarrow$ 1 \\
+NAND & $\uparrow$ & negazione AND \\
+NOR & $\downarrow$ & negazione OR \\
+XOR & $\oplus$ & 1 se ingressi diversi \\
+\hline
+\end{longtable}
+
+\subsection{Tabelle di verità}
+
+\subsubsection{AND}
+\begin{tabular}{c c | c}
+A & B & A AND B \\
+\hline
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+1 & 1 & 1 \\
+\end{tabular}
+
+\subsubsection{OR}
+\begin{tabular}{c c | c}
+A & B & A OR B \\
+\hline
+0 & 0 & 0 \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+1 & 1 & 1 \\
+\end{tabular}
+
+\subsubsection{NOT}
+\begin{tabular}{c | c}
+A & NOT A \\
+\hline
+0 & 1 \\
+1 & 0 \\
+\end{tabular}
+
+\subsubsection{XOR}
+\begin{tabular}{c c | c}
+A & B & A XOR B \\
+\hline
+0 & 0 & 0 \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+1 & 1 & 0 \\
+\end{tabular}
+
+\subsection{Esercizi svolti}
+
+\begin{enumerate}
+    \item Costruire la tabella di verità della porta NAND a due ingressi:
+    \[
+    A\quad B\quad A\text{ NAND }B
+    \]
+    Soluzione:
+    \[
+    0\ 0\ 1, \quad 0\ 1\ 1, \quad 1\ 0\ 1, \quad 1\ 1\ 0
+    \]
+
+    \item Costruire la tabella di verità della porta NOR a due ingressi:
+    \[
+    A\quad B\quad A\text{ NOR }B
+    \]
+    Soluzione:
+    \[
+    0\ 0\ 1, \quad 0\ 1\ 0, \quad 1\ 0\ 0, \quad 1\ 1\ 0
+    \]
+\end{enumerate}
+
+\subsection{Esercizi avanzati: Circuiti combinatori}
+
+\begin{enumerate}
+    \item \textbf{Dato il circuito, trovare la tabella di verità:}
+    
+    Circuito: $(A \land B) \lor (\lnot C)$
+    
+    \begin{center}
+    \begin{tabular}{|c|c|c||c|c|c|}
+    \hline
+    A & B & C & $A \land B$ & $\lnot C$ & Uscita \\
+    \hline
+    0 & 0 & 0 & 0 & 1 & 1 \\
+    0 & 0 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 0 & 1 & 1 \\
+    0 & 1 & 1 & 0 & 0 & 0 \\
+    1 & 0 & 0 & 0 & 1 & 1 \\
+    1 & 0 & 1 & 0 & 0 & 0 \\
+    1 & 1 & 0 & 1 & 1 & 1 \\
+    1 & 1 & 1 & 1 & 0 & 1 \\
+    \hline
+    \end{tabular}
+    \end{center}
+
+    \item \textbf{Dato il circuito, trovare la tabella di verità:}
+    
+    Circuito: $(A \oplus B) \land C$
+    
+    \begin{center}
+    \begin{tabular}{|c|c|c||c|c|}
+    \hline
+    A & B & C & $A \oplus B$ & Uscita \\
+    \hline
+    0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 0 & 0 \\
+    0 & 1 & 0 & 1 & 0 \\
+    0 & 1 & 1 & 1 & 1 \\
+    1 & 0 & 0 & 1 & 0 \\
+    1 & 0 & 1 & 1 & 1 \\
+    1 & 1 & 0 & 0 & 0 \\
+    1 & 1 & 1 & 0 & 0 \\
+    \hline
+    \end{tabular}
+    \end{center}
+
+    \item \textbf{Dato il circuito, trovare la tabella di verità:}
+    
+    Circuito: $\lnot(A \land B) \lor (B \land C)$
+    
+    \begin{center}
+    \begin{tabular}{|c|c|c||c|c|c|c|}
+    \hline
+    A & B & C & $A \land B$ & $\lnot(A \land B)$ & $B \land C$ & Uscita \\
+    \hline
+    0 & 0 & 0 & 0 & 1 & 0 & 1 \\
+    0 & 0 & 1 & 0 & 1 & 0 & 1 \\
+    0 & 1 & 0 & 0 & 1 & 0 & 1 \\
+    0 & 1 & 1 & 0 & 1 & 1 & 1 \\
+    1 & 0 & 0 & 0 & 1 & 0 & 1 \\
+    1 & 0 & 1 & 0 & 1 & 0 & 1 \\
+    1 & 1 & 0 & 1 & 0 & 0 & 0 \\
+    1 & 1 & 1 & 1 & 0 & 1 & 1 \\
+    \hline
+    \end{tabular}
+    \end{center}
+
+    \item \textbf{Data la tabella di verità, trovare il circuito logico:}
+    
+    \begin{center}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    A & B & Uscita \\
+    \hline
+    0 & 0 & 1 \\
+    0 & 1 & 0 \\
+    1 & 0 & 0 \\
+    1 & 1 & 0 \\
+    \hline
+    \end{tabular}
+    \end{center}
+    
+    Soluzione: $\lnot A \land \lnot B$ oppure $\lnot(A \lor B)$ (porta NOR)
+
+    \item \textbf{Data la tabella di verità, trovare il circuito logico:}
+    
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    A & B & C & Uscita \\
+    \hline
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 1 \\
+    0 & 1 & 0 & 1 \\
+    0 & 1 & 1 & 1 \\
+    1 & 0 & 0 & 1 \\
+    1 & 0 & 1 & 1 \\
+    1 & 1 & 0 & 1 \\
+    1 & 1 & 1 & 1 \\
+    \hline
+    \end{tabular}
+    \end{center}
+    
+    Soluzione: $A \lor B \lor C$ (L'uscita è 1 se almeno uno degli ingressi è 1)
+
+    \item \textbf{Dato il circuito, trovare la tabella di verità:}
+    
+    Circuito: $(A \land \lnot B) \lor (\lnot A \land B)$
+    
+    Nota: questa è equivalente a $A \oplus B$
+    
+    \begin{center}
+    \begin{tabular}{|c|c||c|c|c|c|c|}
+    \hline
+    A & B & $\lnot A$ & $\lnot B$ & $A \land \lnot B$ & $\lnot A \land B$ & Uscita \\
+    \hline
+    0 & 0 & 1 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 1 & 0 & 0 & 1 & 1 \\
+    1 & 0 & 0 & 1 & 1 & 0 & 1 \\
+    1 & 1 & 0 & 0 & 0 & 0 & 0 \\
+    \hline
+    \end{tabular}
+    \end{center}
+
+\end{enumerate}
+
+\subsection{Esercizi da fare}
+
+\begin{enumerate}
+    \item Costruire la tabella di verità per: $(A \lor B) \land \lnot C$
+    
+    \textbf{Soluzione:}
+    \begin{center}
+    \begin{tabular}{|c|c|c||c|c|c|}
+    \hline
+    A & B & C & $A \lor B$ & $\lnot C$ & Uscita \\
+    \hline
+    0 & 0 & 0 & 0 & 1 & 0 \\
+    0 & 0 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 0 & 1 & 1 & 1 \\
+    0 & 1 & 1 & 1 & 0 & 0 \\
+    1 & 0 & 0 & 1 & 1 & 1 \\
+    1 & 0 & 1 & 1 & 0 & 0 \\
+    1 & 1 & 0 & 1 & 1 & 1 \\
+    1 & 1 & 1 & 1 & 0 & 0 \\
+    \hline
+    \end{tabular}
+    \end{center}
+
+    \item Costruire la tabella di verità per: $\lnot(A \oplus B)$ (XNOR)
+    
+    \textbf{Soluzione:}
+    \begin{center}
+    \begin{tabular}{|c|c||c|c|}
+    \hline
+    A & B & $A \oplus B$ & Uscita \\
+    \hline
+    0 & 0 & 0 & 1 \\
+    0 & 1 & 1 & 0 \\
+    1 & 0 & 1 & 0 \\
+    1 & 1 & 0 & 1 \\
+    \hline
+    \end{tabular}
+    \end{center}
+
+    \item Dato il circuito $\lnot A \lor (B \land C)$, costruire la tabella di verità completa
+    
+    \textbf{Soluzione:}
+    \begin{center}
+    \begin{tabular}{|c|c|c||c|c|c|}
+    \hline
+    A & B & C & $\lnot A$ & $B \land C$ & Uscita \\
+    \hline
+    0 & 0 & 0 & 1 & 0 & 1 \\
+    0 & 0 & 1 & 1 & 0 & 1 \\
+    0 & 1 & 0 & 1 & 0 & 1 \\
+    0 & 1 & 1 & 1 & 1 & 1 \\
+    1 & 0 & 0 & 0 & 0 & 0 \\
+    1 & 0 & 1 & 0 & 0 & 0 \\
+    1 & 1 & 0 & 0 & 0 & 0 \\
+    1 & 1 & 1 & 0 & 1 & 1 \\
+    \hline
+    \end{tabular}
+    \end{center}
+
+    \item Data la tabella: A=0,B=0 $\to$ 1; A=0,B=1 $\to$ 1; A=1,B=0 $\to$ 1; A=1,B=1 $\to$ 0. Trovare il circuito.
+    
+    \textbf{Soluzione:} $\lnot(A \land B)$ oppure $A \text{ NAND } B$
+
+    \item Costruire la tabella di verità per: $(A \land B) \oplus C$
+    
+    \textbf{Soluzione:}
+    \begin{center}
+    \begin{tabular}{|c|c|c||c|c|}
+    \hline
+    A & B & C & $A \land B$ & Uscita \\
+    \hline
+    0 & 0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 0 & 1 \\
+    0 & 1 & 0 & 0 & 0 \\
+    0 & 1 & 1 & 0 & 1 \\
+    1 & 0 & 0 & 0 & 0 \\
+    1 & 0 & 1 & 0 & 1 \\
+    1 & 1 & 0 & 1 & 1 \\
+    1 & 1 & 1 & 1 & 0 \\
+    \hline
+    \end{tabular}
+    \end{center}
+
+    \item Trovare il circuito per l'uscita che vale 1 solo quando esattamente due ingressi su A,B,C sono 1
+    
+    \textbf{Soluzione:} $(A \land B \land \lnot C) \lor (A \land \lnot B \land C) \lor (\lnot A \land B \land C)$
+    
+    \begin{center}
+    \begin{tabular}{|c|c|c||c|}
+    \hline
+    A & B & C & Uscita \\
+    \hline
+    0 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 1 & 1 & 1 \\
+    1 & 0 & 0 & 0 \\
+    1 & 0 & 1 & 1 \\
+    1 & 1 & 0 & 1 \\
+    1 & 1 & 1 & 0 \\
+    \hline
+    \end{tabular}
+    \end{center}
+
+\end{enumerate}
+
+\end{document}
