@@ -3,6 +3,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{xcolor}
 \usepackage{geometry}
 \geometry{margin=2.5cm}
 
@@ -12,6 +13,9 @@
 \begin{document}
 
 \maketitle
+
+\tableofcontents
+\newpage
 
 \section{Introduzione}
 L'architettura del computer descrive l'organizzazione e il funzionamento dei componenti di un computer, dalla CPU alla memoria, dai bus ai registri, in modo che possano elaborare informazioni. 
@@ -85,8 +89,8 @@ L'ALU è il componente che esegue tutte le operazioni di calcolo:
 \subsection{Operazioni logiche}
 \begin{itemize}
     \item AND, OR, NOT, XOR (porte logiche)
-    \item Shift (spostamento bit a sinistra o destra)
-    \item Rotazioni
+    \item \texorpdfstring{\colorbox{gray!50}{Shift (spostamento bit a sinistra o destra)}}{}
+    \item \texorpdfstring{\colorbox{gray!50}{Rotazioni}}{}
 \end{itemize}
 
 \subsection{Operazioni di confronto}
@@ -102,15 +106,15 @@ I registri sono memorie ad altissima velocità (tempo di accesso < 1 ns) integra
 
 \subsection{Registri principali}
 \begin{itemize}
-    \item \textbf{Registro accumulatore (ACC)}: memorizza temporaneamente risultati intermedi delle operazioni ALU.
+    \item \textbf{\texorpdfstring{\colorbox{gray!50}{Registro accumulatore (ACC)}}{}}: memorizza temporaneamente risultati intermedi delle operazioni ALU.
     \item \textbf{Registro istruzioni (IR - Instruction Register)}: contiene l'istruzione corrente da eseguire.
     \item \textbf{Program Counter (PC)}: contiene l'indirizzo della prossima istruzione da eseguire. Viene incrementato automaticamente dopo ogni fetch.
     \item \textbf{Stack Pointer (SP)}: punta alla cima dello stack, usato per chiamate a funzioni e variabili locali.
     \item \textbf{Registri general purpose}: registri usati per memorizzare dati temporanei durante l'esecuzione (es. EAX, EBX, ECX, EDX in architetture x86).
-    \item \textbf{Status Register (FLAGS)}: contiene i flag che indicano il risultato delle operazioni (zero, carry, overflow, segno).
+    \item \textbf{\texorpdfstring{\colorbox{gray!50}{Status Register (FLAGS)}}{}}: contiene i flag che indicano il risultato delle operazioni (zero, carry, overflow, segno).
 \end{itemize}
 
-\subsection{Perché i registri sono importanti per i programmatori}
+\subsection{\texorpdfstring{\colorbox{gray!50}{Perché i registri sono importanti per i programmatori}}{}}
 \begin{itemize}
     \item I compilatori (coloro che traducono il nostro codice in bits) ottimizzano il codice cercando di usare il più possibile i registri invece della RAM
     \item Le variabili locali frequentemente usate vengono mappate in registri
@@ -122,14 +126,12 @@ La memoria di un computer è organizzata in una gerarchia basata su velocità e 
 
 \begin{enumerate}
     \item \textbf{Registri} (più veloce, ~0.5 ns, ~1 KB)
-    \item \textbf{Cache L1} (~1 ns, ~64 KB per core)
-    \item \textbf{Cache L2} (~3-10 ns, ~256 KB - 1 MB per core)
-    \item \textbf{Cache L3} (~10-20 ns, ~8-32 MB condivisa)
+    \item \textbf{Cache} (~1-20 ns, ~64 KB - 32 MB)
     \item \textbf{RAM} (~50-100 ns, ~4-64 GB)
     \item \textbf{SSD/HDD} (~0.1-10 ms, ~256 GB - 4 TB)
 \end{enumerate}
 
-\textbf{Principio di località}: i programmi tendono ad accedere ripetutamente agli stessi dati (località temporale) e a dati vicini in memoria (località spaziale). Le cache sfruttano questo principio per migliorare le prestazioni.
+\textbf{\texorpdfstring{\colorbox{gray!50}{Principio di località}}{}}: i programmi tendono ad accedere ripetutamente agli stessi dati (località temporale) e a dati vicini in memoria (località spaziale). Le cache sfruttano questo principio per migliorare le prestazioni.
 
 \section{Bus di dati e indirizzi}
 I bus sono canali di comunicazione tra i vari componenti del computer. Ogni bus è caratterizzato da una larghezza (numero di bit trasmessi contemporaneamente).
@@ -221,7 +223,7 @@ Le CPU moderne usano la pipeline per eseguire più istruzioni contemporaneamente
 \begin{itemize}
     \item \textbf{Bit e byte}: tutte le informazioni sono rappresentate in binario
     \item \textbf{Tipi di dati}: int (32 bit), long (64 bit), float (32 bit), double (64 bit)
-    \item \textbf{Endianness}: ordine dei byte (big-endian vs little-endian)
+    \item \textbf{\texorpdfstring{\colorbox{gray!50}{Endianness}}{}}: ordine dei byte (big-endian vs little-endian)
     \item \textbf{Overflow}: cosa succede quando un calcolo supera la capacità del tipo
 \end{itemize}
 
@@ -342,13 +344,13 @@ La memoria del computer si misura in potenze di 2. Le unità principali sono:
     \item Errori comuni: segmentation fault, memory leak, dangling pointer
 \end{itemize}
 
-\subsection{Stack e Heap}
+\subsection{\texorpdfstring{\colorbox{gray!50}{Stack e Heap}}{}}
 \begin{itemize}
     \item \textbf{Stack}: memoria automatica per variabili locali e chiamate a funzione. LIFO (Last In First Out). Veloce ma limitata.
     \item \textbf{Heap}: memoria dinamica allocata con malloc/new. Più lenta ma flessibile. Va gestita manualmente (free/delete).
 \end{itemize}
 
-\subsection{Performance e ottimizzazione}
+\subsection{\texorpdfstring{\colorbox{gray!50}{Performance e ottimizzazione}}{}}
 \begin{itemize}
     \item \textbf{Cache-friendly code}: accedere ai dati in modo sequenziale sfrutta la cache
     \item \textbf{Branch prediction}: evitare if complessi in loop critici

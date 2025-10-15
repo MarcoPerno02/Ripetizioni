@@ -5,6 +5,7 @@
 \usepackage{geometry}
 \usepackage{hyperref}
 \usepackage{longtable}
+\usepackage{xcolor}
 \geometry{margin=2.5cm}
 
 \title{Numeri e Logica Digitale: Teoria ed Esercizi}
@@ -191,7 +192,7 @@ Si usa spesso il \textbf{complemento a 2}:
 \]
 
 \[
-1011_2 + 1011_2 = 10110_2 \text{ (scartare il riporto)}
+1011_2 + 1011_2 = 10110_2 \text{ (scartare il riporto finale)}
 \]
 Risultato: $0110_2 = 6_{10}$
 
@@ -211,10 +212,13 @@ Risultato: $0110_2 = 6_{10}$
     0110_2 \rightarrow \text{complemento a 1} = 1001_2
     \]
     \[
+    Nota bene che il 1 che sommi in questo caso sarebbe 0001
+    \]
+    \[
     1001_2 + 1 = 1010_2 \text{ (complemento a 2)}
     \]
     \[
-    1001_2 + 1010_2 = 10011_2 \text{ (scartare il riporto)}
+    1001_2 + 1010_2 = 10011_2 \text{ (scartare il riporto finale)}
     \]
     \[
     \begin{array}{c c c c c}
@@ -346,7 +350,10 @@ N = (-1)^S \cdot 1.M \cdot 2^E
     \item $E$ = esponente
 \end{itemize}
 
-\subsection{Standard IEEE 754 (32 bit)}
+Attenzione che questa rappresentazione non memorizza il numero perfettamente, ma una sua approssimazione.
+Questo può portare a errori di arrotondamento (provare a stampare il risultato di 0.1 + 0.2 :) ).
+
+\subsection{\texorpdfstring{\colorbox{gray!50}{Standard IEEE 754 (32 bit)}}{}}
 
 \begin{itemize}
     \item 1 bit per il segno
@@ -354,7 +361,7 @@ N = (-1)^S \cdot 1.M \cdot 2^E
     \item 23 bit per la mantissa
 \end{itemize}
 
-\subsection{Esempio}
+\subsection{\texorpdfstring{\colorbox{gray!50}{Esempio}}{}}
 
 Rappresentare $-5.25$ in floating point:
 
@@ -387,7 +394,7 @@ XOR & $\oplus$ & 1 se ingressi diversi \\
 
 \subsection{Tabelle di verità}
 
-\subsubsection{AND}
+\subsubsection{AND (La uso se voglio verificare che TUTTE le condizioni sono vere)}
 \begin{tabular}{c c | c}
 A & B & A AND B \\
 \hline
@@ -397,7 +404,7 @@ A & B & A AND B \\
 1 & 1 & 1 \\
 \end{tabular}
 
-\subsubsection{OR}
+\subsubsection{OR (La uso se voglio verificare che ALMENO una condizione è vera)}
 \begin{tabular}{c c | c}
 A & B & A OR B \\
 \hline

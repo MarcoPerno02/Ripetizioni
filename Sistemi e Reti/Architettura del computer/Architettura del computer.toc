@@ -1,0 +1,35 @@
+\contentsline {section}{\numberline {1}Introduzione}{3}{section.1}%
+\contentsline {section}{\numberline {2}Modello di Von Neumann}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Il concetto di Stored Program}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Il collo di bottiglia di Von Neumann}{3}{subsection.2.2}%
+\contentsline {section}{\numberline {3}CPU (Central Processing Unit)}{4}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Clock e frequenza}{4}{subsection.3.1}%
+\contentsline {section}{\numberline {4}ALU (Arithmetic Logic Unit)}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Operazioni aritmetiche}{5}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Operazioni logiche}{5}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Operazioni di confronto}{5}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Registri}{5}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Registri principali}{5}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}\colorbox {gray!50}{Perché i registri sono importanti per i programmatori}}{6}{subsection.5.2}%
+\contentsline {section}{\numberline {6}Gerarchia di memoria}{6}{section.6}%
+\contentsline {section}{\numberline {7}Bus di dati e indirizzi}{6}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Tipi di bus}{6}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Sistemi a 32 bit vs 64 bit}{6}{subsection.7.2}%
+\contentsline {section}{\numberline {8}Ciclo macchina (Fetch-Decode-Execute)}{7}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Esempio pratico}{7}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Pipeline e parallelismo}{7}{subsection.8.2}%
+\contentsline {section}{\numberline {9}Linguaggi di programmazione e hardware}{8}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Livelli di astrazione}{8}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Compilazione vs Interpretazione}{8}{subsection.9.2}%
+\contentsline {section}{\numberline {10}Concetti essenziali per programmatori}{8}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Rappresentazione dei dati}{8}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Memoria: unità di misura e conversioni}{8}{subsection.10.2}%
+\contentsline {subsubsection}{\numberline {10.2.1}Unità di misura}{8}{subsubsection.10.2.1}%
+\contentsline {subsubsection}{\numberline {10.2.2}Formule di conversione}{9}{subsubsection.10.2.2}%
+\contentsline {subsubsection}{\numberline {10.2.3}Esercizi svolti}{9}{subsubsection.10.2.3}%
+\contentsline {subsubsection}{\numberline {10.2.4}Esercizi da svolgere}{10}{subsubsection.10.2.4}%
+\contentsline {subsubsection}{\numberline {10.2.5}Soluzioni degli esercizi}{10}{subsubsection.10.2.5}%
+\contentsline {subsection}{\numberline {10.3}Puntatori e indirizzi di memoria}{10}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}\colorbox {gray!50}{Stack e Heap}}{10}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}\colorbox {gray!50}{Performance e ottimizzazione}}{11}{subsection.10.5}%
+\contentsline {section}{\numberline {11}Conclusione}{11}{section.11}%

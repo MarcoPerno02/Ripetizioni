@@ -17,13 +17,13 @@
 \contentsline {subsection}{\numberline {3.5}Esercizi svolti}{7}{subsection.3.5}%
 \contentsline {section}{\numberline {4}Floating Point (virgola mobile)}{9}{section.4}%
 \contentsline {subsection}{\numberline {4.1}Concetti base}{9}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Standard IEEE 754 (32 bit)}{9}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Esempio}{9}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.2}\colorbox {gray!50}{Standard IEEE 754 (32 bit)}}{9}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}\colorbox {gray!50}{Esempio}}{9}{subsection.4.3}%
 \contentsline {section}{\numberline {5}Porte logiche}{10}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Porte fondamentali}{10}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Tabelle di verità}{10}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}AND}{10}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}OR}{10}{subsubsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.1}AND (La uso se voglio verificare che TUTTE le condizioni sono vere)}{10}{subsubsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2}OR (La uso se voglio verificare che ALMENO una condizione è vera)}{10}{subsubsection.5.2.2}%
 \contentsline {subsubsection}{\numberline {5.2.3}NOT}{10}{subsubsection.5.2.3}%
 \contentsline {subsubsection}{\numberline {5.2.4}XOR}{10}{subsubsection.5.2.4}%
 \contentsline {subsection}{\numberline {5.3}Esercizi svolti}{10}{subsection.5.3}%

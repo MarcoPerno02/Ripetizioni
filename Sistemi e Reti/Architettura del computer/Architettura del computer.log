@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.1)  15 OCT 2025 19:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.1)  15 OCT 2025 21:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -218,6 +218,22 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
 \Hy@SectionHShift=\skip53
+) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+ (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
 ) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
  (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
@@ -242,24 +258,24 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 ) (Architettura del computer.aux)
 \openout1 = `"Architettura del computer.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
  (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count289
@@ -279,7 +295,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 12.
+Package hyperref Info: Link coloring OFF on input line 13.
  (Architettura del computer.out) (Architettura del computer.out)
 \@outlinefile=\write3
 \openout3 = `"Architettura del computer.out"'.
@@ -319,51 +335,52 @@ Package hyperref Info: Link coloring OFF on input line 12.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-[1
+(Architettura del computer.toc [1
 
-{C:/Users/marco/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-<images/Von-Neumann-Architecture-Diagram.jpg, id=136, 702.625pt x 491.8375pt>
+{C:/Users/marco/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}])
+\tf@toc=\write4
+\openout4 = `"Architettura del computer.toc"'.
+
+ [2]
+<images/Von-Neumann-Architecture-Diagram.jpg, id=191, 702.625pt x 491.8375pt>
 File: images/Von-Neumann-Architecture-Diagram.jpg Graphic file (type jpg)
 <use images/Von-Neumann-Architecture-Diagram.jpg>
-Package pdftex.def Info: images/Von-Neumann-Architecture-Diagram.jpg  used on input line 51.
+Package pdftex.def Info: images/Von-Neumann-Architecture-Diagram.jpg  used on input line 55.
 (pdftex.def)             Requested size: 273.14923pt x 191.20795pt.
- [2 <./images/Von-Neumann-Architecture-Diagram.jpg>] [3] [4] [5]
-Overfull \hbox (5.22614pt too wide) in paragraph at lines 208--209
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3] [4 <./images/Von-Neumann-Architecture-Diagram.jpg>] [5] [6] [7]
+Overfull \hbox (5.22614pt too wide) in paragraph at lines 210--211
 []\OT1/cmr/bx/n/12 Linguaggi di alto liv-ello\OT1/cmr/m/n/12 : Python, Java, JavaScript (forte as-trazione dall'hardware) 
  []
 
 
-Overfull \hbox (8.74673pt too wide) in paragraph at lines 215--216
+Overfull \hbox (8.74673pt too wide) in paragraph at lines 217--218
 []\OT1/cmr/bx/n/12 Linguaggi in-ter-medi \OT1/cmr/m/n/12 (Java, C#): com-pi-lati in byte-code ed es-e-guiti da una macchina
  []
 
-[6] [7] [8] [9] (Architettura del computer.aux)
+[8] [9] [10] [11] (Architettura del computer.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
-
-
-Package rerunfilecheck Warning: File `"Architettura del computer".out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `"Architettura del computer".out':
-(rerunfilecheck)             Before: BCA40A4926A060421E5B70388DB25625;5716
-(rerunfilecheck)             After:  A94B8EC0F945EB577943270DDE134DA6;6422.
+Package rerunfilecheck Info: File `"Architettura del computer".out' has not changed.
+(rerunfilecheck)             Checksum: 3AB14E108AAE619333A160DAE9228C6F;5897.
  ) 
 Here is how much of TeX's memory you used:
- 9679 strings out of 474486
- 151701 string characters out of 5743756
- 1936542 words of memory out of 5000000
- 31800 multiletter control sequences out of 15000+600000
+ 10171 strings out of 474486
+ 159185 string characters out of 5743756
+ 1942542 words of memory out of 5000000
+ 32279 multiletter control sequences out of 15000+600000
  564868 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,10n,79p,511b,513s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,10n,79p,485b,529s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\marco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on "Architettura del computer.pdf" (9 pages, 179487 bytes).
+Output written on "Architettura del computer.pdf" (11 pages, 189842 bytes).
 PDF statistics:
- 252 PDF objects out of 1000 (max. 8388607)
- 64 named destinations out of 1000 (max. 500000)
- 254 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 306 PDF objects out of 1000 (max. 8388607)
+ 65 named destinations out of 1000 (max. 500000)
+ 286 words of extra memory for PDF output out of 10000 (max. 10000000)
 
