@@ -1,0 +1,1584 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{circuitikz}
+\usepackage{geometry}
+\usepackage{xcolor}
+\geometry{margin=2.5cm}
+
+\title{Introduzione all'elettrotecnica}
+\author{Appunti di Elettrotecnica}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{\textcolor{gray}{Fondamenti: Tensione e Corrente}}
+
+\subsection{Corrente Elettrica}
+
+\subsubsection{Definizione}
+
+La \textbf{corrente elettrica} è il flusso ordinato di cariche elettriche attraverso un conduttore. Rappresenta la quantità di carica che attraversa una sezione del conduttore nell'unità di tempo.
+
+\textbf{Definizione matematica:}
+\begin{equation}
+I = \frac{Q}{t}
+\end{equation}
+
+dove:
+\begin{itemize}
+    \item $I$ = Corrente elettrica (Ampere, A)
+    \item $Q$ = Carica elettrica (Coulomb, C)
+    \item $t$ = Tempo (secondi, s)
+\end{itemize}
+
+\textbf{Unità di misura:}
+\begin{itemize}
+    \item \textbf{Ampere} (A): unità fondamentale del Sistema Internazionale
+    \item $1\,\mathrm{A} = 1\,\mathrm{C/s}$ (un coulomb al secondo)
+    \item Sottomultipli comuni:
+    \begin{itemize}
+        \item milliampere: $1\,\mathrm{mA} = 10^{-3}\,\mathrm{A}$
+        \item microampere: $1\,\mu\mathrm{A} = 10^{-6}\,\mathrm{A}$
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Natura Fisica}
+
+La corrente elettrica è costituita dal movimento di:
+\begin{itemize}
+    \item \textbf{Elettroni} nei conduttori metallici (verso opposto alla corrente convenzionale)
+    \item \textbf{Ioni} nelle soluzioni elettrolitiche
+    \item \textbf{Lacune} ed elettroni nei semiconduttori
+\end{itemize}
+
+\textbf{Convenzione:} La corrente convenzionale va dal polo positivo al polo negativo (direzione opposta al movimento degli elettroni).
+
+\subsubsection{Tipi di Corrente}
+
+\textbf{Corrente Continua (DC):}
+\begin{itemize}
+    \item Flusso costante in intensità e direzione
+    \item Esempio: batterie, alimentatori DC
+    \item Simbolo: $\equiv$ o DC
+\end{itemize}
+
+\textbf{Corrente Alternata (AC):}
+\begin{itemize}
+    \item Flusso variabile periodicamente nel tempo
+    \item Esempio: rete elettrica domestica
+    \item Simbolo: $\sim$ o AC
+\end{itemize}
+
+\subsection{Tensione Elettrica}
+
+\subsubsection{Definizione}
+
+La \textbf{tensione elettrica} (o differenza di potenziale) è l'energia necessaria per spostare una carica elettrica tra due punti di un circuito. Rappresenta la "spinta" che muove le cariche elettriche.
+
+\textbf{Definizione matematica:}
+\begin{equation}
+V = \frac{W}{Q}
+\end{equation}
+
+dove:
+\begin{itemize}
+    \item $V$ = Tensione (Volt, V)
+    \item $W$ = Lavoro o Energia (Joule, J)
+    \item $Q$ = Carica elettrica (Coulomb, C)
+\end{itemize}
+
+\textbf{Unità di misura:}
+\begin{itemize}
+    \item \textbf{Volt} (V): unità derivata del Sistema Internazionale
+    \item $1\,\mathrm{V} = 1\,\mathrm{J/C}$ (un joule per coulomb)
+    \item Multipli e sottomultipli comuni:
+    \begin{itemize}
+        \item kilovolt: $1\,\mathrm{kV} = 10^{3}\,\mathrm{V}$
+        \item millivolt: $1\,\mathrm{mV} = 10^{-3}\,\mathrm{V}$
+        \item microvolt: $1\,\mu\mathrm{V} = 10^{-6}\,\mathrm{V}$
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Natura Fisica}
+
+La tensione elettrica:
+\begin{itemize}
+    \item È sempre una \textbf{differenza di potenziale} tra due punti
+    \item Rappresenta l'energia per unità di carica
+    \item È analoga alla pressione in un sistema idraulico
+    \item Esiste anche in assenza di corrente (circuito aperto)
+\end{itemize}
+
+\textbf{Analogia idraulica:}
+\begin{itemize}
+    \item Tensione $\leftrightarrow$ Pressione dell'acqua
+    \item Corrente $\leftrightarrow$ Flusso d'acqua
+    \item Resistenza $\leftrightarrow$ Restringimento del tubo
+\end{itemize}
+
+\subsection{Relazione tra Tensione e Corrente}
+
+\subsubsection{Potenza Elettrica}
+
+La potenza elettrica è il prodotto tra tensione e corrente:
+
+\begin{equation}
+P = V \cdot I
+\end{equation}
+
+dove:
+\begin{itemize}
+    \item $P$ = Potenza (Watt, W)
+    \item $V$ = Tensione (Volt, V)
+    \item $I$ = Corrente (Ampere, A)
+\end{itemize}
+
+\textbf{Interpretazione:}
+\begin{itemize}
+    \item La potenza rappresenta l'energia trasferita nell'unità di tempo
+    \item $1\,\mathrm{W} = 1\,\mathrm{V} \cdot 1\,\mathrm{A}$
+    \item Nei resistori, la potenza è sempre dissipata (trasformata in calore)
+\end{itemize}
+
+\subsubsection{Esempi Pratici}
+
+\textbf{Esempio 0.1:} Una batteria eroga una carica di $360\,\mathrm{C}$ in $2$ minuti. Calcolare la corrente.
+
+\textit{Soluzione:}
+\begin{align*}
+t &= 2\,\mathrm{min} = 120\,\mathrm{s} \\
+I &= \frac{Q}{t} = \frac{360}{120} = 3\,\mathrm{A}
+\end{align*}
+
+\textbf{Esempio 0.2:} Per spostare una carica di $0.5\,\mathrm{C}$ tra due punti sono necessari $6\,\mathrm{J}$ di energia. Calcolare la tensione.
+
+\textit{Soluzione:}
+\begin{align*}
+V &= \frac{W}{Q} = \frac{6}{0.5} = 12\,\mathrm{V}
+\end{align*}
+
+\textbf{Esempio 0.3:} Una lampadina funziona a $230\,\mathrm{V}$ e assorbe una corrente di $0.26\,\mathrm{A}$. Calcolare la potenza dissipata.
+
+\textit{Soluzione:}
+\begin{align*}
+P &= V \cdot I = 230 \cdot 0.26 = 59.8\,\mathrm{W} \approx 60\,\mathrm{W}
+\end{align*}
+
+\subsection{Misura di Tensione e Corrente}
+
+\subsubsection{Strumenti di Misura}
+
+\textbf{Voltmetro:}
+\begin{itemize}
+    \item Misura la tensione (differenza di potenziale)
+    \item Si collega in \textbf{parallelo} al componente
+    \item Resistenza interna molto alta (idealmente infinita)
+    \item Non deve alterare la corrente del circuito
+\end{itemize}
+
+\textbf{Amperometro:}
+\begin{itemize}
+    \item Misura la corrente
+    \item Si collega in \textbf{serie} al circuito
+    \item Resistenza interna molto bassa (idealmente nulla)
+    \item Non deve alterare la tensione del circuito
+\end{itemize}
+
+\subsubsection{Rappresentazione Grafica}
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    % Circuito con voltmetro e amperometro
+    \draw (0,0) to[battery1, v=$12\,\mathrm{V}$] (0,3)
+          to[short] (1,3)
+          to[ammeter, l=$A$, i>^=$I$] (3,3)
+          to[R=$R$, v=$V_R$] (5,3)
+          to[short] (5,0)
+          to[short] (0,0);
+    
+    % Voltmetro in parallelo
+    \draw (5,3) to[short] (6,3)
+          to[voltmeter, l=$V$] (6,0)
+          to[short] (5,0);
+    
+    \node at (3,-0.7) {Amperometro in serie};
+    \node at (6.8,1.5) {Voltmetro};
+    \node at (6.8,1) {in parallelo};
+\end{circuitikz}
+\end{center}
+
+\subsection{Riepilogo delle Grandezze Fondamentali}
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Grandezza} & \textbf{Simbolo} & \textbf{Unità} & \textbf{Formula} \\
+\hline
+Carica elettrica & $Q$ & Coulomb (C) & - \\
+\hline
+Corrente & $I$ & Ampere (A) & $I = \frac{Q}{t}$ \\
+\hline
+Tensione & $V$ & Volt (V) & $V = \frac{W}{Q}$ \\
+\hline
+Resistenza & $R$ & Ohm ($\Omega$) & $R = \frac{V}{I}$ \\
+\hline
+Potenza & $P$ & Watt (W) & $P = V \cdot I$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+
+\section{Legge di Ohm}
+
+\subsection{Teoria}
+La legge di Ohm è una delle leggi fondamentali dell'elettrotecnica e stabilisce la relazione tra tensione, corrente e resistenza in un circuito elettrico.
+
+\textbf{Formula:}
+\begin{equation}
+V = R \cdot I
+\end{equation}
+
+dove:
+\begin{itemize}
+    \item $V$ = Tensione (Volt)
+    \item $R$ = Resistenza (Ohm, $\Omega$)
+    \item $I$ = Corrente (Ampere, A)
+\end{itemize}
+
+Dalla formula principale si possono ricavare:
+\begin{align}
+I &= \frac{V}{R} \\
+R &= \frac{V}{I}
+\end{align}
+
+\subsection{Esercizi Svolti}
+
+\textbf{Esercizio 1.1:} Calcolare la corrente che attraversa una resistenza di $100\,\Omega$ alimentata da una tensione di $12\,V$.
+
+\textit{Soluzione:}
+\begin{align*}
+I &= \frac{V}{R} = \frac{12\,V}{100\,\Omega} = 0.12\,A = 120\,mA
+\end{align*}
+
+\textbf{Esercizio 1.2:} Una lampadina attraversata da una corrente di $0.5\,A$ ha ai suoi capi una tensione di $230\,V$. Calcolare la resistenza della lampadina.
+
+\textit{Soluzione:}
+\begin{align*}
+R &= \frac{V}{I} = \frac{230\,V}{0.5\,A} = 460\,\Omega
+\end{align*}
+
+\textbf{Esercizio 1.3:} Calcolare la tensione ai capi di un resistore da $2.2\,k\Omega$ attraversato da una corrente di $5\,mA$.
+
+\textit{Soluzione:}
+\begin{align*}
+V &= R \cdot I = 2200\,\Omega \cdot 0.005\,A = 11\,V
+\end{align*}
+
+\newpage
+\section{Componenti Fondamentali dei Circuiti}
+
+\subsection{Teoria}
+
+\subsubsection{Generatore di Tensione Ideale}
+
+Un \textbf{generatore di tensione ideale} è un dispositivo che mantiene una differenza di potenziale costante ai suoi capi, indipendentemente dalla corrente che lo attraversa.
+
+\textbf{Caratteristiche:}
+\begin{itemize}
+    \item Fornisce una tensione costante $V$
+    \item La corrente erogata dipende dal carico collegato
+    \item Resistenza interna nulla (ideale)
+    \item Simbolo: batteria o generatore
+\end{itemize}
+
+\textbf{Rappresentazione grafica:}
+
+\begin{center}
+\begin{circuitikz}[scale=1.5]
+    % Generatore di tensione con batteria
+    \draw (0,0) to[battery1, invert, v=$V$, i<^=$I$] (0,2);
+    \node at (0,-0.8) {Batteria};
+    
+    % Generatore di tensione generico
+    \draw (3,0) to[V, v=$V$, i<^=$I$] (3,2);
+    \node at (3,-0.8) {Generatore};
+    
+    % Con segni espliciti
+    \draw (6,0) to[battery1, invert, v=$V$, i<^=$I$] (6,2);
+    \node at (5.5,2) {$+$};
+    \node at (5.5,0) {$-$};
+    \node at (6,-0.8) {Con polarità};
+\end{circuitikz}
+\end{center}
+
+\textbf{Equazione caratteristica:}
+\begin{equation}
+V = \text{costante}
+\end{equation}
+
+\textbf{Comportamento:}
+\begin{itemize}
+    \item A circuito aperto: $I = 0$, $V = V_{nominale}$
+    \item Con carico: $V = V_{nominale}$, $I = \frac{V}{R_{carico}}$
+    \item In cortocircuito (teorico): $I \to \infty$ (nella realtà limitato dalla resistenza interna)
+\end{itemize}
+
+\subsubsection{Generatore di Corrente Ideale}
+
+Un \textbf{generatore di corrente ideale} è un dispositivo che eroga una corrente costante, indipendentemente dalla tensione ai suoi capi.
+
+\textbf{Caratteristiche:}
+\begin{itemize}
+    \item Fornisce una corrente costante $I$
+    \item La tensione ai suoi capi dipende dal carico collegato
+    \item Resistenza interna infinita (ideale)
+    \item Meno comune nella pratica rispetto al generatore di tensione
+\end{itemize}
+
+\textbf{Rappresentazione grafica:}
+
+\begin{center}
+\begin{circuitikz}[scale=1.5]
+    % Generatore di corrente
+    \draw (0,0) to[I, i=$I$, v=$V$] (0,2);
+    \node at (0,-0.8) {Simbolo standard};
+\end{circuitikz}
+\end{center}
+
+\textbf{Equazione caratteristica:}
+\begin{equation}
+I = \text{costante}
+\end{equation}
+
+\textbf{Comportamento:}
+\begin{itemize}
+    \item A circuito aperto: $V \to \infty$ (teorico), $I = I_{nominale}$
+    \item Con carico: $I = I_{nominale}$, $V = R_{carico} \cdot I$
+    \item In cortocircuito: $V = 0$, $I = I_{nominale}$
+\end{itemize}
+
+\subsubsection{Resistore}
+
+Un \textbf{resistore} è un componente passivo che si oppone al passaggio della corrente elettrica, dissipando energia sotto forma di calore.
+
+\textbf{Caratteristiche:}
+\begin{itemize}
+    \item Valore espresso in Ohm ($\Omega$)
+    \item Componente passivo (non genera energia)
+    \item Segue la Legge di Ohm: $V = R \cdot I$
+    \item Dissipa potenza: $P = V \cdot I = R \cdot I^2 = \frac{V^2}{R}$
+\end{itemize}
+
+\textbf{Rappresentazione grafica:}
+
+\begin{center}
+\begin{circuitikz}[scale=1.5]
+    % Resistore standard
+    \draw (0,0) to[R=$R$, v=$V$, i=$I$] (3,0);
+    \node at (1.5,-0.8) {Simbolo standard};
+    
+    % Resistore con valore
+    \draw (4,0) to[R=$100\,\Omega$, v=$V$, i=$I$] (7,0);
+    \node at (5.5,-0.8) {Con valore};
+\end{circuitikz}
+\end{center}
+
+\textbf{Equazione caratteristica (Legge di Ohm):}
+\begin{equation}
+V = R \cdot I
+\end{equation}
+
+\textbf{Comportamento:}
+\begin{itemize}
+    \item Relazione lineare tra tensione e corrente
+    \item La potenza dissipata è sempre positiva
+    \item Non dipende dal verso della corrente (componente simmetrico)
+\end{itemize}
+
+\subsubsection{Confronto tra i Componenti}
+
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Caratteristica} & \textbf{Gen. Tensione} & \textbf{Gen. Corrente} & \textbf{Resistore} \\
+\hline
+Tipo & Attivo & Attivo & Passivo \\
+\hline
+Grandezza costante & $V$ & $I$ & $R$ \\
+\hline
+Relazione $V$-$I$ & $V = $ cost. & $I = $ cost. & $V = R \cdot I$ \\
+\hline
+Resistenza interna & $0\,\Omega$ (ideale) & $\infty\,\Omega$ (ideale) & $R$ \\
+\hline
+Potenza & Fornita & Fornita & Dissipata \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Esempi di Circuiti con i Tre Componenti}
+
+\textbf{Esempio 1: Circuito con Generatore di Tensione}
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    \draw (0,0) to[battery1, invert, v=$12\,V$, i=$I$] (0,3)
+          to[short] (1,3)
+          to[R=$100\,\Omega$, v<=$V_R$, i>^=$I$] (4,3)
+          to[short] (4,0)
+          to[short] (0,0);
+
+\end{circuitikz}
+\end{center}
+
+Calcoli:
+\begin{align*}
+I &= \frac{V}{R} = \frac{12}{100} = 0.12\,A = 120\,mA \\
+V_R &= 12\,V \quad \text{(tutta la tensione cade sulla resistenza)} \\
+P_R &= V \cdot I = 12 \cdot 0.12 = 1.44\,W \quad \text{(dissipata)}
+\end{align*}
+
+\textbf{Esempio 2: Circuito con Generatore di Corrente}
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    \draw (0,0) to[I, l=$50\,mA$, i=$I$, v=$V_g$] (0,3)
+          to[short] (1,3)
+          to[R=$200\,\Omega$, v<=$V_R$, i>^=$I$] (4,3)
+          to[short] (4,0)
+          to[short] (0,0);
+\end{circuitikz}
+\end{center}
+
+Calcoli:
+\begin{align*}
+I &= 50\,mA = 0.05\,A \quad \text{(costante)} \\
+V_R &= R \cdot I = 200 \cdot 0.05 = 10\,V \\
+V_g &= V_R = 10\,V \quad \text{(tensione ai capi del generatore)} \\
+P_R &= V_R \cdot I = 10 \cdot 0.05 = 0.5\,W
+\end{align*}
+
+\textbf{Esempio 3: Confronto tra Generatori}
+
+\begin{center}
+\begin{circuitikz}[scale=1.2]
+    % Generatore di tensione
+    \draw (0,0) to[battery1, v=$10\,V$] (0,2)
+          to[short] (0.5,2)
+          to[R=$R$, i=$I_V$] (2.5,2)
+          to[short] (3,2)
+          to[short] (3,0)
+          to[short] (0,0);
+    \node at (1.5,-0.5) {Gen. Tensione};
+    \node at (1.5,1) {$I_V = \frac{10}{R}$};
+    
+    % Generatore di corrente
+    \draw (5,0) to[I, l=$1\,A$] (5,2)
+          to[short] (5.5,2)
+          to[R=$R$, i=$I_I$] (7.5,2)
+          to[short] (8,2)
+          to[short] (8,0)
+          to[short] (5,0);
+    \node at (6.5,-0.5) {Gen. Corrente};
+    \node at (6.5,1) {$V = R \cdot 1$};
+\end{circuitikz}
+\end{center}
+
+\textbf{Osservazioni:}
+\begin{itemize}
+    \item Con il generatore di tensione, la corrente dipende da $R$
+    \item Con il generatore di corrente, la tensione dipende da $R$
+    \item Il resistore si comporta identicamente in entrambi i casi
+\end{itemize}
+
+\newpage
+\section{Nodi nei Circuiti Elettrici}
+
+\subsection{Teoria}
+
+\subsubsection{Definizione di Nodo}
+Un \textbf{nodo} è un punto di connessione in un circuito elettrico dove si incontrano due o più componenti. Più precisamente, un nodo è un punto (o insieme di punti collegati da conduttori ideali) dove convergono almeno tre rami del circuito.
+
+\subsubsection{Come Riconoscere i Nodi}
+
+Per identificare correttamente i nodi in un circuito:
+
+\begin{enumerate}
+    \item \textbf{Punti di giunzione}: Cercare i punti dove si collegano tre o più elementi
+    \item \textbf{Conduttori ideali}: Tutti i punti collegati da un filo (senza resistenze intermedie) formano lo stesso nodo
+    \item \textbf{Non sono propriamente nodi}: I punti dove si collegano solo due elementi non sono propriamente nodi (semplice passaggio di corrente), ma si possono trattare anche quelli come nodi
+\end{enumerate}
+
+\textbf{Proprietà dei nodi:}
+\begin{itemize}
+    \item In un nodo, la somma algebrica delle correnti è zero (Prima Legge di Kirchhoff o KCL)
+    \item Tutti i punti di un nodo hanno lo stesso potenziale elettrico
+    \item I nodi sono fondamentali per l'analisi dei circuiti
+\end{itemize}
+
+\subsubsection{Esempi di Identificazione dei Nodi}
+
+\begin{center}
+\begin{circuitikz}[scale=1.2]
+    \draw (0,0) to[battery1, v=$V$] (0,3)
+          to[short] (1,3)
+          to[R=$R_1$] (3,3) node[circ, label=above:\textbf{Nodo A}] {}
+          to[R=$R_2$] (3,1.5)
+          to[short] (3,0)
+          to[short] (0,0);
+    \draw (3,3) to[short] (5,3)
+          to[R=$R_3$] (5,1.5)
+          to[short] (5,0)
+          to[short] (3,0);
+    \draw (3,3) to[short] (7,3)
+          to[R=$R_4$] (7,1.5)
+          to[short] (7,0) node[circ, label=below:\textbf{Nodo B}] {}
+          to[short] (5,0);
+\end{circuitikz}
+\end{center}
+
+In questo circuito misto:
+\begin{itemize}
+    \item \textbf{Nodo A}: Punto superiore dove si dividono le correnti verso $R_2$, $R_3$ e $R_4$ (4 rami: da $R_1$ e verso le tre resistenze in parallelo)
+    \item \textbf{Nodo B}: Punto inferiore dove si ricongiungono le correnti (4 rami: dalle tre resistenze in parallelo e verso la batteria)
+    \item Totale: 2 nodi principali
+\end{itemize}
+
+\subsubsection{Definizione di Maglia}
+
+Una \textbf{maglia} (o ciclo) è un percorso chiuso in un circuito elettrico che:
+\begin{itemize}
+    \item Parte da un nodo e ritorna allo stesso nodo
+    \item Non passa due volte per lo stesso ramo
+    \item Forma un percorso continuo attraverso i componenti del circuito
+\end{itemize}
+
+\textbf{Come Riconoscere le Maglie:}
+
+\begin{enumerate}
+    \item Identificare un punto di partenza (un nodo qualsiasi)
+    \item Seguire un percorso attraverso i componenti del circuito
+    \item Verificare di tornare al punto di partenza senza ripercorrere lo stesso ramo
+    \item Ogni percorso chiuso distinto costituisce una maglia diversa
+\end{enumerate}
+
+\textbf{Esempi di Identificazione delle Maglie}
+
+\textbf{Esempio 1: Circuito Serie (1 maglia)}
+
+\begin{center}
+\begin{circuitikz}[scale=1.2]
+    \draw[very thick, blue] (0,0) to[battery1, v=$V$] (0,3)
+          to[short] (1,3)
+          to[R=$R_1$] (3,3)
+          to[R=$R_2$] (5,3)
+          to[R=$R_3$] (7,3)
+          to[short] (7,0)
+          to[short] (0,0);
+    \node[blue] at (3.5,1.5) {\Large Maglia 1};
+\end{circuitikz}
+\end{center}
+
+In questo circuito c'è una sola maglia che include la batteria e tutte e tre le resistenze.
+
+\textbf{Esempio 2: Circuito Misto (2 maglie principali)}
+
+\begin{center}
+\begin{circuitikz}[scale=1.2]
+    \draw (0,0) to[battery1, v=$V$] (0,3)
+          to[short] (1,3)
+          to[R=$R_1$] (3,3);
+    
+    % Maglia sinistra (blu)
+    \draw[very thick, blue] (3,3) to[short] (3,2.5)
+          to[R=$R_2$] (3,1)
+          to[short] (3,0)
+          to[short] (0,0);
+    
+    % Maglia destra (rosso)
+    \draw[very thick, red] (3,3) to[short] (5,3)
+          to[R=$R_3$] (5,1)
+          to[short] (5,0)
+          to[short] (3,0);
+    
+    \node[blue] at (1.5,1.5) {Maglia A};
+    \node[red] at (4,1.5) {Maglia B};
+\end{circuitikz}
+\end{center}
+
+In questo circuito misto:
+\begin{itemize}
+    \item \textbf{Maglia A} (blu): Batteria $\rightarrow$ $R_1$ $\rightarrow$ $R_2$ $\rightarrow$ Batteria
+    \item \textbf{Maglia B} (rossa): Batteria $\rightarrow$ $R_1$ $\rightarrow$ $R_3$ $\rightarrow$ Batteria
+    \item Esiste anche una maglia interna $R_2$-$R_3$, ma è combinazione delle prime due
+\end{itemize}
+
+\textbf{Proprietà importanti delle maglie:}
+\begin{itemize}
+    \item Il numero di maglie indipendenti in un circuito è dato da: $M = R - N + 1$ dove $R$ è il numero di rami e $N$ il numero di nodi
+    \item Le maglie sono fondamentali per applicare la Seconda Legge di Kirchhoff (KVL)
+    \item In circuiti complessi, scegliere le maglie giuste semplifica l'analisi
+\end{itemize}
+
+\subsubsection{Prima Legge di Kirchhoff (KCL)}
+
+Nei nodi vale la \textbf{Legge di Kirchhoff delle Correnti}:
+
+\begin{equation}
+\sum_{k=1}^{n} I_k = 0
+\end{equation}
+
+ovvero: \textit{La somma algebrica delle correnti entranti in un nodo è uguale alla somma delle correnti uscenti}.
+
+\textbf{Esempio applicativo sul circuito parallelo precedente (Nodo A):}
+\begin{align*}
+I_{entrante} &= I_1 + I_2 + I_3 \\
+\text{oppure:}\quad I_{tot} &= I_1 + I_2 + I_3
+\end{align*}
+
+dove $I_{tot}$ entra nel nodo e $I_1$, $I_2$, $I_3$ escono verso le rispettive resistenze.
+
+\subsubsection{Seconda Legge di Kirchhoff (KVL)}
+
+Oltre alla legge delle correnti, Kirchhoff formulò anche la \textbf{Legge delle Tensioni} (KVL - Kirchhoff's Voltage Law):
+
+\begin{equation}
+\sum_{k=1}^{n} V_k = 0
+\end{equation}
+
+ovvero: \textit{La somma algebrica delle tensioni lungo una maglia chiusa è uguale a zero}.
+
+\textbf{Definizione di maglia:}
+Una maglia è un percorso chiuso in un circuito che parte da un punto e ritorna allo stesso punto senza passare due volte per lo stesso ramo.
+
+\textbf{Come applicare la KVL:}
+\begin{enumerate}
+    \item Scegliere un verso di percorrenza della maglia (orario o antiorario)
+    \item Assegnare il segno positivo alle tensioni che si incontrano dal $+$ al $-$ seguendo il verso scelto
+    \item Assegnare il segno negativo alle tensioni che si incontrano dal $-$ al $+$
+    \item La somma algebrica deve essere zero
+\end{enumerate}
+
+\textbf{Esempio applicativo sul circuito serie:}
+
+In un circuito serie con una batteria $V$ e tre resistenze $R_1$, $R_2$, $R_3$:
+
+\begin{equation}
+V - V_1 - V_2 - V_3 = 0
+\end{equation}
+
+oppure:
+
+\begin{equation}
+V = V_1 + V_2 + V_3
+\end{equation}
+
+dove la tensione della batteria è positiva (genera tensione) e le cadute di tensione sulle resistenze sono negative (consumano tensione).
+
+\textbf{Proprietà della KVL:}
+\begin{itemize}
+    \item Vale per qualsiasi percorso chiuso in un circuito
+    \item È indipendente dal verso di percorrenza scelto
+    \item È fondamentale per l'analisi delle maglie nei circuiti complessi
+    \item Deriva dal principio di conservazione dell'energia
+\end{itemize}
+
+\subsection{Assegnazione di Tensioni e Correnti nei Circuiti}
+
+\subsubsection{Convenzioni Fondamentali}
+
+Quando si analizza un circuito elettrico, è fondamentale assegnare correttamente tensioni e correnti seguendo convenzioni standard.
+
+\textbf{Convenzione per le Correnti:}
+
+\begin{itemize}
+    \item La corrente si assegna con un \textbf{verso arbitrario} prima di risolvere il circuito
+    \item Si indica con una freccia sul ramo del circuito
+    \item Se il risultato del calcolo è \textbf{positivo}, il verso assegnato è corretto
+    \item Se il risultato è \textbf{negativo}, il verso reale è opposto a quello assegnato
+    \item Nei \textbf{generatori}, la corrente esce dal polo positivo (interno al generatore)
+    \item Nei \textbf{resistori}, la corrente fluisce dal potenziale maggiore al minore
+\end{itemize}
+
+\textbf{Convenzione per le Tensioni:}
+
+\begin{itemize}
+    \item La tensione si indica con i segni $+$ e $-$ ai capi del componente
+    \item Per i \textbf{generatori}: il polo $+$ è quello a potenziale maggiore
+    \item Per i \textbf{resistori}: il $+$ si mette dove entra la corrente (convenzione degli utilizzatori)
+    \item La tensione si misura sempre \textbf{tra due punti} (differenza di potenziale)
+\end{itemize}
+
+\subsubsection{Convenzione degli Utilizzatori}
+
+Per i componenti passivi (resistori), si usa la \textbf{convenzione degli utilizzatori}:
+
+\begin{center}
+\begin{circuitikz}[scale=1.5]
+    % Resistenza con corrente verso sinistra
+    \draw (0,0) to[R, v=$V_R$, i<=$I$, l=$R$] (3,0);
+    
+    % Segni della tensione (positivo a destra, negativo a sinistra)
+    \node at (-0.3,0) {$-$};
+    \node at (3.3,0) {$+$};
+    
+    % Freccia della corrente verso sinistra
+    \draw[<-, very thick, blue] (1.5,0.5) -- (2.5,0.5) node[midway, above] {verso $I$};
+\end{circuitikz}
+\end{center}
+
+\textbf{Regola:} La corrente entra dal polo positivo ed esce dal polo negativo.
+
+\subsubsection{Convenzione dei generatori}
+
+Per i generatori (batterie, generatori di tensione), si usa la \textbf{convenzione dei generatori}: la corrente convenzionale esce dal polo positivo del generatore e rientra nel polo negativo.
+
+\begin{center}
+\begin{circuitikz}[scale=1.5]
+    % Generatore con corrente uscente dal positivo
+    \draw (0,0) to[battery1, v=$V_g$, i>=$I$] (0,2);
+    
+    % Segni del generatore
+    \node at (-0.5,2) {$+$};
+    \node at (-0.5,0) {$-$};
+    
+    % Freccia della corrente uscente dal positivo
+    \draw[->, very thick, red] (0.3,1) -- (0.3,1.8) node[midway, right] {verso $I$};
+\end{circuitikz}
+\end{center}
+
+
+\textbf{Regola:} Internamente al generatore, la corrente va dal polo $-$ al polo $+$ (il generatore "pompa" cariche).
+
+Nel circuito esterno, la corrente esce dal $-$ ed entra nel $+$.
+
+\subsubsection{Esempi Pratici}
+
+\textbf{Esempio 1: Circuito Serie - Assegnazione Completa}
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    % Batteria con segni e corrente
+    \draw (0,3) to[battery1, v=$V_g{=}12\,V$, i=$I$] (0,0);
+    \node at (-0.8,3) {$+$};
+    \node at (-0.8,0) {$-$};
+    
+    % R1
+    \draw (0,3) to[short] (1,3)
+          to[R=$R_1$, v=$V_1$, i>^=$I$] (3,3);
+    \node at (0.8,3.3) {$-$};
+    \node at (2.8,3.3) {$+$};
+    
+    % R2
+    \draw (3,3) to[R=$R_2$, v=$V_2$, i>^=$I$] (5,3);
+    \node at (3.2,3.3) {$-$};
+    \node at (5.2,3.3) {$+$};
+    
+    % Chiusura
+    \draw (5,3) to[short] (5,0)
+          to[short] (0,0);
+    
+    % Frecce versi
+    \draw[->, very thick, blue] (0.5,3.4) -- (1.5,3.4) node[midway, above] {\small verso corrente};
+\end{circuitikz}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{itemize}
+    \item La corrente $I$ esce dal polo $+$ della batteria
+    \item Attraversa $R_1$ e $R_2$ nello stesso verso
+    \item Su $R_1$: il $+$ è a sinistra (dove entra $I$), il $-$ a destra
+    \item Su $R_2$: il $+$ è a sinistra (dove entra $I$), il $-$ a destra
+    \item Vale la KVL: $V_g - V_1 - V_2 = 0 \Rightarrow V_g = V_1 + V_2$
+\end{itemize}
+
+\textbf{Calcoli:}
+Se $R_1 = 100\,\Omega$ e $R_2 = 200\,\Omega$:
+\begin{align*}
+R_{eq} &= 300\,\Omega \\
+I &= \frac{12}{300} = 0.04\,A = 40\,mA
+V_1 &= 100 \cdot 0.04 = 4\,V \\
+V_2 &= 200 \cdot 0.04 = 8\,V
+\end{align*}
+
+\textbf{Esempio 2: Circuito Parallelo - Divisione Correnti}
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    % Batteria
+    \draw (0,0) to[battery1, v=$V{=}9\,V$, i=$I_{tot}$] (0,3);
+    \node at (-0.8,3) {$+$};
+    \node at (-0.8,0) {$-$};
+    
+    % Nodo A superiore
+    \draw (0,3) to[short, i=$I_{tot}$] (2,3);
+    \node[circ, label=above:A] at (2,3) {};
+    
+    % R1
+    \draw (2,3) to[short, i=$I_1$] (2,2.7)
+          to[R=$R_1$, v<=$V$, i>^=$I_1$] (2,0.3)
+          to[short] (2,0);
+    \node at (1.5,2.5) {$+$};
+    \node at (1.5,0.5) {$-$};
+    
+    % R2
+    \draw (2,3) to[short, i=$I_2$] (4,3)
+          to[R=$R_2$, v<=$V$, i>^=$I_2$] (4,0)
+          to[short] (2,0);
+    \node at (3.5,2.5) {$+$};
+    \node at (3.5,0.5) {$-$};
+    
+    % R3
+    \draw (4,3) to[short, i=$I_3$] (6,3)
+          to[R=$R_3$, v<=$V$, i>^=$I_3$] (6,0)
+          to[short] (4,0);
+    \node at (5.5,2.5) {$+$};
+    \node at (5.5,0.5) {$-$};
+    
+    % Nodo B inferiore
+    \node[circ, label=below:B] at (2,0) {};
+    \draw (2,0) to[short, i<=$I_{tot}$] (0,0);
+\end{circuitikz}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{itemize}
+    \item Al nodo A: $I_{tot} = I_1 + I_2 + I_3$ (KCL)
+    \item Tutte le resistenze hanno la stessa tensione $V = 9\,V$
+    \item Su ogni resistore: il $+$ è in alto (nodo A), il $-$ in basso (nodo B)
+    \item Ogni corrente fluisce dall'alto (potenziale maggiore) verso il basso
+\end{itemize}
+
+\textbf{Calcoli:}
+Se $R_1 = 90\,\Omega$, $R_2 = 180\,\Omega$, $R_3 = 270\,\Omega$:
+\begin{align*}
+I_1 &= \frac{9}{90} = 100\,mA \quad \text{(verso corretto: verso il basso)} \\
+I_2 &= \frac{9}{180} = 50\,mA \\
+I_3 &= \frac{9}{270} = 33.3\,mA \\
+I_{tot} &= 100 + 50 + 33.3 = 183.3\,mA
+\end{align*}
+
+\textbf{Esempio 3: Applicazione della KVL con Segni}
+
+Consideriamo una maglia con batteria e resistori:
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    \draw (0,0) to[battery1, v<=$V_g{=}15\,V$, i=$I_{tot}$] (0,3)
+          to[short] (1,3)
+          to[R=$R_1{=}300\,\Omega$, v<=$V_1$] (3,3)
+          to[R=$R_2{=}200\,\Omega$, v<=$V_2$] (5,3)
+          to[short] (5,0)
+          to[short] (0,0);
+    
+    % Segni tensione
+    \node at (0.8,3.3) {$-$};
+    \node at (2.8,3.3) {$+$};
+    \node at (3.2,3.3) {$-$};
+    \node at (5.2,3.3) {$+$};
+    \node at (-0.5,3) {$-$};
+    \node at (-0.5,0) {$+$};
+    
+    % Freccia maglia
+    \draw[->, very thick, green!50!black] (2.5,1.5) arc (180:540:0.8);
+    \node[green!50!black] at (2.5,0.5) {senso maglia};
+\end{circuitikz}
+\end{center}
+
+\textbf{Applicazione KVL (senso orario):}
+\begin{itemize}
+    \item Partendo dal polo $-$ della batteria e percorrendo la maglia in senso orario:
+    \item Attraverso la batteria: $+V_g$ (si va da $-$ a $+$)
+    \item Attraverso $R_1$: $-V_1$ (si va da $+$ a $-$)
+    \item Attraverso $R_2$: $-V_2$ (si va da $+$ a $-$)
+\end{itemize}
+
+\textbf{Equazione KVL:}
+\begin{equation}
++V_g - V_1 - V_2 = 0 \quad \Rightarrow \quad V_g = V_1 + V_2
+\end{equation}
+
+\textbf{Calcoli:}
+\begin{align*}
+I &= \frac{15}{300 + 200} = 30\,mA \\
+V_1 &= 300 \cdot 0.03 = 9\,V \\
+V_2 &= 200 \cdot 0.03 = 6\,V \\
+\text{Verifica:}\quad & 15 = 9 + 6 \quad \checkmark
+\end{align*}
+
+\subsubsection{Riepilogo delle Regole}
+
+\begin{enumerate}
+    \item \textbf{Assegnare arbitrariamente} i versi delle correnti
+    \item \textbf{Applicare la convenzione degli utilizzatori/generatori} sui resistori: $+$ dove entra la corrente
+    \item \textbf{Applicare KCL} ai nodi: $\sum I_{entranti} = \sum I_{uscenti}$
+    \item \textbf{Applicare KVL} alle maglie: percorrere la maglia e sommare algebricamente le tensioni
+    \item \textbf{Interpretare i risultati}: valori negativi indicano versi opposti
+\end{enumerate}
+
+\newpage
+\section{Resistenze in Serie}
+
+\subsection{Teoria}
+Due o più resistenze sono collegate in serie quando sono attraversate dalla stessa corrente.
+
+\begin{center}
+\begin{circuitikz}[scale=1.2]
+    \draw (0,0) to[battery1, v=$V$] (0,3)
+          to[short] (1,3)
+          to[R=$R_1$] (3,3)
+          to[R=$R_2$] (5,3)
+          to[R=$R_3$] (7,3)
+          to[short] (7,0)
+          to[short] (0,0);
+    \draw[->, thick, red] (2,3.3) -- (3,3.3) node[midway, above] {$I$};
+\end{circuitikz}
+\end{center}
+
+\textbf{Resistenza equivalente:}
+\begin{equation}
+R_{eq} = R_1 + R_2 + R_3 + \ldots + R_n
+\end{equation}
+
+\textbf{Proprietà:}
+\begin{itemize}
+    \item La corrente è la stessa in tutti i componenti: $I_{tot} = I_1 = I_2 = I_3$
+    \item La tensione totale è la somma delle tensioni parziali: $V_{tot} = V_1 + V_2 + V_3$
+    \item La resistenza equivalente è sempre maggiore della resistenza più grande
+\end{itemize}
+
+\subsection{Esercizi Svolti}
+
+\textbf{Esercizio 2.1:} Calcolare la resistenza equivalente di tre resistori in serie: $R_1 = 100\,\Omega$, $R_2 = 220\,\Omega$, $R_3 = 330\,\Omega$.
+
+\textit{Soluzione:}
+\begin{align*}
+R_{eq} &= R_1 + R_2 + R_3 = 100 + 220 + 330 = 650\,\Omega
+\end{align*}
+
+\textbf{Esercizio 2.2:} Un circuito serie è formato da tre resistori: $R_1 = 1\,k\Omega$, $R_2 = 2.2\,k\Omega$, $R_3 = 4.7\,k\Omega$. Il circuito è alimentato da una tensione di $24\,V$. Calcolare:
+\begin{enumerate}
+    \item La resistenza equivalente
+    \item La corrente totale
+    \item La tensione ai capi di ciascun resistore
+\end{enumerate}
+
+\textit{Soluzione:}
+\begin{align*}
+1)\quad R_{eq} &= 1000 + 2200 + 4700 = 7900\,\Omega = 7.9\,k\Omega \\
+2)\quad I &= \frac{V_{tot}}{R_{eq}} = \frac{24\,V}{7900\,\Omega} = 3.04\,mA \\
+3)\quad V_1 &= R_1 \cdot I = 1000 \cdot 0.00304 = 3.04\,V \\
+V_2 &= R_2 \cdot I = 2200 \cdot 0.00304 = 6.69\,V \\
+V_3 &= R_3 \cdot I = 4700 \cdot 0.00304 = 14.27\,V
+\end{align*}
+
+Verifica: $V_1 + V_2 + V_3 = 3.04 + 6.69 + 14.27 = 24\,V$ \checkmark
+
+\newpage
+\section{Resistenze in Parallelo}
+
+\subsection{Teoria}
+Due o più resistenze sono collegate in parallelo quando hanno gli stessi punti di collegamento, quindi la stessa tensione ai loro capi.
+\begin{center}
+\begin{circuitikz}[scale=1.2]
+    \draw (0,0) to[battery1, v=$V$] (0,3)
+          to[short] (2,3)
+          to[R=$R_1$] (2,1.5)
+          to[short] (2,0)
+          to[short] (0,0);
+    \draw (2,3) to[short] (4,3)
+          to[R=$R_2$] (4,1.5)
+          to[short] (4,0)
+          to[short] (2,0);
+    \draw (4,3) to[short] (6,3)
+          to[R=$R_3$] (6,1.5)
+          to[short] (6,0)
+          to[short] (4,0);
+    \draw[->, thick, red] (2.5,2.8) -- (2.5,2.2) node[midway, right] {$I_1$};
+    \draw[->, thick, red] (4.5,2.8) -- (4.5,2.2) node[midway, right] {$I_2$};
+    \draw[->, thick, red] (6.5,2.8) -- (6.5,2.2) node[midway, right] {$I_3$};
+\end{circuitikz}
+\end{center}
+
+\textbf{Resistenza equivalente:}
+\begin{equation}
+\frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3} + \ldots + \frac{1}{R_n}
+\end{equation}
+
+Per due resistenze in parallelo:
+\begin{equation}
+R_{eq} = \frac{R_1 \cdot R_2}{R_1 + R_2}
+\end{equation}
+
+\textbf{Proprietà:}
+\begin{itemize}
+    \item La tensione è la stessa su tutti i componenti: $V_{tot} = V_1 = V_2 = V_3$
+    \item La corrente totale è la somma delle correnti parziali: $I_{tot} = I_1 + I_2 + I_3$
+    \item La resistenza equivalente è sempre minore della resistenza più piccola
+\end{itemize}
+
+\subsection{Esercizi Svolti}
+
+\textbf{Esercizio 3.1:} Calcolare la resistenza equivalente di due resistori in parallelo: $R_1 = 100\,\Omega$, $R_2 = 150\,\Omega$.
+
+\textit{Soluzione:}
+\begin{align*}
+R_{eq} &= \frac{R_1 \cdot R_2}{R_1 + R_2} = \frac{100 \cdot 150}{100 + 150} = \frac{15000}{250} = 60\,\Omega
+\end{align*}
+
+\textbf{Esercizio 3.2:} Calcolare la resistenza equivalente di tre resistori in parallelo: $R_1 = 300\,\Omega$, $R_2 = 600\,\Omega$, $R_3 = 900\,\Omega$.
+
+\textit{Soluzione:}
+\begin{align*}
+\frac{1}{R_{eq}} &= \frac{1}{300} + \frac{1}{600} + \frac{1}{900} \\
+&= \frac{6 + 3 + 2}{1800} = \frac{11}{1800} \\
+R_{eq} &= \frac{1800}{11} = 163.6\,\Omega
+\end{align*}
+
+\textbf{Esercizio 3.3:} Un circuito parallelo è formato da tre resistori: $R_1 = 1\,k\Omega$, $R_2 = 2\,k\Omega$, $R_3 = 4\,k\Omega$. Il circuito è alimentato da una tensione di $12\,V$. Calcolare:
+\begin{enumerate}
+    \item La resistenza equivalente
+    \item La corrente in ciascun resistore
+    \item La corrente totale
+\end{enumerate}
+
+\textit{Soluzione:}
+\begin{align*}
+1)\quad \frac{1}{R_{eq}} &= \frac{1}{1000} + \frac{1}{2000} + \frac{1}{4000} \\
+&= \frac{4 + 2 + 1}{4000} = \frac{7}{4000} \\
+R_{eq} &= \frac{4000}{7} = 571.4\,\Omega \\
+2)\quad I_1 &= \frac{V}{R_1} = \frac{12}{1000} = 12\,mA \\
+I_2 &= \frac{V}{R_2} = \frac{12}{2000} = 6\,mA \\
+I_3 &= \frac{V}{R_3} = \frac{12}{4000} = 3\,mA \\
+3)\quad I_{tot} &= I_1 + I_2 + I_3 = 12 + 6 + 3 = 21\,mA
+\end{align*}
+
+Verifica: $I_{tot} = \frac{V}{R_{eq}} = \frac{12}{571.4} = 21\,mA$ \checkmark
+
+\newpage
+\section{Partitore di Tensione e Partitore di Corrente}
+
+\subsection{Partitore di Tensione}
+
+\subsubsection{Teoria}
+
+Il \textbf{partitore di tensione} è una configurazione fondamentale in elettrotecnica che permette di ottenere una tensione ridotta da una tensione di alimentazione maggiore, utilizzando resistenze in serie.
+
+\textbf{Configurazione:}
+
+\begin{center}
+\begin{circuitikz}[scale=1.5]
+    \draw (0,0) to[battery1, invert, v=$V_{in}$] (0,4)
+          to[short] (1,4)
+          to[R=$R_1$, v<=$V_1$, i>^=$I$] (1,2)
+          node[circ, label=right:$V_{out}$] {}
+          to[R=$R_2$, v<=$V_2$, i>^=$I$] (1,0)
+          to[short] (0,0);
+    
+    \node at (0.5,4) {$+$};
+    \node at (0.5,0) {$-$};
+    \node at (0.5,2) {$+$};
+    \node at (1.5,2) {$-$};
+\end{circuitikz}
+\end{center}
+
+\textbf{Formula del Partitore di Tensione:}
+
+La tensione ai capi di una resistenza in un circuito serie è proporzionale al suo valore rispetto alla resistenza totale:
+
+\begin{equation}
+V_1 = V_{in} \cdot \frac{R_1}{R_1 + R_2}
+\end{equation}
+
+\begin{equation}
+V_2 = V_{in} \cdot \frac{R_2}{R_1 + R_2} = V_{out}
+\end{equation}
+
+\textbf{Formula generale per $n$ resistenze:}
+
+\begin{equation}
+V_k = V_{in} \cdot \frac{R_k}{\sum_{i=1}^{n} R_i}
+\end{equation}
+
+\textbf{Proprietà:}
+\begin{itemize}
+    \item La somma delle tensioni parziali è uguale alla tensione totale: $V_1 + V_2 = V_{in}$
+    \item La corrente è la stessa in tutte le resistenze
+    \item Il partitore funziona solo a vuoto o con carichi ad alta impedenza
+    \item La tensione su ciascuna resistenza è proporzionale al suo valore
+\end{itemize}
+
+\subsubsection{Esercizi Svolti}
+
+\textbf{Esercizio 5.1:} Dato un partitore di tensione con $V_{in} = 12\,V$, $R_1 = 300\,\Omega$, $R_2 = 100\,\Omega$. Calcolare $V_{out}$ (tensione su $R_2$).
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    \draw (0,0) to[battery1, invert, v=$12\,V$] (0,3)
+          to[short] (1,3)
+          to[R=$300\,\Omega$, v<=$V_1$, i>^=$I$] (1,1.5)
+          node[circ, label=right:$V_{out}$] {}
+          to[R=$100\,\Omega$, v<=$V_{out}$, i>^=$I$] (1,0)
+          to[short] (0,0);
+\end{circuitikz}
+\end{center}
+
+\textit{Soluzione:}
+\begin{align*}
+V_{out} &= V_{in} \cdot \frac{R_2}{R_1 + R_2} = 12 \cdot \frac{100}{300 + 100} = 12 \cdot \frac{100}{400} = 12 \cdot 0.25 = 3\,V \\
+V_1 &= V_{in} \cdot \frac{R_1}{R_1 + R_2} = 12 \cdot \frac{300}{400} = 9\,V
+\end{align*}
+
+\textbf{Verifica:} $V_1 + V_{out} = 9 + 3 = 12\,V$ \checkmark
+
+\textbf{Corrente nel circuito:}
+\begin{align*}
+I &= \frac{V_{in}}{R_1 + R_2} = \frac{12}{400} = 30\,mA
+\end{align*}
+
+\textbf{Esercizio 5.2:} Progettare un partitore di tensione per ottenere $V_{out} = 5\,V$ da $V_{in} = 15\,V$, con $R_2 = 1\,k\Omega$. Calcolare $R_1$.
+
+\textit{Soluzione:}
+
+Dalla formula del partitore:
+\begin{align*}
+V_{out} &= V_{in} \cdot \frac{R_2}{R_1 + R_2} \\
+5 &= 15 \cdot \frac{1000}{R_1 + 1000} \\
+\frac{5}{15} &= \frac{1000}{R_1 + 1000} \\
+\frac{1}{3} &= \frac{1000}{R_1 + 1000} \\
+R_1 + 1000 &= 3000 \\
+R_1 &= 2000\,\Omega = 2\,k\Omega
+\end{align*}
+
+\textbf{Verifica:}
+\begin{align*}
+V_{out} &= 15 \cdot \frac{1000}{2000 + 1000} = 15 \cdot \frac{1000}{3000} = 15 \cdot \frac{1}{3} = 5\,V \quad \checkmark
+\end{align*}
+
+\textbf{Esercizio 5.3:} Dato un partitore con tre resistenze in serie: $R_1 = 100\,\Omega$, $R_2 = 200\,\Omega$, $R_3 = 300\,\Omega$, alimentato da $V_{in} = 24\,V$. Calcolare le tensioni su ciascuna resistenza.
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    \draw (0,0) to[battery1, invert, v=$24\,V$] (0,4)
+          to[short] (1,4)
+          to[R=$100\,\Omega$, v<=$V_1$, i>^=$I$] (1,3)
+          to[R=$200\,\Omega$, v<=$V_2$, i>^=$I$] (1,1.5)
+          to[R=$300\,\Omega$, v<=$V_3$, i>^=$I$] (1,0)
+          to[short] (0,0);
+\end{circuitikz}
+\end{center}
+
+\textit{Soluzione:}
+\begin{align*}
+R_{tot} &= 100 + 200 + 300 = 600\,\Omega \\
+V_1 &= 24 \cdot \frac{100}{600} = 24 \cdot \frac{1}{6} = 4\,V \\
+V_2 &= 24 \cdot \frac{200}{600} = 24 \cdot \frac{1}{3} = 8\,V \\
+V_3 &= 24 \cdot \frac{300}{600} = 24 \cdot \frac{1}{2} = 12\,V
+\end{align*}
+
+\textbf{Verifica:} $V_1 + V_2 + V_3 = 4 + 8 + 12 = 24\,V$ \checkmark
+
+\subsection{Partitore di Corrente}
+
+\subsubsection{Teoria}
+
+Il \textbf{partitore di corrente} è una configurazione che permette di dividere una corrente tra più resistenze in parallelo, in modo inversamente proporzionale ai loro valori.
+
+\textbf{Configurazione:}
+
+\begin{center}
+\begin{circuitikz}[scale=1.5]
+    \draw (0,0) to[I, l=$I_{in}$, i>^=$I_{in}$] (0,3)
+          to[short] (2,3);
+    
+    \draw (2,3) to[short, i=$I_1$] (2,2.7)
+          to[R=$R_1$, v<=$V$, i>^=$I_1$] (2,0.3)
+          to[short] (2,0);
+    
+    \draw (2,3) to[short, i=$I_2$] (5,3)
+          to[R=$R_2$, v<=$V$, i>^=$I_2$] (5,0)
+          to[short] (2,0);
+    
+    \draw (2,0) to[short] (0,0);
+    
+    \node[circ, label=above:A] at (2,3) {};
+    \node[circ, label=below:B] at (2,0) {};
+\end{circuitikz}
+\end{center}
+
+\textbf{Formula del Partitore di Corrente:}
+
+La corrente che attraversa una resistenza in un circuito parallelo è inversamente proporzionale al suo valore:
+
+\begin{equation}
+I_1 = I_{in} \cdot \frac{R_2}{R_1 + R_2}
+\end{equation}
+
+\begin{equation}
+I_2 = I_{in} \cdot \frac{R_1}{R_1 + R_2}
+\end{equation}
+
+\textbf{Nota importante:} La corrente maggiore scorre nella resistenza minore!
+
+\textbf{Formula generale per $n$ resistenze:}
+
+\begin{equation}
+I_k = I_{in} \cdot \frac{R_{eq}}{R_k}
+\end{equation}
+
+dove $R_{eq}$ è la resistenza equivalente del parallelo.
+
+\textbf{Proprietà:}
+\begin{itemize}
+    \item La somma delle correnti parziali è uguale alla corrente totale: $I_1 + I_2 = I_{in}$
+    \item La tensione è la stessa su tutte le resistenze
+    \item La corrente si distribuisce in modo inversamente proporzionale alle resistenze
+    \item La resistenza più piccola conduce la corrente maggiore
+\end{itemize}
+
+\subsubsection{Esercizi Svolti}
+
+\textbf{Esercizio 5.4:} Dato un partitore di corrente con $I_{in} = 120\,mA$, $R_1 = 200\,\Omega$, $R_2 = 400\,\Omega$. Calcolare $I_1$ e $I_2$.
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    \draw (0,0) to[I, l=$120\,mA$, i>^=$I_{in}$] (0,3)
+          to[short] (2,3);
+    
+    \draw (2,3) to[short, i=$I_1$] (2,2.7)
+          to[R=$200\,\Omega$, v<=$V$, i>^=$I_1$] (2,0.3)
+          to[short] (2,0);
+    
+    \draw (2,3) to[short, i=$I_2$] (5,3)
+          to[R=$400\,\Omega$, v<=$V$, i>^=$I_2$] (5,0)
+          to[short] (2,0);
+    
+    \draw (2,0) to[short] (0,0);
+\end{circuitikz}
+\end{center}
+
+\textit{Soluzione:}
+\begin{align*}
+I_1 &= I_{in} \cdot \frac{R_2}{R_1 + R_2} = 120 \cdot \frac{400}{200 + 400} = 120 \cdot \frac{400}{600} = 120 \cdot \frac{2}{3} = 80\,mA \\
+I_2 &= I_{in} \cdot \frac{R_1}{R_1 + R_2} = 120 \cdot \frac{200}{600} = 120 \cdot \frac{1}{3} = 40\,mA
+\end{align*}
+
+\textbf{Verifica:} $I_1 + I_2 = 80 + 40 = 120\,mA = I_{in}$ \checkmark
+
+\textbf{Osservazione:} $R_1 < R_2$ quindi $I_1 > I_2$ (la corrente maggiore passa nella resistenza minore)
+
+\textbf{Esercizio 5.5:} Dato un partitore di corrente con tre resistenze: $R_1 = 100\,\Omega$, $R_2 = 150\,\Omega$, $R_3 = 300\,\Omega$, alimentato da $I_{in} = 330\,mA$. Calcolare le correnti in ciascuna resistenza.
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    \draw (0,0) to[I, l=$330\,mA$, i>^=$I_{in}$] (0,3)
+          to[short] (2,3);
+    
+    \draw (2,3) to[short, i=$I_1$] (2,2.7)
+          to[R=$100\,\Omega$, v<=$V$, i>^=$I_1$] (2,0.3)
+          to[short] (2,0);
+    
+    \draw (2,3) to[short, i=$I_2$] (4,3)
+          to[R=$150\,\Omega$, v<=$V$, i>^=$I_2$] (4,0)
+          to[short] (2,0);
+    
+    \draw (4,3) to[short, i=$I_3$] (6,3)
+          to[R=$300\,\Omega$, v<=$V$, i>^=$I_3$] (6,0)
+          to[short] (4,0);
+    
+    \draw (2,0) to[short] (0,0);
+\end{circuitikz}
+\end{center}
+
+\textit{Soluzione:}
+
+Prima calcoliamo la resistenza equivalente:
+\begin{align*}
+\frac{1}{R_{eq}} &= \frac{1}{100} + \frac{1}{150} + \frac{1}{300} = \frac{6 + 4 + 2}{600} = \frac{12}{600} = \frac{1}{50} \\
+R_{eq} &= 50\,\Omega
+\end{align*}
+
+Ora calcoliamo le correnti usando la formula generale:
+\begin{align*}
+I_1 &= I_{in} \cdot \frac{R_{eq}}{R_1} = 330 \cdot \frac{50}{100} = 330 \cdot 0.5 = 165\,mA \\
+I_2 &= I_{in} \cdot \frac{R_{eq}}{R_2} = 330 \cdot \frac{50}{150} = 330 \cdot \frac{1}{3} = 110\,mA \\
+I_3 &= I_{in} \cdot \frac{R_{eq}}{R_3} = 330 \cdot \frac{50}{300} = 330 \cdot \frac{1}{6} = 55\,mA
+\end{align*}
+
+\textbf{Verifica:} $I_1 + I_2 + I_3 = 165 + 110 + 55 = 330\,mA = I_{in}$ \checkmark
+
+\textbf{Osservazione:} $R_1 < R_2 < R_3$ quindi $I_1 > I_2 > I_3$ (ordine inverso rispetto alle resistenze)
+
+\textbf{Esercizio 5.6:} Un circuito ha $I_{in} = 60\,mA$, $R_1 = 1\,k\Omega$, $R_2 = 2\,k\Omega$. Calcolare:
+\begin{enumerate}
+    \item Le correnti $I_1$ e $I_2$
+    \item La tensione comune $V$
+    \item La potenza dissipata in ciascuna resistenza
+\end{enumerate}
+
+\textit{Soluzione:}
+\begin{align*}
+1)\quad I_1 &= 60 \cdot \frac{2000}{1000 + 2000} = 60 \cdot \frac{2}{3} = 40\,mA \\
+I_2 &= 60 \cdot \frac{1000}{3000} = 60 \cdot \frac{1}{3} = 20\,mA \\
+2)\quad R_{eq} &= \frac{1000 \cdot 2000}{3000} = \frac{2000000}{3000} = 666.7\,\Omega \\
+V &= I_{in} \cdot R_{eq} = 0.06 \cdot 666.7 = 40\,V \\
+&\text{(oppure: } V = I_1 \cdot R_1 = 0.04 \cdot 1000 = 40\,V \text{)} \\
+3)\quad P_1 &= I_1^2 \cdot R_1 = (0.04)^2 \cdot 1000 = 1.6\,W \\
+P_2 &= I_2^2 \cdot R_2 = (0.02)^2 \cdot 2000 = 0.8\,W
+\end{align*}
+
+\subsection{Confronto tra Partitore di Tensione e di Corrente}
+
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Caratteristica} & \textbf{Partitore di Tensione} & \textbf{Partitore di Corrente} \\
+\hline
+Configurazione & Serie & Parallelo \\
+\hline
+Grandezza divisa & Tensione & Corrente \\
+\hline
+Grandezza comune & Corrente & Tensione \\
+\hline
+Proporzionalità & Diretta ($V_k \propto R_k$) & Inversa ($I_k \propto \frac{1}{R_k}$) \\
+\hline
+Formula & $V_k = V_{in} \cdot \frac{R_k}{R_{tot}}$ & $I_k = I_{in} \cdot \frac{R_{eq}}{R_k}$ \\
+\hline
+Resistenza maggiore & Riceve tensione maggiore & Riceve corrente minore \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Regola pratica:}
+\begin{itemize}
+    \item \textbf{Partitore di tensione:} La resistenza più grande "prende" più tensione
+    \item \textbf{Partitore di corrente:} La resistenza più piccola "prende" più corrente
+\end{itemize}
+
+\newpage
+\section{Circuiti Misti (Serie-Parallelo)}
+
+\subsection{Teoria}
+I circuiti misti contengono sia collegamenti in serie che in parallelo. Per risolverli:
+\begin{enumerate}
+    \item Identificare i gruppi di resistenze in serie o parallelo
+    \item Calcolare le resistenze equivalenti parziali
+    \item Procedere per semplificazioni successive fino ad ottenere $R_{eq}$ totale
+\end{enumerate}
+
+\subsection{Esercizi Svolti}
+
+\textbf{Esercizio 4.1:} Dato il seguente circuito misto:
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    \draw (0,0) to[battery1, invert, v=$V_g{=}24\,V$, i>^=$I_{tot}$] (0,3)
+          to[short] (1,3)
+          to[R=$R_1{=}100\,\Omega$, v<=$V_1$, i>^=$I_{tot}$] (3,3);
+    
+    % Nodo A
+    \node[circ, label=above:A] at (3,3) {};
+    
+    % Parallelo R2 e R3
+    \draw (3,3) to[short, i=$I_2$] (3,2.7)
+          to[R=$R_2{=}200\,\Omega$, v<=$V_{23}$, i>^=$I_2$] (3,0.3)
+          to[short] (3,0);
+    
+    \draw (3,3) to[short, i=$I_3$] (6,3)
+          to[R=$R_3{=}300\,\Omega$, v<=$V_{23}$, i>^=$I_3$] (6,0)
+          to[short] (3,0);
+    
+    % Nodo B
+    \node[circ, label=below:B] at (3,0) {};
+    
+    \draw (3,0) to[short] (0,0);
+\end{circuitikz}
+\end{center}
+
+Calcolare:
+\begin{enumerate}
+    \item La resistenza equivalente del parallelo $R_2 \parallel R_3$
+    \item La resistenza equivalente totale
+    \item La corrente totale $I_{tot}$
+    \item La tensione $V_1$ e $V_{23}$
+    \item Le correnti $I_2$ e $I_3$
+\end{enumerate}
+
+\textit{Soluzione:}
+
+\begin{align*}
+1)\quad R_{23} &= \frac{R_2 \cdot R_3}{R_2 + R_3} = \frac{200 \cdot 300}{200 + 300} = \frac{60000}{500} = 120\,\Omega \\
+2)\quad R_{eq} &= R_1 + R_{23} = 100 + 120 = 220\,\Omega \\
+3)\quad I_{tot} &= \frac{V_g}{R_{eq}} = \frac{24}{220} = 0.109\,A = 109\,mA \\
+4)\quad V_1 &= R_1 \cdot I_{tot} = 100 \cdot 0.109 = 10.9\,V \\
+V_{23} &= R_{23} \cdot I_{tot} = 120 \cdot 0.109 = 13.1\,V \\
+5)\quad I_2 &= \frac{V_{23}}{R_2} = \frac{13.1}{200} = 65.5\,mA \\
+I_3 &= \frac{V_{23}}{R_3} = \frac{13.1}{300} = 43.7\,mA
+\end{align*}
+
+\textbf{Verifiche:}
+\begin{itemize}
+    \item $V_1 + V_{23} = 10.9 + 13.1 = 24\,V$ \checkmark
+    \item $I_2 + I_3 = 65.5 + 43.7 = 109.2\,mA \approx I_{tot}$ \checkmark
+\end{itemize}
+
+\textbf{Esercizio 4.2:} Dato il seguente circuito misto:
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    \draw (0,0) to[battery1, invert, v=$V_g{=}30\,V$, i>^=$I_{tot}$] (0,4)
+          to[short] (1,4);
+    
+    % Nodo A
+    \node[circ, label=above:A] at (1,4) {};
+    
+    % Primo ramo: R1 in serie
+    \draw (1,4) to[short, i=$I_1$] (1,3.7)
+          to[R=$R_1{=}150\,\Omega$, v<=$V_1$, i>^=$I_1$] (1,2)
+          to[short] (1,0);
+    
+    % Secondo ramo: R2 e R3 in serie
+    \draw (1,4) to[short, i=$I_{23}$] (3.5,4)
+          to[R=$R_2{=}100\,\Omega$, v<=$V_2$, i>^=$I_{23}$] (3.5,2.5)
+          to[R=$R_3{=}200\,\Omega$, v<=$V_3$, i>^=$I_{23}$] (3.5,0)
+          to[short] (1,0);
+    
+    % Nodo B
+    \node[circ, label=below:B] at (1,0) {};
+    
+    \draw (1,0) to[short] (0,0);
+\end{circuitikz}
+\end{center}
+
+Calcolare:
+\begin{enumerate}
+    \item La resistenza equivalente del ramo serie $R_2 + R_3$
+    \item La resistenza equivalente totale
+    \item La corrente totale e le correnti nei due rami
+    \item Tutte le tensioni
+\end{enumerate}
+
+\textit{Soluzione:}
+
+\begin{align*}
+1)\quad R_{23} &= R_2 + R_3 = 100 + 200 = 300\,\Omega \\
+2)\quad R_{eq} &= \frac{R_1 \cdot R_{23}}{R_1 + R_{23}} = \frac{150 \cdot 300}{150 + 300} = \frac{45000}{450} = 100\,\Omega \\
+3)\quad I_{tot} &= \frac{V_g}{R_{eq}} = \frac{30}{100} = 0.3\,A = 300\,mA \\
+I_1 &= \frac{V_g}{R_1} = \frac{30}{150} = 0.2\,A = 200\,mA \\
+I_{23} &= \frac{V_g}{R_{23}} = \frac{30}{300} = 0.1\,A = 100\,mA \\
+4)\quad V_1 &= V_g = 30\,V \quad \text{(resistenza in parallelo)} \\
+V_2 &= R_2 \cdot I_{23} = 100 \cdot 0.1 = 10\,V \\
+V_3 &= R_3 \cdot I_{23} = 200 \cdot 0.1 = 20\,V
+\end{align*}
+
+\textbf{Verifiche:}
+\begin{itemize}
+    \item $I_1 + I_{23} = 200 + 100 = 300\,mA = I_{tot}$ \checkmark
+    \item $V_2 + V_3 = 10 + 20 = 30\,V = V_g$ \checkmark
+\end{itemize}
+
+\textbf{Esercizio 4.3:} Dato il seguente circuito misto più complesso:
+
+\begin{center}
+\begin{circuitikz}[scale=1.2]
+    \draw (0,0) to[battery1, invert, v=$V_g{=}48\,V$, i>^=$I_{tot}$] (0,3)
+      to[short] (1,3)
+      to[R=$R_1{=}50\,\Omega$, v<=$V_1$, i>^=$I_{tot}$] (3,3);
+    
+    % Nodo A
+    \node[circ, label=above:A] at (3,3) {};
+    
+    % Parallelo
+    \draw (3,3) to[short, i=$I_2$] (3,2.7)
+          to[R=$R_2{=}100\,\Omega$, v<=$V_{23}$, i>^=$I_2$] (3,0.3)
+          to[short] (3,0);
+    
+    \draw (3,3) to[short, i=$I_3$] (7,3)
+          to[R=$R_3{=}150\,\Omega$, v<=$V_{23}$, i>^=$I_3$] (7,0)
+          to[short] (3,0);
+    
+    % Nodo B
+    \node[circ, label=below:B] at (3,0) {};
+    
+    % R4 finale
+    \draw (3,0) to[R=$R_4{=}30\,\Omega$, v<=$V_4$, i>^=$I_{tot}$] (1,0)
+          to[short] (0,0);
+\end{circuitikz}
+\end{center}
+
+Calcolare:
+\begin{enumerate}
+    \item La resistenza equivalente totale
+    \item La corrente totale
+    \item Tutte le tensioni e correnti del circuito
+\end{enumerate}
+
+\textit{Soluzione:}
+
+\begin{align*}
+1)\quad R_{23} &= \frac{R_2 \cdot R_3}{R_2 + R_3} = \frac{100 \cdot 150}{100 + 150} = \frac{15000}{250} = 60\,\Omega \\
+R_{eq} &= R_1 + R_{23} + R_4 = 50 + 60 + 30 = 140\,\Omega \\
+2)\quad I_{tot} &= \frac{V_g}{R_{eq}} = \frac{48}{140} = 0.343\,A = 343\,mA \\
+3)\quad V_1 &= R_1 \cdot I_{tot} = 50 \cdot 0.343 = 17.15\,V \\
+V_{23} &= R_{23} \cdot I_{tot} = 60 \cdot 0.343 = 20.58\,V \\
+V_4 &= R_4 \cdot I_{tot} = 30 \cdot 0.343 = 10.29\,V \\
+I_2 &= \frac{V_{23}}{R_2} = \frac{20.58}{100} = 205.8\,mA \\
+I_3 &= \frac{V_{23}}{R_3} = \frac{20.58}{150} = 137.2\,mA
+\end{align*}
+
+\textbf{Verifiche:}
+\begin{itemize}
+    \item $V_1 + V_{23} + V_4 = 17.15 + 20.58 + 10.29 = 48.02\,V \approx V_g$ \checkmark
+    \item $I_2 + I_3 = 205.8 + 137.2 = 343\,mA = I_{tot}$ \checkmark
+\end{itemize}
+
+
+\textbf{Esercizio 4.4:} Dato il seguente circuito misto più complesso: 
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+
+    % Generatore di corrente (invertito)
+    \draw (0,0) to[isource, invert, l_=$I_g{=}2\,\mathrm{A}$, i>^=$I_{tot}$] (0,4)
+          to[short] (1,4)
+          to[R=$R_1{=}40\,\Omega$, v=$V_1$, i>^=$I_{tot}$] (3,4);
+
+    % Nodo A
+    \node[circ, label=above:A] at (3,4) {};
+
+    % Ramo sinistro
+    \draw (3,4) to[short, i=$I_2$] (3,3.7)
+          to[R=$R_2{=}80\,\Omega$, v=$V_{AB}$, i>^=$I_2$] (3,2)
+          to[short] (3,1.7)
+          to[R=$R_4{=}60\,\Omega$, v=$V_{AB}$, i>^=$I_2$] (3,0.3)
+          to[short] (3,0);
+
+    % Ramo destro
+    \draw (3,4) to[short, i=$I_3$] (7,4)
+          to[R=$R_3{=}120\,\Omega$, v=$V_{AB}$, i>^=$I_3$] (7,2)
+          to[short] (7,1.7)
+          to[R=$R_5{=}90\,\Omega$, v=$V_{AB}$, i>^=$I_3$] (7,0)
+          to[short] (3,0);
+
+    % Ponte centrale (cortocircuito)
+    \draw (3,2) to[short, i=$I_6$] (7,2);
+
+    % Nodo B
+    \node[circ, label=below:B] at (3,0) {};
+
+    % Resistenza di chiusura inferiore
+    \draw (3,0) to[R=$R_7{=}50\,\Omega$, v=$V_7$, i>^=$I_{tot}$] (1,0)
+          to[short] (0,0);
+
+\end{circuitikz}
+\end{center}
+
+
+\end{document}
