@@ -38,21 +38,21 @@
 \contentsline {subsubsection}{\numberline {4.2.2}Convenzione degli Utilizzatori}{15}{}%
 \contentsline {subsubsection}{\numberline {4.2.3}Convenzione dei generatori}{16}{}%
 \contentsline {subsubsection}{\numberline {4.2.4}Esempi Pratici}{16}{}%
-\contentsline {subsubsection}{\numberline {4.2.5}Riepilogo delle Regole}{18}{}%
-\contentsline {section}{\numberline {5}Resistenze in Serie}{19}{}%
-\contentsline {subsection}{\numberline {5.1}Teoria}{19}{}%
-\contentsline {subsection}{\numberline {5.2}Esercizi Svolti}{19}{}%
-\contentsline {section}{\numberline {6}Resistenze in Parallelo}{20}{}%
-\contentsline {subsection}{\numberline {6.1}Teoria}{20}{}%
-\contentsline {subsection}{\numberline {6.2}Esercizi Svolti}{20}{}%
-\contentsline {section}{\numberline {7}Partitore di Tensione e Partitore di Corrente}{22}{}%
-\contentsline {subsection}{\numberline {7.1}Partitore di Tensione}{22}{}%
-\contentsline {subsubsection}{\numberline {7.1.1}Teoria}{22}{}%
-\contentsline {subsubsection}{\numberline {7.1.2}Esercizi Svolti}{23}{}%
-\contentsline {subsection}{\numberline {7.2}Partitore di Corrente}{24}{}%
-\contentsline {subsubsection}{\numberline {7.2.1}Teoria}{24}{}%
-\contentsline {subsubsection}{\numberline {7.2.2}Esercizi Svolti}{25}{}%
-\contentsline {subsection}{\numberline {7.3}Confronto tra Partitore di Tensione e di Corrente}{27}{}%
-\contentsline {section}{\numberline {8}Circuiti Misti (Serie-Parallelo)}{28}{}%
-\contentsline {subsection}{\numberline {8.1}Teoria}{28}{}%
-\contentsline {subsection}{\numberline {8.2}Esercizi Svolti}{28}{}%
+\contentsline {subsubsection}{\numberline {4.2.5}Riepilogo delle Regole}{17}{}%
+\contentsline {section}{\numberline {5}Resistenze in Serie}{18}{}%
+\contentsline {subsection}{\numberline {5.1}Teoria}{18}{}%
+\contentsline {subsection}{\numberline {5.2}Esercizi Svolti}{18}{}%
+\contentsline {section}{\numberline {6}Resistenze in Parallelo}{19}{}%
+\contentsline {subsection}{\numberline {6.1}Teoria}{19}{}%
+\contentsline {subsection}{\numberline {6.2}Esercizi Svolti}{19}{}%
+\contentsline {section}{\numberline {7}Partitore di Tensione e Partitore di Corrente}{21}{}%
+\contentsline {subsection}{\numberline {7.1}Partitore di Tensione}{21}{}%
+\contentsline {subsubsection}{\numberline {7.1.1}Teoria}{21}{}%
+\contentsline {subsubsection}{\numberline {7.1.2}Esercizi Svolti}{22}{}%
+\contentsline {subsection}{\numberline {7.2}Partitore di Corrente}{23}{}%
+\contentsline {subsubsection}{\numberline {7.2.1}Teoria}{23}{}%
+\contentsline {subsubsection}{\numberline {7.2.2}Esercizi Svolti}{24}{}%
+\contentsline {subsection}{\numberline {7.3}Confronto tra Partitore di Tensione e di Corrente}{26}{}%
+\contentsline {section}{\numberline {8}Circuiti Misti (Serie-Parallelo)}{27}{}%
+\contentsline {subsection}{\numberline {8.1}Teoria}{27}{}%
+\contentsline {subsection}{\numberline {8.2}Esercizi Svolti}{27}{}%

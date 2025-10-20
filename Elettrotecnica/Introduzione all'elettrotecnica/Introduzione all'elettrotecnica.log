@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.1)  20 OCT 2025 19:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.5.1)  20 OCT 2025 20:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -519,64 +519,61 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \absvshift=\dimen302
 \absvshift=\dimen303
 \absvshift=\dimen304
- [16]
+ [16] [17] [18] [19] [20]
 \absvshift=\dimen305
 \absvshift=\dimen306
- [17] [18] [19] [20] [21]
 \absvshift=\dimen307
 \absvshift=\dimen308
+ [21]
 \absvshift=\dimen309
 \absvshift=\dimen310
- [22]
 \absvshift=\dimen311
+ [22]
 \absvshift=\dimen312
 \absvshift=\dimen313
  [23]
 \absvshift=\dimen314
 \absvshift=\dimen315
- [24]
 \absvshift=\dimen316
 \absvshift=\dimen317
 \absvshift=\dimen318
+ [24] [25] [26]
 \absvshift=\dimen319
 \absvshift=\dimen320
- [25] [26] [27]
 \absvshift=\dimen321
+ [27]
 \absvshift=\dimen322
 \absvshift=\dimen323
- [28]
 \absvshift=\dimen324
 \absvshift=\dimen325
 \absvshift=\dimen326
 \absvshift=\dimen327
 \absvshift=\dimen328
+ [28]
 \absvshift=\dimen329
 \absvshift=\dimen330
- [29]
 \absvshift=\dimen331
 \absvshift=\dimen332
 \absvshift=\dimen333
 \absvshift=\dimen334
-\absvshift=\dimen335
-\absvshift=\dimen336
- [30] [31] (Introduzione all'elettrotecnica.aux)
+ [29] [30] (Introduzione all'elettrotecnica.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 39912 strings out of 474486
- 1061162 string characters out of 5743756
- 1987542 words of memory out of 5000000
- 61872 multiletter control sequences out of 15000+600000
+ 39699 strings out of 474486
+ 1054048 string characters out of 5743756
+ 1988542 words of memory out of 5000000
+ 61659 multiletter control sequences out of 15000+600000
  568461 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,13n,107p,560b,987s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\marco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on "Introduzione all'elettrotecnica.pdf" (31 pages, 267232 bytes).
+Output written on "Introduzione all'elettrotecnica.pdf" (30 pages, 264197 bytes).
 PDF statistics:
- 180 PDF objects out of 1000 (max. 8388607)
+ 176 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
