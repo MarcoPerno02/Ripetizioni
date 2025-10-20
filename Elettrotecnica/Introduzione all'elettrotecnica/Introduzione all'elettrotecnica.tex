@@ -1548,33 +1548,33 @@ I_3 &= \frac{V_{23}}{R_3} = \frac{20.58}{150} = 137.2\,mA
     % Generatore di corrente (invertito)
     \draw (0,0) to[isource, invert, l_=$I_g{=}2\,\mathrm{A}$, i>^=$I_{tot}$] (0,4)
           to[short] (1,4)
-          to[R=$R_1{=}40\,\Omega$, v=$V_1$, i>^=$I_{tot}$] (3,4);
+          to[R=$R_1{=}40\,\Omega$, v<=$V_1$, i>^=$I_{tot}$] (3.5,4);
 
     % Nodo A
-    \node[circ, label=above:A] at (3,4) {};
+    \node[circ, label=above:A] at (3.5,4) {};
 
     % Ramo sinistro
-    \draw (3,4) to[short, i=$I_2$] (3,3.7)
-          to[R=$R_2{=}80\,\Omega$, v=$V_{AB}$, i>^=$I_2$] (3,2)
-          to[short] (3,1.7)
-          to[R=$R_4{=}60\,\Omega$, v=$V_{AB}$, i>^=$I_2$] (3,0.3)
-          to[short] (3,0);
+    \draw (3.5,4) to[short, i=$I_2$] (3.5,3.7)
+          to[R=$R_2{=}80\,\Omega$, v<=$V_{R2}$, i>^=$I_2$] (3.5,2)
+          to[short] (3.5,1.7)
+          to[R=$R_4{=}60\,\Omega$, v<=$V_{R4}$, i>^=$I_2$] (3.5,0.3)
+          to[short] (3.5,0);
 
     % Ramo destro
-    \draw (3,4) to[short, i=$I_3$] (7,4)
-          to[R=$R_3{=}120\,\Omega$, v=$V_{AB}$, i>^=$I_3$] (7,2)
+    \draw (3.5,4) to[short, i=$I_3$] (7,4)
+          to[R=$R_3{=}120\,\Omega$, v<=$V_{R3}$, i>^=$I_3$] (7,2)
           to[short] (7,1.7)
-          to[R=$R_5{=}90\,\Omega$, v=$V_{AB}$, i>^=$I_3$] (7,0)
-          to[short] (3,0);
+          to[R=$R_5{=}90\,\Omega$, v<=$V_{R5}$, i>^=$I_3$] (7,0)
+          to[short] (3.5,0);
 
     % Ponte centrale (cortocircuito)
-    \draw (3,2) to[short, i=$I_6$] (7,2);
+    \draw (3.5,2) to[short, i=$I_6$] (7,2);
 
     % Nodo B
-    \node[circ, label=below:B] at (3,0) {};
+    \node[circ, label=below:B] at (3.5,0) {};
 
     % Resistenza di chiusura inferiore
-    \draw (3,0) to[R=$R_7{=}50\,\Omega$, v=$V_7$, i>^=$I_{tot}$] (1,0)
+    \draw (3.5,0) to[R=$R_7{=}50\,\Omega$, v<=$VR7$, i>^=$I_{tot}$] (1,0)
           to[short] (0,0);
 
 \end{circuitikz}
