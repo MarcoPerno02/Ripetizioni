@@ -504,7 +504,7 @@ P_R &= V_R \cdot I = 10 \cdot 0.05 = 0.5\,W
 \subsection{Teoria}
 
 \subsubsection{Definizione di Nodo}
-Un \textbf{nodo} è un punto di connessione in un circuito elettrico dove si incontrano due o più componenti. Più precisamente, un nodo è un punto (o insieme di punti collegati da conduttori ideali) dove convergono almeno tre rami del circuito.
+Un \textbf{nodo} è un punto di connessione in un circuito elettrico dove si incontrano due o più componenti. Più precisamente, un nodo è un punto (o insieme di punti collegati da conduttori ideali) dove convergono almeno tre rami del circuito. Ad ogni nodo corrisponde un potenziale, cioè una certa quantita di energia "ipotetica" msiurata in V.
 
 \subsubsection{Come Riconoscere i Nodi}
 
@@ -1021,7 +1021,7 @@ Verifica: $I_{tot} = \frac{V}{R_{eq}} = \frac{12}{571.4} = 21\,mA$ \checkmark
 
 \subsubsection{Teoria}
 
-Il \textbf{partitore di tensione} è una configurazione fondamentale in elettrotecnica che permette di ottenere una tensione ridotta da una tensione di alimentazione maggiore, utilizzando resistenze in serie.
+Il \textbf{partitore di tensione} è una configurazione fondamentale in elettrotecnica che permette di ottenere una tensione ridotta da una tensione di alimentazione maggiore, utilizzando resistenze in serie. Cerca di avere sempre corrente convezione dei utilizzatori quando applichi la formula.
 
 \textbf{Configurazione:}
 
@@ -1177,7 +1177,7 @@ I_1 = I_{in} \cdot \frac{R_2}{R_1 + R_2}
 I_2 = I_{in} \cdot \frac{R_1}{R_1 + R_2}
 \end{equation}
 
-\textbf{Nota importante:} La corrente maggiore scorre nella resistenza minore!
+\textbf{Nota importante:} La corrente maggiore scorre nella resistenza minore! Cerca di averre la corrente in ingresso entrante e le correnti dei rami in modalità uscenti
 
 \textbf{Formula generale per $n$ resistenze:}
 
@@ -1492,7 +1492,7 @@ I_3 &= \frac{V_{23}}{R_3} = \frac{20.58}{150} = 137.2\,mA
 \end{itemize}
 
 
-\textbf{Esercizio 4.4:} Dato il seguente circuito misto più complesso: 
+\textbf{Esercizio 4.4:} Dato il seguente circuito misto più complesso trovare $I_4$: 
 
 \begin{center}
 \begin{circuitikz}[scale=1.3]
@@ -1509,14 +1509,14 @@ I_3 &= \frac{V_{23}}{R_3} = \frac{20.58}{150} = 137.2\,mA
     \draw (3.5,4) to[short, i=$I_2$] (3.5,3.7)
           to[R=$R_2{=}80\,\Omega$, v<=$V_{R2}$, i>^=$I_2$] (3.5,2)
           to[short] (3.5,1.7)
-          to[R=$R_4{=}60\,\Omega$, v<=$V_{R4}$, i>^=$I_2$] (3.5,0.3)
+          to[R=$R_4{=}60\,\Omega$, v<=$V_{R4}$, i>^=$I_4$] (3.5,0.3)
           to[short] (3.5,0);
 
     % Ramo destro
     \draw (3.5,4) to[short, i=$I_3$] (7,4)
           to[R=$R_3{=}120\,\Omega$, v<=$V_{R3}$, i>^=$I_3$] (7,2)
           to[short] (7,1.7)
-          to[R=$R_5{=}90\,\Omega$, v<=$V_{R5}$, i>^=$I_3$] (7,0)
+          to[R=$R_5{=}90\,\Omega$, v<=$V_{R5}$, i>^=$I_5$] (7,0)
           to[short] (3.5,0);
 
     % Ponte centrale (cortocircuito)
