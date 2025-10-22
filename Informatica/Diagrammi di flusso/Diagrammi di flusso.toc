@@ -18,26 +18,26 @@
 \contentsline {subsubsection}{\numberline {2.4.6}Esercizio 6: Area di un Rettangolo}{12}{}%
 \contentsline {subsubsection}{\numberline {2.4.7}Esercizio 7: Conversione Temperature (Celsius - Fahrenheit)}{14}{}%
 \contentsline {subsubsection}{\numberline {2.4.8}Esercizio 8: Scambio di Valori}{15}{}%
-\contentsline {section}{\numberline {3}Blocchi Condizionali (Selezione)}{17}{}%
-\contentsline {subsection}{\numberline {3.1}Cosa sono i Blocchi Condizionali}{17}{}%
-\contentsline {subsubsection}{\numberline {3.1.1}Concetto di Condizione}{17}{}%
-\contentsline {subsection}{\numberline {3.2}Tipi di Strutture Condizionali}{17}{}%
-\contentsline {subsubsection}{\numberline {3.2.1}Selezione Semplice (if)}{17}{}%
-\contentsline {subsubsection}{\numberline {3.2.2}Selezione Binaria (if-else)}{18}{}%
-\contentsline {subsubsection}{\numberline {3.2.3}Selezione Multipla (if-else if-else)}{18}{}%
-\contentsline {subsection}{\numberline {3.3}Operatori di Confronto}{18}{}%
-\contentsline {subsection}{\numberline {3.4}Operatori Logici}{19}{}%
-\contentsline {subsection}{\numberline {3.5}Esercizi Svolti con Blocchi Condizionali}{20}{}%
-\contentsline {subsubsection}{\numberline {3.5.1}Esercizio 1: Numero Positivo o Negativo}{20}{}%
-\contentsline {subsubsection}{\numberline {3.5.2}Esercizio 2: Maggiore o Minore di Età}{22}{}%
-\contentsline {subsubsection}{\numberline {3.5.3}Esercizio 3: Massimo tra Due Numeri}{23}{}%
-\contentsline {subsubsection}{\numberline {3.5.4}Esercizio 4: Numero Pari o Dispari}{25}{}%
-\contentsline {subsubsection}{\numberline {3.5.5}Esercizio 5: Voto Scolastico con Giudizio}{26}{}%
-\contentsline {subsubsection}{\numberline {3.5.6}Esercizio 6: Calcolatrice Semplice}{28}{}%
-\contentsline {subsubsection}{\numberline {3.5.7}Esercizio 7: Anno Bisestile}{30}{}%
-\contentsline {subsubsection}{\numberline {3.5.8}Esercizio 8: Triangolo Valido e Classificazione}{32}{}%
-\contentsline {subsection}{\numberline {3.6}Esercizi Proposti sui Blocchi Condizionali}{34}{}%
-\contentsline {section}{\numberline {4}Esercizi Proposti (Variabili e Condizioni)}{35}{}%
+\contentsline {section}{\numberline {3}Esercizi Proposti (Variabili)}{17}{}%
+\contentsline {section}{\numberline {4}Blocchi Condizionali (Selezione)}{18}{}%
+\contentsline {subsection}{\numberline {4.1}Cosa sono i Blocchi Condizionali}{18}{}%
+\contentsline {subsubsection}{\numberline {4.1.1}Concetto di Condizione}{18}{}%
+\contentsline {subsection}{\numberline {4.2}Tipi di Strutture Condizionali}{18}{}%
+\contentsline {subsubsection}{\numberline {4.2.1}Selezione Semplice (if)}{18}{}%
+\contentsline {subsubsection}{\numberline {4.2.2}Selezione Binaria (if-else)}{19}{}%
+\contentsline {subsubsection}{\numberline {4.2.3}Selezione Multipla (if-else if-else)}{19}{}%
+\contentsline {subsection}{\numberline {4.3}Operatori di Confronto}{19}{}%
+\contentsline {subsection}{\numberline {4.4}Operatori Logici}{20}{}%
+\contentsline {subsection}{\numberline {4.5}Esercizi Svolti con Blocchi Condizionali}{21}{}%
+\contentsline {subsubsection}{\numberline {4.5.1}Esercizio 1: Numero Positivo o Negativo}{21}{}%
+\contentsline {subsubsection}{\numberline {4.5.2}Esercizio 2: Maggiore o Minore di Età}{23}{}%
+\contentsline {subsubsection}{\numberline {4.5.3}Esercizio 3: Massimo tra Due Numeri}{24}{}%
+\contentsline {subsubsection}{\numberline {4.5.4}Esercizio 4: Numero Pari o Dispari}{26}{}%
+\contentsline {subsubsection}{\numberline {4.5.5}Esercizio 5: Voto Scolastico con Giudizio}{27}{}%
+\contentsline {subsubsection}{\numberline {4.5.6}Esercizio 6: Calcolatrice Semplice}{29}{}%
+\contentsline {subsubsection}{\numberline {4.5.7}Esercizio 7: Anno Bisestile}{31}{}%
+\contentsline {subsubsection}{\numberline {4.5.8}Esercizio 8: Triangolo Valido e Classificazione}{33}{}%
+\contentsline {subsection}{\numberline {4.6}Esercizi Proposti sui Blocchi Condizionali}{35}{}%
 \contentsline {section}{\numberline {5}Cicli (Iterazione)}{36}{}%
 \contentsline {subsection}{\numberline {5.1}Cosa sono i Cicli}{36}{}%
 \contentsline {subsubsection}{\numberline {5.1.1}Perché usare i cicli?}{36}{}%
