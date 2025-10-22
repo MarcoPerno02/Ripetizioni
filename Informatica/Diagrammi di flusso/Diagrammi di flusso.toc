@@ -1,0 +1,63 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {section}{\numberline {1}Introduzione ai Diagrammi di Flusso}{3}{}%
+\contentsline {subsection}{\numberline {1.1}Cosa sono i Diagrammi di Flusso}{3}{}%
+\contentsline {subsubsection}{\numberline {1.1.1}Perché sono importanti?}{3}{}%
+\contentsline {subsection}{\numberline {1.2}Simboli Standard}{3}{}%
+\contentsline {subsection}{\numberline {1.3}Regole di Base}{3}{}%
+\contentsline {section}{\numberline {2}Le Variabili}{4}{}%
+\contentsline {subsection}{\numberline {2.1}Cosa sono le Variabili}{4}{}%
+\contentsline {subsection}{\numberline {2.2}Operazioni con le Variabili}{4}{}%
+\contentsline {subsection}{\numberline {2.3}Esempio Semplice: Assegnazione}{4}{}%
+\contentsline {subsection}{\numberline {2.4}Esercizi Svolti con Variabili}{5}{}%
+\contentsline {subsubsection}{\numberline {2.4.1}Esercizio 1: Assegnazione e Output}{5}{}%
+\contentsline {subsubsection}{\numberline {2.4.2}Esercizio 2: Input e Output}{6}{}%
+\contentsline {subsubsection}{\numberline {2.4.3}Esercizio 3: Operazioni Aritmetiche Semplici}{7}{}%
+\contentsline {subsubsection}{\numberline {2.4.4}Esercizio 4: Somma di Due Numeri}{8}{}%
+\contentsline {subsubsection}{\numberline {2.4.5}Esercizio 5: Calcolo della Media}{10}{}%
+\contentsline {subsubsection}{\numberline {2.4.6}Esercizio 6: Area di un Rettangolo}{12}{}%
+\contentsline {subsubsection}{\numberline {2.4.7}Esercizio 7: Conversione Temperature (Celsius - Fahrenheit)}{14}{}%
+\contentsline {subsubsection}{\numberline {2.4.8}Esercizio 8: Scambio di Valori}{15}{}%
+\contentsline {section}{\numberline {3}Blocchi Condizionali (Selezione)}{17}{}%
+\contentsline {subsection}{\numberline {3.1}Cosa sono i Blocchi Condizionali}{17}{}%
+\contentsline {subsubsection}{\numberline {3.1.1}Concetto di Condizione}{17}{}%
+\contentsline {subsection}{\numberline {3.2}Tipi di Strutture Condizionali}{17}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Selezione Semplice (if)}{17}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Selezione Binaria (if-else)}{18}{}%
+\contentsline {subsubsection}{\numberline {3.2.3}Selezione Multipla (if-else if-else)}{18}{}%
+\contentsline {subsection}{\numberline {3.3}Operatori di Confronto}{18}{}%
+\contentsline {subsection}{\numberline {3.4}Operatori Logici}{19}{}%
+\contentsline {subsection}{\numberline {3.5}Esercizi Svolti con Blocchi Condizionali}{20}{}%
+\contentsline {subsubsection}{\numberline {3.5.1}Esercizio 1: Numero Positivo o Negativo}{20}{}%
+\contentsline {subsubsection}{\numberline {3.5.2}Esercizio 2: Maggiore o Minore di Età}{22}{}%
+\contentsline {subsubsection}{\numberline {3.5.3}Esercizio 3: Massimo tra Due Numeri}{23}{}%
+\contentsline {subsubsection}{\numberline {3.5.4}Esercizio 4: Numero Pari o Dispari}{25}{}%
+\contentsline {subsubsection}{\numberline {3.5.5}Esercizio 5: Voto Scolastico con Giudizio}{26}{}%
+\contentsline {subsubsection}{\numberline {3.5.6}Esercizio 6: Calcolatrice Semplice}{28}{}%
+\contentsline {subsubsection}{\numberline {3.5.7}Esercizio 7: Anno Bisestile}{30}{}%
+\contentsline {subsubsection}{\numberline {3.5.8}Esercizio 8: Triangolo Valido e Classificazione}{32}{}%
+\contentsline {subsection}{\numberline {3.6}Esercizi Proposti sui Blocchi Condizionali}{34}{}%
+\contentsline {section}{\numberline {4}Esercizi Proposti (Variabili e Condizioni)}{35}{}%
+\contentsline {section}{\numberline {5}Cicli (Iterazione)}{36}{}%
+\contentsline {subsection}{\numberline {5.1}Cosa sono i Cicli}{36}{}%
+\contentsline {subsubsection}{\numberline {5.1.1}Perché usare i cicli?}{36}{}%
+\contentsline {subsection}{\numberline {5.2}Tipi di Cicli}{36}{}%
+\contentsline {subsubsection}{\numberline {5.2.1}Ciclo WHILE (pre-condizionale)}{36}{}%
+\contentsline {subsubsection}{\numberline {5.2.2}Ciclo DO-WHILE (post-condizionale)}{37}{}%
+\contentsline {subsubsection}{\numberline {5.2.3}Ciclo FOR (a contatore)}{37}{}%
+\contentsline {subsection}{\numberline {5.3}Componenti Fondamentali di un Ciclo}{39}{}%
+\contentsline {subsection}{\numberline {5.4}Confronto tra i Cicli}{39}{}%
+\contentsline {subsection}{\numberline {5.5}Esercizi Svolti con Cicli}{40}{}%
+\contentsline {subsubsection}{\numberline {5.5.1}Esercizio 1: Contare da 1 a 10 (Ciclo FOR)}{40}{}%
+\contentsline {subsubsection}{\numberline {5.5.2}Esercizio 2: Somma dei primi N numeri (Ciclo WHILE)}{41}{}%
+\contentsline {subsubsection}{\numberline {5.5.3}Esercizio 3: Fattoriale di un Numero (Ciclo FOR)}{43}{}%
+\contentsline {subsubsection}{\numberline {5.5.4}Esercizio 4: Validazione Input (Ciclo DO-WHILE)}{45}{}%
+\contentsline {subsubsection}{\numberline {5.5.5}Esercizio 5: Tavola Pitagorica (Cicli Annidati)}{47}{}%
+\contentsline {subsubsection}{\numberline {5.5.6}Esercizio 6: Contare i Numeri Pari (Ciclo WHILE)}{49}{}%
+\contentsline {subsubsection}{\numberline {5.5.7}Esercizio 7: Media di N Numeri (Ciclo WHILE)}{51}{}%
+\contentsline {subsubsection}{\numberline {5.5.8}Esercizio 8: Sequenza di Fibonacci (Ciclo FOR)}{53}{}%
+\contentsline {subsection}{\numberline {5.6}Esercizi Proposti sui Cicli}{55}{}%
+\contentsline {section}{\numberline {6}Appendice: Convenzioni e Suggerimenti}{56}{}%
+\contentsline {subsection}{\numberline {6.1}Convenzioni di Scrittura}{56}{}%
+\contentsline {subsection}{\numberline {6.2}Suggerimenti per Disegnare Diagrammi}{56}{}%
+\contentsline {subsection}{\numberline {6.3}Errori Comuni da Evitare}{56}{}%

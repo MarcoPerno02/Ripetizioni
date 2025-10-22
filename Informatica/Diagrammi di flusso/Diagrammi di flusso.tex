@@ -1,0 +1,2170 @@
+\documentclass[a4paper,16pt]{article}
+
+% Pacchetti necessari
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, calc}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+
+% Configurazione della pagina
+\geometry{margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Diagrammi di Flusso}
+\lhead{Guida Completa}
+\cfoot{\thepage}
+
+% Stili per i diagrammi di flusso
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30, aspect=2]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
+% Configurazione per il codice
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    backgroundcolor=\color{gray!10}
+}
+
+\title{\textbf{Diagrammi di Flusso}\\[0.3cm]\large Guida Completa con Esercizi Svolti}
+\author{Materiale Didattico}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introduzione ai Diagrammi di Flusso}
+
+\subsection{Cosa sono i Diagrammi di Flusso}
+
+I \textbf{diagrammi di flusso} (o \textit{flowchart}) sono rappresentazioni grafiche di algoritmi o processi. Utilizzano simboli geometrici standardizzati collegati da frecce per mostrare la sequenza di operazioni da eseguire per risolvere un problema o completare un'attività.
+
+\subsubsection{Perché sono importanti?}
+
+I diagrammi di flusso sono fondamentali nella programmazione per diversi motivi:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Visualizzazione}: Permettono di vedere graficamente la logica di un algoritmo
+    \item \textbf{Progettazione}: Aiutano a pianificare il codice prima di scriverlo
+    \item \textbf{Comunicazione}: Facilitano la condivisione delle idee con altri programmatori
+    \item \textbf{Debug}: Rendono più semplice individuare errori logici
+    \item \textbf{Documentazione}: Forniscono documentazione visiva del codice
+\end{itemize}
+
+\subsection{Simboli Standard}
+
+Ogni forma geometrica in un diagramma di flusso ha un significato specifico:
+
+\begin{center}
+\begin{tikzpicture}[node distance=2.5cm]
+
+% Inizio/Fine
+\node (start) [startstop] {Inizio/Fine};
+\node [right=1cm of start, text width=5cm, align=left] {Indica l'inizio o la fine del programma. Forma: rettangolo con angoli arrotondati};
+
+% Processo
+\node (process) [process, below=0.8cm of start] {Operazione};
+\node [right=1cm of process, text width=5cm, align=left] {Rappresenta un'operazione o un'istruzione da eseguire. Forma: rettangolo};
+
+% Input/Output
+\node (io) [io, below=0.8cm of process] {Input/Output};
+\node [right=1cm of io, text width=5cm, align=left] {Indica operazioni di lettura (input) o scrittura (output). Forma: parallelogramma};
+
+% Decisione
+\node (decision) [decision, below=1.2cm of io] {Decisione?};
+\node [right=1cm of decision, text width=5cm, align=left] {Rappresenta una condizione che richiede una scelta. Forma: rombo};
+
+% Frecce
+\node (arrow) [below=0.8cm of decision] {};
+\draw [arrow] ([xshift=-1cm]arrow.north) -- ([xshift=-1cm]arrow.south);
+\node [right=0cm of arrow, text width=5cm, align=left] {Indica il flusso di esecuzione e la direzione delle operazioni};
+
+\end{tikzpicture}
+\end{center}
+
+\subsection{Regole di Base}
+
+Quando si disegnano diagrammi di flusso, è importante seguire alcune regole:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Un solo inizio e una sola fine}: Ogni diagramma deve avere esattamente un punto di partenza e un punto di arrivo
+    \item \textbf{Flusso dall'alto verso il basso}: Generalmente il flusso procede dall'alto verso il basso e da sinistra a destra
+    \item \textbf{Frecce chiare}: Le frecce devono indicare chiaramente la direzione del flusso
+    \item \textbf{Nessun incrocio di linee}: Evitare che le linee si incrocino (quando possibile)
+    \item \textbf{Chiarezza}: Ogni blocco deve contenere istruzioni semplici e comprensibili
+    \item \textbf{Decisioni binarie}: I rombi devono avere esattamente due uscite (Vero/Falso, Sì/No)
+\end{enumerate}
+
+\newpage
+\section{Le Variabili}
+
+\subsection{Cosa sono le Variabili}
+
+Una \textbf{variabile} è un contenitore che memorizza un valore nella memoria del computer. Ogni variabile ha:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Nome}: Un identificatore univoco (es. \texttt{x}, \texttt{eta}, \texttt{somma})
+    \item \textbf{Tipo}: Il tipo di dato che può contenere (es. numero intero, decimale, testo)
+    \item \textbf{Valore}: Il contenuto attuale della variabile
+\end{itemize}
+
+\subsection{Operazioni con le Variabili}
+
+Le operazioni principali che si possono fare con le variabili sono:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Assegnazione}: Memorizzare un valore in una variabile\\
+    Sintassi: \texttt{variabile $\leftarrow$ valore} o \texttt{variabile = valore}
+    
+    \item \textbf{Lettura (Input)}: Acquisire un valore dall'utente\\
+    Sintassi: \texttt{Leggi variabile} o \texttt{Input variabile}
+    
+    \item \textbf{Scrittura (Output)}: Mostrare il valore di una variabile\\
+    Sintassi: \texttt{Scrivi variabile} o \texttt{Output variabile}
+    
+    \item \textbf{Operazioni aritmetiche}: Calcoli matematici\\
+    Esempi: \texttt{somma $\leftarrow$ a + b}, \texttt{prodotto $\leftarrow$ x * y}
+\end{enumerate}
+
+\subsection{Esempio Semplice: Assegnazione}
+
+Vediamo come rappresentare l'assegnazione di un valore a una variabile:
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (assign) [process, below of=start] {$x \leftarrow 10$};
+\node (output) [io, below of=assign] {Scrivi x};
+\node (stop) [startstop, below of=output] {Fine};
+
+\draw [arrow] (start) -- (assign);
+\draw [arrow] (assign) -- (output);
+\draw [arrow] (output) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+Questo diagramma esegue le seguenti operazioni:
+\begin{enumerate}
+    \item Inizia il programma
+    \item Assegna il valore 10 alla variabile $x$
+    \item Mostra il valore di $x$ (stampa 10)
+    \item Termina il programma
+\end{enumerate}
+
+\newpage
+\subsection{Esercizi Svolti con Variabili}
+
+\subsubsection{Esercizio 1: Assegnazione e Output}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che assegni il valore 25 alla variabile \texttt{eta} e poi lo visualizzi.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (assign) [process, below of=start] {$eta \leftarrow 25$};
+\node (output) [io, below of=assign] {Scrivi eta};
+\node (stop) [startstop, below of=output] {Fine};
+
+\draw [arrow] (start) -- (assign);
+\draw [arrow] (assign) -- (output);
+\draw [arrow] (output) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma inizia
+    \item Viene assegnato il valore 25 alla variabile \texttt{eta}
+    \item Il valore di \texttt{eta} viene stampato (risultato: 25)
+    \item Il programma termina
+\end{enumerate}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    eta <- 25
+    SCRIVI eta
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 2: Input e Output}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che chieda all'utente di inserire il proprio nome e poi lo saluti stampando "Ciao, [nome]!".
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (input) [io, below of=start] {Leggi nome};
+\node (output) [io, below of=input] {Scrivi "Ciao, ", nome, "!"};
+\node (stop) [startstop, below of=output] {Fine};
+
+\draw [arrow] (start) -- (input);
+\draw [arrow] (input) -- (output);
+\draw [arrow] (output) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma inizia
+    \item L'utente inserisce il proprio nome che viene memorizzato nella variabile \texttt{nome}
+    \item Viene stampato il messaggio di saluto personalizzato
+    \item Il programma termina
+\end{enumerate}
+
+\textbf{Esempio di esecuzione:}
+\begin{itemize}
+    \item Input: \texttt{Mario}
+    \item Output: \texttt{Ciao, Mario!}
+\end{itemize}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI nome
+    SCRIVI "Ciao, ", nome, "!"
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 3: Operazioni Aritmetiche Semplici}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che calcoli il doppio di un numero. Il programma deve assegnare il valore 7 alla variabile \texttt{numero}, calcolare il doppio e visualizzare il risultato.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (assign1) [process, below of=start] {$numero \leftarrow 7$};
+\node (calc) [process, below of=assign1] {$doppio \leftarrow numero \times 2$};
+\node (output) [io, below of=calc] {Scrivi doppio};
+\node (stop) [startstop, below of=output] {Fine};
+
+\draw [arrow] (start) -- (assign1);
+\draw [arrow] (assign1) -- (calc);
+\draw [arrow] (calc) -- (output);
+\draw [arrow] (output) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma inizia
+    \item Viene assegnato il valore 7 alla variabile \texttt{numero}
+    \item Viene calcolato il doppio: $doppio = 7 \times 2 = 14$
+    \item Il valore di \texttt{doppio} viene stampato (risultato: 14)
+    \item Il programma termina
+\end{enumerate}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    numero <- 7
+    doppio <- numero * 2
+    SCRIVI doppio
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 4: Somma di Due Numeri}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che chieda all'utente due numeri, calcoli la loro somma e visualizzi il risultato.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (input1) [io, below of=start] {Leggi a};
+\node (input2) [io, below of=input1] {Leggi b};
+\node (calc) [process, below of=input2] {$somma \leftarrow a + b$};
+\node (output) [io, below of=calc] {Scrivi somma};
+\node (stop) [startstop, below of=output] {Fine};
+
+\draw [arrow] (start) -- (input1);
+\draw [arrow] (input1) -- (input2);
+\draw [arrow] (input2) -- (calc);
+\draw [arrow] (calc) -- (output);
+\draw [arrow] (output) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma inizia
+    \item L'utente inserisce il primo numero che viene memorizzato in \texttt{a}
+    \item L'utente inserisce il secondo numero che viene memorizzato in \texttt{b}
+    \item Viene calcolata la somma: $somma = a + b$
+    \item Il risultato viene stampato
+    \item Il programma termina
+\end{enumerate}
+
+\textbf{Esempio di esecuzione:}
+\begin{itemize}
+    \item Input 1: \texttt{a = 15}
+    \item Input 2: \texttt{b = 23}
+    \item Calcolo: $somma = 15 + 23 = 38$
+    \item Output: \texttt{38}
+\end{itemize}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI a
+    LEGGI b
+    somma <- a + b
+    SCRIVI somma
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 5: Calcolo della Media}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che calcoli la media di tre numeri inseriti dall'utente e visualizzi il risultato.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.8cm]
+\node (start) [startstop] {Inizio};
+\node (input1) [io, below of=start] {Leggi num1};
+\node (input2) [io, below of=input1] {Leggi num2};
+\node (input3) [io, below of=input2] {Leggi num3};
+\node (calc1) [process, below of=input3] {$somma \leftarrow num1 + num2 + num3$};
+\node (calc2) [process, below of=calc1] {$media \leftarrow somma / 3$};
+\node (output) [io, below of=calc2] {Scrivi media};
+\node (stop) [startstop, below of=output] {Fine};
+
+\draw [arrow] (start) -- (input1);
+\draw [arrow] (input1) -- (input2);
+\draw [arrow] (input2) -- (input3);
+\draw [arrow] (input3) -- (calc1);
+\draw [arrow] (calc1) -- (calc2);
+\draw [arrow] (calc2) -- (output);
+\draw [arrow] (output) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma inizia
+    \item L'utente inserisce tre numeri: \texttt{num1}, \texttt{num2}, \texttt{num3}
+    \item Viene calcolata la somma dei tre numeri
+    \item Viene calcolata la media dividendo la somma per 3
+    \item Il risultato viene stampato
+    \item Il programma termina
+\end{enumerate}
+
+\textbf{Esempio di esecuzione:}
+\begin{itemize}
+    \item Input 1: \texttt{num1 = 8}
+    \item Input 2: \texttt{num2 = 7}
+    \item Input 3: \texttt{num3 = 9}
+    \item Calcolo somma: $somma = 8 + 7 + 9 = 24$
+    \item Calcolo media: $media = 24 / 3 = 8$
+    \item Output: \texttt{8}
+\end{itemize}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI num1
+    LEGGI num2
+    LEGGI num3
+    somma <- num1 + num2 + num3
+    media <- somma / 3
+    SCRIVI media
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 6: Area di un Rettangolo}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che calcoli l'area di un rettangolo. Il programma deve chiedere all'utente di inserire base e altezza, calcolare l'area e visualizzare il risultato.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (input1) [io, below of=start] {Leggi base};
+\node (input2) [io, below of=input1] {Leggi altezza};
+\node (calc) [process, below of=input2] {$area \leftarrow base \times altezza$};
+\node (output) [io, below of=calc] {Scrivi area};
+\node (stop) [startstop, below of=output] {Fine};
+
+\draw [arrow] (start) -- (input1);
+\draw [arrow] (input1) -- (input2);
+\draw [arrow] (input2) -- (calc);
+\draw [arrow] (calc) -- (output);
+\draw [arrow] (output) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma inizia
+    \item L'utente inserisce la base del rettangolo
+    \item L'utente inserisce l'altezza del rettangolo
+    \item Viene calcolata l'area: $area = base \times altezza$
+    \item Il risultato viene stampato
+    \item Il programma termina
+\end{enumerate}
+
+\textbf{Esempio di esecuzione:}
+\begin{itemize}
+    \item Input 1: \texttt{base = 5}
+    \item Input 2: \texttt{altezza = 8}
+    \item Calcolo: $area = 5 \times 8 = 40$
+    \item Output: \texttt{L'area del rettangolo è: 40}
+\end{itemize}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI base
+    LEGGI altezza
+    area <- base * altezza
+    SCRIVI "L'area del rettangolo e': ", area
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 7: Conversione Temperature (Celsius - Fahrenheit)}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che converta una temperatura da gradi Celsius a gradi Fahrenheit. Formula: $F = C \times 1.8 + 32$
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (input) [io, below of=start] {Leggi celsius};
+\node (calc) [process, below of=input, text width=3.5cm] {$fahrenheit \leftarrow celsius \times 1.8 + 32$};
+\node (output) [io, below of=calc] {Scrivi fahrenheit};
+\node (stop) [startstop, below of=output] {Fine};
+
+\draw [arrow] (start) -- (input);
+\draw [arrow] (input) -- (calc);
+\draw [arrow] (calc) -- (output);
+\draw [arrow] (output) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma inizia
+    \item L'utente inserisce la temperatura in gradi Celsius
+    \item Viene applicata la formula di conversione: $fahrenheit = celsius \times 1.8 + 32$
+    \item Il risultato in gradi Fahrenheit viene stampato
+    \item Il programma termina
+\end{enumerate}
+
+\textbf{Esempio di esecuzione:}
+\begin{itemize}
+    \item Input: \texttt{celsius = 25}
+    \item Calcolo: $fahrenheit = 25 \times 1.8 + 32 = 45 + 32 = 77$
+    \item Output: \texttt{77°F}
+\end{itemize}
+
+\textbf{Nota matematica:} La formula di conversione deriva dalla relazione lineare tra le due scale: il punto di congelamento dell'acqua è 0°C (32°F) e il punto di ebollizione è 100°C (212°F).
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI celsius
+    fahrenheit <- celsius * 1.8 + 32
+    SCRIVI fahrenheit, " gradi Fahrenheit"
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 8: Scambio di Valori}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che scambi i valori di due variabili \texttt{a} e \texttt{b}. Utilizzare una variabile temporanea \texttt{temp}.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.8cm]
+\node (start) [startstop] {Inizio};
+\node (input1) [io, below of=start] {Leggi a};
+\node (input2) [io, below of=input1] {Leggi b};
+\node (output1) [io, below of=input2, text width=3.5cm] {Scrivi "Prima: a=", a, " b=", b};
+\node (swap1) [process, below of=output1] {$temp \leftarrow a$};
+\node (swap2) [process, below of=swap1] {$a \leftarrow b$};
+\node (swap3) [process, below of=swap2] {$b \leftarrow temp$};
+\node (output2) [io, below of=swap3, text width=3.5cm] {Scrivi "Dopo: a=", a, " b=", b};
+\node (stop) [startstop, below of=output2] {Fine};
+
+\draw [arrow] (start) -- (input1);
+\draw [arrow] (input1) -- (input2);
+\draw [arrow] (input2) -- (output1);
+\draw [arrow] (output1) -- (swap1);
+\draw [arrow] (swap1) -- (swap2);
+\draw [arrow] (swap2) -- (swap3);
+\draw [arrow] (swap3) -- (output2);
+\draw [arrow] (output2) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma inizia
+    \item L'utente inserisce i valori di \texttt{a} e \texttt{b}
+    \item Vengono stampati i valori iniziali
+    \item Il valore di \texttt{a} viene salvato nella variabile temporanea \texttt{temp}
+    \item Il valore di \texttt{b} viene copiato in \texttt{a}
+    \item Il valore di \texttt{temp} (che conteneva il vecchio valore di \texttt{a}) viene copiato in \texttt{b}
+    \item Vengono stampati i valori dopo lo scambio
+    \item Il programma termina
+\end{enumerate}
+
+\textbf{Esempio di esecuzione:}
+\begin{itemize}
+    \item Input 1: \texttt{a = 10}
+    \item Input 2: \texttt{b = 20}
+    \item Output iniziale: \texttt{Prima: a=10 b=20}
+    \item Scambio:
+    \begin{itemize}
+        \item $temp = 10$ (salvo \texttt{a})
+        \item $a = 20$ (copio \texttt{b} in \texttt{a})
+        \item $b = 10$ (copio \texttt{temp} in \texttt{b})
+    \end{itemize}
+    \item Output finale: \texttt{Dopo: a=20 b=10}
+\end{itemize}
+
+\textbf{Perché serve la variabile temporanea?}\\
+Senza la variabile \texttt{temp}, quando copiamo \texttt{b} in \texttt{a}, perdiamo il valore originale di \texttt{a} e non possiamo più assegnarlo a \texttt{b}.
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI a
+    LEGGI b
+    SCRIVI "Prima: a=", a, " b=", b
+    temp <- a
+    a <- b
+    b <- temp
+    SCRIVI "Dopo: a=", a, " b=", b
+FINE
+\end{lstlisting}
+
+\newpage
+\section{Blocchi Condizionali (Selezione)}
+
+\subsection{Cosa sono i Blocchi Condizionali}
+
+I \textbf{blocchi condizionali} (o strutture di selezione) permettono al programma di prendere decisioni e seguire percorsi diversi in base al valore di una condizione. Sono fondamentali per creare programmi che reagiscono in modo diverso a situazioni diverse.
+
+\subsubsection{Concetto di Condizione}
+
+Una \textbf{condizione} è un'espressione che può essere vera o falsa. Esempi:
+\begin{itemize}[leftmargin=*]
+    \item $x > 10$ (vero se x è maggiore di 10, altrimenti falso)
+    \item $eta \geq 18$ (vero se eta è maggiore o uguale a 18)
+    \item $nome = "Mario"$ (vero se nome è esattamente "Mario")
+    \item $a \neq b$ (vero se a è diverso da b)
+\end{itemize}
+
+\subsection{Tipi di Strutture Condizionali}
+
+\subsubsection{Selezione Semplice (if)}
+
+Esegue un blocco di istruzioni solo se la condizione è vera.
+
+\textbf{Sintassi:}
+\begin{lstlisting}
+SE condizione ALLORA
+    istruzioni
+FINE SE
+\end{lstlisting}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2.5cm]
+\node (start) [startstop] {Inizio};
+\node (input) [io, below of=start] {Leggi x};
+\node (decision) [decision, below of=input] {$x > 0$?};
+\node (process) [process, right=2cm of decision] {Scrivi "Positivo"};
+\node (stop) [startstop, below=2cm of decision] {Fine};
+
+\draw [arrow] (start) -- (input);
+\draw [arrow] (input) -- (decision);
+\draw [arrow] (decision) -- node[anchor=south] {Vero} (process);
+\draw [arrow] (decision) -- node[anchor=east] {Falso} (stop);
+\draw [arrow] (process) |- (stop);
+\end{tikzpicture}
+\end{center}
+
+\newpage
+\subsubsection{Selezione Binaria (if-else)}
+
+Esegue un blocco se la condizione è vera, altrimenti esegue un blocco alternativo.
+
+\textbf{Sintassi:}
+\begin{lstlisting}
+SE condizione ALLORA
+    istruzioni_vero
+ALTRIMENTI
+    istruzioni_falso
+FINE SE
+\end{lstlisting}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (input) [io, below of=start] {Leggi eta};
+\node (decision) [decision, below of=input, yshift=-0.5cm] {$eta \geq 18$?};
+\node (true) [process, left=2cm of decision, yshift=-2.5cm] {Scrivi "Maggiorenne"};
+\node (false) [process, right=2cm of decision, yshift=-2.5cm] {Scrivi "Minorenne"};
+\node (stop) [startstop, below=1cm of decision, yshift=-3cm] {Fine};
+
+\draw [arrow] (start) -- (input);
+\draw [arrow] (input) -- (decision);
+\draw [arrow] (decision) -| node[anchor=south east] {Vero} (true);
+\draw [arrow] (decision) -| node[anchor=south west] {Falso} (false);
+\draw [arrow] (true) |- (stop);
+\draw [arrow] (false) |- (stop);
+\end{tikzpicture}
+\end{center}
+
+\subsubsection{Selezione Multipla (if-else if-else)}
+
+Permette di verificare più condizioni in sequenza.
+
+\textbf{Sintassi:}
+\begin{lstlisting}
+SE condizione1 ALLORA
+    istruzioni1
+ALTRIMENTI SE condizione2 ALLORA
+    istruzioni2
+ALTRIMENTI
+    istruzioni3
+FINE SE
+\end{lstlisting}
+
+\subsection{Operatori di Confronto}
+
+\begin{center}
+\begin{tabular}{|c|c|l|}
+\hline
+\textbf{Operatore} & \textbf{Significato} & \textbf{Esempio} \\
+\hline
+$=$ o $==$ & Uguale a & $x = 5$ \\
+$\neq$ o $!=$ & Diverso da & $x \neq 0$ \\
+$<$ & Minore di & $x < 10$ \\
+$>$ & Maggiore di & $x > 0$ \\
+$\leq$ & Minore o uguale & $x \leq 100$ \\
+$\geq$ & Maggiore o uguale & $x \geq 18$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Operatori Logici}
+
+Per combinare più condizioni:
+
+\begin{center}
+\begin{tabular}{|c|c|l|}
+\hline
+\textbf{Operatore} & \textbf{Significato} & \textbf{Esempio} \\
+\hline
+AND (E) & Entrambe vere & $(x > 0)$ AND $(x < 10)$ \\
+OR (O) & Almeno una vera & $(x < 0)$ OR $(x > 100)$ \\
+NOT (NON) & Negazione & NOT $(x = 0)$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+\subsection{Esercizi Svolti con Blocchi Condizionali}
+
+\subsubsection{Esercizio 1: Numero Positivo o Negativo}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che legga un numero e stampi se è positivo, negativo o zero.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (input) [io, below of=start] {Leggi numero};
+\node (decision1) [decision, below of=input, yshift=-0.5cm] {$numero > 0$?};
+\node (positive) [io, right=2.5cm of decision1, yshift=-1.5cm] {Scrivi "Positivo"};
+\node (decision2) [decision, below=2cm of decision1] {$numero < 0$?};
+\node (negative) [io, right=2.5cm of decision2, yshift=-1.5cm] {Scrivi "Negativo"};
+\node (zero) [io, below=2cm of decision2] {Scrivi "Zero"};
+\node (stop) [startstop, below=1cm of zero] {Fine};
+
+\draw [arrow] (start) -- (input);
+\draw [arrow] (input) -- (decision1);
+\draw [arrow] (decision1) -| node[anchor=south east] {Vero} (positive);
+\draw [arrow] (decision1) -- node[anchor=east] {Falso} (decision2);
+\draw [arrow] (decision2) -| node[anchor=south east] {Vero} (negative);
+\draw [arrow] (decision2) -- node[anchor=east] {Falso} (zero);
+\draw [arrow] (positive) |- ([yshift=-0.5cm]positive.south) -| (stop);
+\draw [arrow] (negative) |- ([yshift=-0.5cm]negative.south) -| (stop);
+\draw [arrow] (zero) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma legge un numero
+    \item Prima condizione: verifica se il numero è maggiore di 0
+    \begin{itemize}
+        \item Se VERO: stampa "Positivo" e termina
+        \item Se FALSO: passa alla seconda condizione
+    \end{itemize}
+    \item Seconda condizione: verifica se il numero è minore di 0
+    \begin{itemize}
+        \item Se VERO: stampa "Negativo" e termina
+        \item Se FALSO: il numero deve essere zero, stampa "Zero"
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Esempi di esecuzione:}
+\begin{itemize}
+    \item Input: \texttt{5} → Output: \texttt{Positivo}
+    \item Input: \texttt{-3} → Output: \texttt{Negativo}
+    \item Input: \texttt{0} → Output: \texttt{Zero}
+\end{itemize}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI numero
+    SE numero > 0 ALLORA
+        SCRIVI "Positivo"
+    ALTRIMENTI SE numero < 0 ALLORA
+        SCRIVI "Negativo"
+    ALTRIMENTI
+        SCRIVI "Zero"
+    FINE SE
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 2: Maggiore o Minore di Età}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che chieda l'età di una persona e stampi se è maggiorenne (età $\geq$ 18) o minorenne.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\scalebox{0.8}{
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (input) [io, below of=start] {Leggi eta};
+\node (decision) [decision, below of=input, yshift=-0.5cm] {$eta \geq 18$?};
+\node (true) [io, left=2.5cm of decision, yshift=-2.5cm] {Scrivi "Maggiorenne"};
+\node (false) [io, right=2.5cm of decision, yshift=-2.5cm] {Scrivi "Minorenne"};
+\node (stop) [startstop, below=1.5cm of decision, yshift=-2cm] {Fine};
+
+\draw [arrow] (start) -- (input);
+\draw [arrow] (input) -- (decision);
+\draw [arrow] (decision) -| node[anchor=south east] {Vero} (true);
+\draw [arrow] (decision) -| node[anchor=south west] {Falso} (false);
+\draw [arrow] (true) |- (stop);
+\draw [arrow] (false) |- (stop);
+\end{tikzpicture}
+}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma chiede di inserire l'età
+    \item Verifica se l'età è maggiore o uguale a 18
+    \item Se VERO: stampa "Maggiorenne"
+    \item Se FALSO: stampa "Minorenne"
+    \item Il programma termina
+\end{enumerate}
+
+\textbf{Esempi di esecuzione:}
+\begin{itemize}
+    \item Input: \texttt{eta = 20} → Output: \texttt{Maggiorenne}
+    \item Input: \texttt{eta = 16} → Output: \texttt{Minorenne}
+    \item Input: \texttt{eta = 18} → Output: \texttt{Maggiorenne}
+\end{itemize}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI eta
+    SE eta >= 18 ALLORA
+        SCRIVI "Maggiorenne"
+    ALTRIMENTI
+        SCRIVI "Minorenne"
+    FINE SE
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 3: Massimo tra Due Numeri}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che legga due numeri e stampi il maggiore. Se sono uguali, stampare un messaggio appropriato.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\scalebox{0.8}{
+\begin{tikzpicture}[node distance=1.8cm]
+\node (start) [startstop] {Inizio};
+\node (input1) [io, below of=start] {Leggi a};
+\node (input2) [io, below of=input1] {Leggi b};
+\node (decision1) [decision, below of=input2, yshift=-0.3cm] {$a > b$?};
+\node (out1) [io, left=2.5cm of decision1, yshift=-2cm] {Scrivi "Max: ", a};
+\node (decision2) [decision, below=1.5cm of decision1] {$b > a$?};
+\node (out2) [io, right=2.5cm of decision2, yshift=-2cm] {Scrivi "Max: ", b};
+\node (out3) [io, below=1.5cm of decision2] {Scrivi "Sono uguali"};
+\node (stop) [startstop, below=1cm of out3] {Fine};
+
+\draw [arrow] (start) -- (input1);
+\draw [arrow] (input1) -- (input2);
+\draw [arrow] (input2) -- (decision1);
+\draw [arrow] (decision1) -| node[anchor=south east] {Vero} (out1);
+\draw [arrow] (decision1) -- node[anchor=east] {Falso} (decision2);
+\draw [arrow] (decision2) -| node[anchor=south west] {Vero} (out2);
+\draw [arrow] (decision2) -- node[anchor=east] {Falso} (out3);
+\draw [arrow] (out1) |- ([yshift=-0.5cm]out1.south) -| (stop);
+\draw [arrow] (out2) |- ([yshift=-0.5cm]out2.south) -| (stop);
+\draw [arrow] (out3) -- (stop);
+\end{tikzpicture}
+}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma legge due numeri \texttt{a} e \texttt{b}
+    \item Prima verifica se $a > b$:
+    \begin{itemize}
+        \item Se VERO: \texttt{a} è il maggiore, lo stampa e termina
+        \item Se FALSO: procede con la seconda verifica
+    \end{itemize}
+    \item Seconda verifica se $b > a$:
+    \begin{itemize}
+        \item Se VERO: \texttt{b} è il maggiore, lo stampa e termina
+        \item Se FALSO: i numeri sono uguali, stampa messaggio
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Esempi di esecuzione:}
+\begin{itemize}
+    \item Input: \texttt{a=10, b=5} → Output: \texttt{Max: 10}
+    \item Input: \texttt{a=3, b=8} → Output: \texttt{Max: 8}
+    \item Input: \texttt{a=7, b=7} → Output: \texttt{Sono uguali}
+\end{itemize}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI a
+    LEGGI b
+    SE a > b ALLORA
+        SCRIVI "Max: ", a
+    ALTRIMENTI SE b > a ALLORA
+        SCRIVI "Max: ", b
+    ALTRIMENTI
+        SCRIVI "Sono uguali"
+    FINE SE
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 4: Numero Pari o Dispari}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che determini se un numero è pari o dispari. Un numero è pari se il resto della divisione per 2 è zero.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\scalebox{0.8}{
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (input) [io, below of=start] {Leggi numero};
+\node (calc) [process, below of=input] {$resto \leftarrow numero \bmod 2$};
+\node (decision) [decision, below of=calc, yshift=-0.5cm] {$resto = 0$?};
+\node (pari) [io, left=2.5cm of decision, yshift=-2.5cm] {Scrivi "Pari"};
+\node (dispari) [io, right=2.5cm of decision, yshift=-2.5cm] {Scrivi "Dispari"};
+\node (stop) [startstop, below=1.5cm of decision, yshift=-2cm] {Fine};
+
+\draw [arrow] (start) -- (input);
+\draw [arrow] (input) -- (calc);
+\draw [arrow] (calc) -- (decision);
+\draw [arrow] (decision) -| node[anchor=south east] {Vero} (pari);
+\draw [arrow] (decision) -| node[anchor=south west] {Falso} (dispari);
+\draw [arrow] (pari) |- (stop);
+\draw [arrow] (dispari) |- (stop);
+\end{tikzpicture}
+}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma legge un numero
+    \item Calcola il resto della divisione per 2 usando l'operatore modulo ($\bmod$)
+    \item Verifica se il resto è uguale a 0:
+    \begin{itemize}
+        \item Se VERO: il numero è pari, stampa "Pari"
+        \item Se FALSO: il numero è dispari, stampa "Dispari"
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Concetto matematico:} Un numero è pari se è divisibile per 2 senza resto. L'operatore modulo ($\bmod$) restituisce il resto della divisione.
+
+\textbf{Esempi di esecuzione:}
+\begin{itemize}
+    \item Input: \texttt{8} → $8 \bmod 2 = 0$ → Output: \texttt{Pari}
+    \item Input: \texttt{15} → $15 \bmod 2 = 1$ → Output: \texttt{Dispari}
+    \item Input: \texttt{0} → $0 \bmod 2 = 0$ → Output: \texttt{Pari}
+\end{itemize}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI numero
+    resto <- numero MOD 2
+    SE resto = 0 ALLORA
+        SCRIVI "Pari"
+    ALTRIMENTI
+        SCRIVI "Dispari"
+    FINE SE
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 5: Voto Scolastico con Giudizio}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che legga un voto (0-10) e stampi il giudizio corrispondente:
+\begin{itemize}
+    \item 9-10: Ottimo
+    \item 7-8: Buono
+    \item 6: Sufficiente
+    \item 0-5: Insufficiente
+\end{itemize}
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.6cm]
+\node (start) [startstop] {Inizio};
+\node (input) [io, below of=start] {Leggi voto};
+\node (d1) [decision, below of=input, yshift=-0.3cm] {$voto \geq 9$?};
+\node (o1) [io, right=2cm of d1, yshift=-1.5cm] {Scrivi "Ottimo"};
+\node (d2) [decision, below=1.3cm of d1] {$voto \geq 7$?};
+\node (o2) [io, right=2cm of d2, yshift=-1.5cm] {Scrivi "Buono"};
+\node (d3) [decision, below=1.3cm of d2] {$voto = 6$?};
+\node (o3) [io, right=2cm of d3, yshift=-1.5cm] {Scrivi "Sufficiente"};
+\node (o4) [io, below=1.3cm of d3] {Scrivi "Insufficiente"};
+\node (stop) [startstop, below right=0.8cm and 10cm of o4] {Fine};
+
+\draw [arrow] (start) -- (input);
+\draw [arrow] (input) -- (d1);
+\draw [arrow] (d1) -| node[anchor=south east, xshift=-0.2cm] {V} (o1);
+\draw [arrow] (d1) -- node[anchor=east] {F} (d2);
+\draw [arrow] (d2) -| node[anchor=south east, xshift=-0.2cm] {V} (o2);
+\draw [arrow] (d2) -- node[anchor=east] {F} (d3);
+\draw [arrow] (d3) -| node[anchor=south east, xshift=-0.2cm] {V} (o3);
+\draw [arrow] (d3) -- node[anchor=east] {F} (o4);
+\draw [arrow] (o1) |- ([yshift=-0.3cm]o1.south) -| (stop);
+\draw [arrow] (o2) |- ([yshift=-0.3cm]o2.south) -| (stop);
+\draw [arrow] (o3) |- ([yshift=-0.3cm]o3.south) -| (stop);
+\draw [arrow] (o4) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma legge il voto
+    \item Verifica in sequenza le condizioni dall'alto verso il basso:
+    \begin{itemize}
+        \item Se $voto \geq 9$: stampa "Ottimo"
+        \item Altrimenti, se $voto \geq 7$: stampa "Buono"
+        \item Altrimenti, se $voto = 6$: stampa "Sufficiente"
+        \item Altrimenti: stampa "Insufficiente"
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Esempi di esecuzione:}
+\begin{itemize}
+    \item Input: \texttt{10} → Output: \texttt{Ottimo}
+    \item Input: \texttt{8} → Output: \texttt{Buono}
+    \item Input: \texttt{6} → Output: \texttt{Sufficiente}
+    \item Input: \texttt{4} → Output: \texttt{Insufficiente}
+\end{itemize}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI voto
+    SE voto >= 9 ALLORA
+        SCRIVI "Ottimo"
+    ALTRIMENTI SE voto >= 7 ALLORA
+        SCRIVI "Buono"
+    ALTRIMENTI SE voto = 6 ALLORA
+        SCRIVI "Sufficiente"
+    ALTRIMENTI
+        SCRIVI "Insufficiente"
+    FINE SE
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 6: Calcolatrice Semplice}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso per una calcolatrice che legga due numeri e un'operazione (+, -, *, /) ed esegua il calcolo corrispondente.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.5cm]
+\node (start) [startstop] {Inizio};
+\node (in1) [io, below of=start] {Leggi a};
+\node (in2) [io, below of=in1] {Leggi b};
+\node (in3) [io, below of=in2] {Leggi op};
+\node (d1) [decision, below of=in3, yshift=-0.2cm] {$op = '+'$?};
+\node (p1) [process, right=1.8cm of d1, yshift=-1.2cm] {$ris \leftarrow a + b$};
+\node (d2) [decision, below=1cm of d1] {$op = '-'$?};
+\node (p2) [process, right=1.8cm of d2, yshift=-1.2cm] {$ris \leftarrow a - b$};
+\node (d3) [decision, below=1cm of d2] {$op = '*'$?};
+\node (p3) [process, right=1.8cm of d3, yshift=-1.2cm] {$ris \leftarrow a \times b$};
+\node (p4) [process, below=1cm of d3] {$ris \leftarrow a / b$};
+\node (out) [io, below right=1.8cm and 6cm of p4] {Scrivi ris};
+\node (stop) [startstop, below=1.8cm of out] {Fine};
+
+\draw [arrow] (start) -- (in1);
+\draw [arrow] (in1) -- (in2);
+\draw [arrow] (in2) -- (in3);
+\draw [arrow] (in3) -- (d1);
+\draw [arrow] (d1) -| node[anchor=south east, xshift=-0.1cm] {V} (p1);
+\draw [arrow] (d1) -- node[anchor=east] {F} (d2);
+\draw [arrow] (d2) -| node[anchor=south east, xshift=-0.1cm] {V} (p2);
+\draw [arrow] (d2) -- node[anchor=east] {F} (d3);
+\draw [arrow] (d3) -| node[anchor=south east, xshift=-0.1cm] {V} (p3);
+\draw [arrow] (d3) -- node[anchor=east] {F} (p4);
+\draw [arrow] (p1) |- ([yshift=-0.2cm]p1.south) -| (out);
+\draw [arrow] (p2) |- ([yshift=-0.2cm]p2.south) -| (out);
+\draw [arrow] (p3) |- ([yshift=-0.2cm]p3.south) -| (out);
+\draw [arrow] (p4) -- (out);
+\draw [arrow] (out) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma legge due numeri \texttt{a} e \texttt{b}
+    \item Legge l'operazione desiderata \texttt{op}
+    \item Verifica quale operazione è stata richiesta:
+    \begin{itemize}
+        \item Se '+': calcola $ris = a + b$
+        \item Se '-': calcola $ris = a - b$
+        \item Se '*': calcola $ris = a \times b$
+        \item Altrimenti (assume '/'): calcola $ris = a / b$
+    \end{itemize}
+    \item Stampa il risultato
+\end{enumerate}
+
+\textbf{Esempio di esecuzione:}
+\begin{itemize}
+    \item Input: \texttt{a=10, b=5, op='*'}
+    \item Calcolo: $ris = 10 \times 5 = 50$
+    \item Output: \texttt{50}
+\end{itemize}
+
+\textbf{Nota:} In un programma reale, bisognerebbe verificare che il divisore non sia zero prima di eseguire la divisione.
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI a, b, op
+    SE op = '+' ALLORA
+        ris <- a + b
+    ALTRIMENTI SE op = '-' ALLORA
+        ris <- a - b
+    ALTRIMENTI SE op = '*' ALLORA
+        ris <- a * b
+    ALTRIMENTI
+        ris <- a / b
+    FINE SE
+    SCRIVI ris
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 7: Anno Bisestile}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che determini se un anno è bisestile. Un anno è bisestile se:
+\begin{itemize}
+    \item È divisibile per 4 E non è divisibile per 100
+    \item OPPURE è divisibile per 400
+\end{itemize}
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\scalebox{0.8}{ % <-- riduce all'80%
+\begin{tikzpicture}[node distance=1.8cm]
+\node (start) [startstop] {Inizio};
+\node (input) [io, below of=start] {Leggi anno};
+\node (d1) [decision, below of=input, yshift=-0.3cm, text width=2.5cm] {$anno \bmod 400 = 0$?};
+\node (yes1) [io, right=0.5cm of d1, yshift=-1.5cm] {Scrivi "Bisestile"};
+\node (d2) [decision,  below left=1.3cm and 1.5cm of d1, text width=2.5cm] {$anno \bmod 100 = 0$?};
+\node (no2) [io, right=0.5cm of d2, yshift=-1.5cm] {Scrivi "Non bisestile"};
+\node (d3) [decision, below left=1.3cm and 1.5cm of d2, text width=2.5cm] {$anno \bmod 4 = 0$?};
+\node (yes3) [io, right=2.5cm of d3, yshift=-1.5cm] {Scrivi "Bisestile"};
+\node (no3) [io, below=1.3cm of d3] {Scrivi "Non bisestile"};
+\node (stop) [startstop, below right=0.8cm and 15cm of no3] {Fine};
+
+\draw [arrow] (start) -- (input);
+\draw [arrow] (input) -- (d1);
+\draw [arrow] (d1) -| node[anchor=south east, xshift=-0.1cm] {V} (yes1);
+\draw [arrow] (d1) -- node[anchor=east] {F} (d2);
+\draw [arrow] (d2) -| node[anchor=south west, xshift=0.1cm] {V} (no2);
+\draw [arrow] (d2) -- node[anchor=east] {F} (d3);
+\draw [arrow] (d3) -| node[anchor=south east, xshift=-0.1cm] {V} (yes3);
+\draw [arrow] (d3) -- node[anchor=east] {F} (no3);
+\draw [arrow] (yes1) |- ([yshift=-0.2cm]yes1.south) -| (stop);
+\draw [arrow] (no2) |- ([yshift=-0.2cm]no2.south) -| (stop);
+\draw [arrow] (yes3) |- ([yshift=-0.2cm]yes3.south) -| (stop);
+\draw [arrow] (no3) -- (stop);
+\end{tikzpicture}
+}
+\end{center}
+
+\textbf{Spiegazione della regola:}
+\begin{enumerate}
+    \item Se l'anno è divisibile per 400 → è sempre bisestile (es. 2000)
+    \item Altrimenti, se è divisibile per 100 → NON è bisestile (es. 1900)
+    \item Altrimenti, se è divisibile per 4 → è bisestile (es. 2024)
+    \item Altrimenti → NON è bisestile (es. 2023)
+\end{enumerate}
+
+\textbf{Esempi di esecuzione:}
+\begin{itemize}
+    \item Input: \texttt{2024} → $2024 \bmod 4 = 0$ (e non per 100) → \texttt{Bisestile}
+    \item Input: \texttt{2000} → $2000 \bmod 400 = 0$ → \texttt{Bisestile}
+    \item Input: \texttt{1900} → $1900 \bmod 100 = 0$ (ma non per 400) → \texttt{Non bisestile}
+    \item Input: \texttt{2023} → $2023 \bmod 4 \neq 0$ → \texttt{Non bisestile}
+\end{itemize}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI anno
+    SE anno MOD 400 = 0 ALLORA
+        SCRIVI "Bisestile"
+    ALTRIMENTI SE anno MOD 100 = 0 ALLORA
+        SCRIVI "Non bisestile"
+    ALTRIMENTI SE anno MOD 4 = 0 ALLORA
+        SCRIVI "Bisestile"
+    ALTRIMENTI
+        SCRIVI "Non bisestile"
+    FINE SE
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 8: Triangolo Valido e Classificazione}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che, dati tre lati, verifichi se formano un triangolo valido e lo classifichi come equilatero, isoscele o scaleno. Un triangolo è valido se la somma di due lati qualsiasi è maggiore del terzo.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\scalebox{0.7}{
+\begin{tikzpicture}[node distance=1.5cm]
+\node (start) [startstop] {Inizio};
+\node (in1) [io, below of=start] {Leggi a, b, c};
+\node (d1) [decision, below of=in1, yshift=-1cm, text width=3cm] {$a+b>c$ AND $a+c>b$ AND $b+c>a$?};
+\node (invalid) [io, right=2.5cm of d1, yshift=-1.5cm] {Scrivi "Non valido"};
+\node (d2) [decision, below=1.3cm of d1, text width=3cm] {$a=b$ AND $b=c$?};
+\node (equi) [io, left=2.5cm of d2, yshift=-1.5cm] {Scrivi "Equilatero"};
+\node (d3) [decision, below=1.3cm of d2, text width=3cm] {$a=b$ OR $b=c$ OR $a=c$?};
+\node (iso) [io, left=2.5cm of d3, yshift=-1.5cm] {Scrivi "Isoscele"};
+\node (sca) [io, below=1.3cm of d3] {Scrivi "Scaleno"};
+\node (stop) [startstop, below=0.8cm of sca] {Fine};
+
+\draw [arrow] (start) -- (in1);
+\draw [arrow] (in1) -- (d1);
+\draw [arrow] (d1) -| node[anchor=south west, xshift=0.1cm] {F} (invalid);
+\draw [arrow] (d1) -- node[anchor=east] {V} (d2);
+\draw [arrow] (d2) -| node[anchor=south east, xshift=-0.1cm] {V} (equi);
+\draw [arrow] (d2) -- node[anchor=east] {F} (d3);
+\draw [arrow] (d3) -| node[anchor=south east, xshift=-0.1cm] {V} (iso);
+\draw [arrow] (d3) -- node[anchor=east] {F} (sca);
+\draw [arrow] (invalid) |- ([yshift=-10.5cm]invalid.south) -| (stop);
+\draw [arrow] (equi) -| ([xshift=-3.5cm, yshift=-4.5cm]equi.south) |- (stop);
+\draw [arrow] (iso) -| ([xshift=-3.5cm, yshift=-2.75cm]iso.south) -| (stop);
+\draw [arrow] (sca) -- (stop);
+\end{tikzpicture}
+}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma legge i tre lati \texttt{a}, \texttt{b}, \texttt{c}
+    \item Verifica se formano un triangolo valido (disuguaglianza triangolare):
+    \begin{itemize}
+        \item Se NO: stampa "Non valido" e termina
+        \item Se SÌ: procede con la classificazione
+    \end{itemize}
+    \item Verifica se tutti i lati sono uguali → "Equilatero"
+    \item Altrimenti verifica se almeno due lati sono uguali → "Isoscele"
+    \item Altrimenti → "Scaleno" (tutti i lati diversi)
+\end{enumerate}
+
+\textbf{Esempi di esecuzione:}
+\begin{itemize}
+    \item Input: \texttt{a=5, b=5, c=5} → \texttt{Equilatero}
+    \item Input: \texttt{a=5, b=5, c=7} → \texttt{Isoscele}
+    \item Input: \texttt{a=3, b=4, c=5} → \texttt{Scaleno}
+    \item Input: \texttt{a=1, b=2, c=10} → \texttt{Non valido} ($1+2 \not> 10$)
+\end{itemize}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI a, b, c
+    SE (a+b>c) AND (a+c>b) AND (b+c>a) ALLORA
+        SE a=b AND b=c ALLORA
+            SCRIVI "Equilatero"
+        ALTRIMENTI SE a=b OR b=c OR a=c ALLORA
+            SCRIVI "Isoscele"
+        ALTRIMENTI
+            SCRIVI "Scaleno"
+        FINE SE
+    ALTRIMENTI
+        SCRIVI "Non valido"
+    FINE SE
+FINE
+\end{lstlisting}
+
+\newpage
+\subsection{Esercizi Proposti sui Blocchi Condizionali}
+
+Per consolidare le conoscenze sui blocchi condizionali, prova a risolvere i seguenti esercizi:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Sconto sul prezzo}: Creare un diagramma che applichi uno sconto del 10\% se il prezzo è maggiore di 100€, altrimenti nessuno sconto
+    
+    \item \textbf{Massimo tra tre numeri}: Creare un diagramma che determini il maggiore tra tre numeri
+    
+    \item \textbf{Ordinamento di due numeri}: Creare un diagramma che ordini due numeri in ordine crescente
+    
+    \item \textbf{Divisibilità}: Creare un diagramma che verifichi se un numero è divisibile per 3 e per 5 contemporaneamente
+    
+    \item \textbf{Equazione di secondo grado}: Creare un diagramma che, dati i coefficienti $a$, $b$, $c$, determini se l'equazione $ax^2 + bx + c = 0$ ha soluzioni reali, controllando il discriminante $\Delta = b^2 - 4ac$
+    
+    \item \textbf{Categoria peso}: Creare un diagramma che, dato il peso di una persona, la classifichi come sottopeso ($<50$ kg), normopeso ($50-80$ kg) o sovrappeso ($>80$ kg)
+    
+    \item \textbf{Segno del prodotto}: Creare un diagramma che, dati due numeri, determini se il loro prodotto è positivo, negativo o zero senza calcolare il prodotto
+    
+    \item \textbf{Conversione voto}: Creare un diagramma che converta un voto in centesimi (0-100) in trentesimi (0-30), con lode se il voto è maggiore o uguale a 99
+    
+    \item \textbf{Accesso a servizio}: Creare un diagramma che verifichi se un utente può accedere a un servizio: deve avere età $\geq 18$ E (saldo $\geq 10$ O abbonamento attivo)
+    
+    \item \textbf{Stagione}: Creare un diagramma che, dato il numero del mese (1-12), stampi la stagione corrispondente
+\end{enumerate}
+
+\vspace{1cm}
+\begin{tcolorbox}[colback=green!10!white,colframe=green!75!black,title=Suggerimento]
+Quando risolvi esercizi con condizioni multiple, ricorda:
+\begin{itemize}
+    \item AND: Entrambe le condizioni devono essere vere
+    \item OR: Almeno una delle condizioni deve essere vera
+    \item Usa le parentesi per chiarire la priorità delle operazioni
+    \item Disegna prima i casi limite (valori estremi) per verificare la logica
+\end{itemize}
+\end{tcolorbox}
+
+\newpage
+\section{Esercizi Proposti (Variabili e Condizioni)}
+
+Per consolidare le conoscenze acquisite, prova a risolvere i seguenti esercizi creando i relativi diagrammi di flusso:
+
+\begin{enumerate}[leftmargin=*]
+    \item Creare un diagramma che calcoli il perimetro di un rettangolo (formula: $P = 2 \times (base + altezza)$)
+    
+    \item Creare un diagramma che calcoli l'area di un cerchio dato il raggio (formula: $A = \pi \times r^2$, usa $\pi \approx 3.14$)
+    
+    \item Creare un diagramma che converta una temperatura da Fahrenheit a Celsius (formula: $C = (F - 32) / 1.8$)
+    
+    \item Creare un diagramma che calcoli la media ponderata di due voti con i rispettivi pesi
+    
+    \item Creare un diagramma che calcoli il resto della divisione tra due numeri interi senza usare l'operatore modulo
+    
+    \item Creare un diagramma che calcoli l'IVA (22\%) su un prezzo e il prezzo finale
+    
+    \item Creare un diagramma che, dati i tre lati di un triangolo, calcoli il perimetro e l'area usando la formula di Erone
+\end{enumerate}
+
+\vspace{1cm}
+\begin{tcolorbox}[colback=yellow!10!white,colframe=orange!75!black,title=Nota]
+\textbf{Prossimo argomento:} Nella prossima sezione tratteremo i cicli (while, do-while, for) per eseguire operazioni ripetute.
+\end{tcolorbox}
+
+\newpage
+\section{Cicli (Iterazione)}
+
+\subsection{Cosa sono i Cicli}
+
+I \textbf{cicli} (o strutture iterative) permettono di ripetere un blocco di istruzioni più volte, fino a quando una determinata condizione è soddisfatta. Sono fondamentali per automatizzare operazioni ripetitive senza dover scrivere lo stesso codice molte volte.
+
+\subsubsection{Perché usare i cicli?}
+
+I cicli sono essenziali quando dobbiamo:
+\begin{itemize}[leftmargin=*]
+    \item Eseguire la stessa operazione su molti dati
+    \item Contare o sommare valori
+    \item Cercare un elemento in una sequenza
+    \item Validare input fino a quando è corretto
+    \item Elaborare dati fino a una condizione di stop
+\end{itemize}
+
+\subsection{Tipi di Cicli}
+
+Esistono tre tipi principali di cicli, ognuno adatto a situazioni diverse:
+
+\subsubsection{Ciclo WHILE (pre-condizionale)}
+
+Il ciclo \textbf{while} verifica la condizione \textit{prima} di eseguire il blocco di istruzioni. Se la condizione è falsa fin dall'inizio, il blocco non viene mai eseguito.
+
+\textbf{Sintassi:}
+\begin{lstlisting}
+MENTRE condizione vera FARE
+    istruzioni
+    TORNA A MENTRE
+\end{lstlisting}
+
+\textbf{Caratteristiche:}
+\begin{itemize}[leftmargin=*]
+    \item Controllo \textit{prima} dell'esecuzione
+    \item Può eseguire 0 o più iterazioni
+    \item Usato quando non si sa a priori quante volte ripetere
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (init) [process, below of=start] {Inizializzazione};
+\node (decision) [decision, below of=init, yshift=-0.5cm] {Condizione?};
+\node (process) [process, left=2.5cm of decision, yshift=-1cm] {Istruzioni};
+\node (stop) [startstop, right=2cm of decision] {Fine};
+
+\draw [arrow] (start) -- (init);
+\draw [arrow] (init) -- (decision);
+\draw [arrow] (decision) |- ([yshift=-2.75cm]decision.south) -| (process) 
+      node[midway, above] {Vero};
+\draw [arrow] (process) |- (decision);
+\draw [arrow] (decision) -- node[anchor=east] {Falso} (stop);
+\end{tikzpicture}
+\end{center}
+
+\newpage
+\subsubsection{Ciclo DO-WHILE (post-condizionale)}
+
+Il ciclo \textbf{do-while} esegue il blocco di istruzioni \textit{prima} di verificare la condizione. Garantisce almeno un'esecuzione del blocco.
+
+\textbf{Sintassi:}
+\begin{lstlisting}
+FARE
+    istruzioni
+MENTRE condizione
+\end{lstlisting}
+
+\textbf{Caratteristiche:}
+\begin{itemize}[leftmargin=*]
+    \item Controllo \textit{dopo} l'esecuzione
+    \item Esegue almeno 1 volta (anche se la condizione è falsa)
+    \item Usato quando si deve eseguire almeno una volta (es. menu, validazione input)
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (init) [process, below of=start] {Inizializzazione};
+\node (process) [process, below of=init] {Istruzioni};
+\node (decision) [decision, below of=process, yshift=-0.5cm] {Condizione?};
+\node (stop) [startstop, below=2cm of decision] {Fine};
+
+\draw [arrow] (start) -- (init);
+\draw [arrow] (init) -- (process);
+\draw [arrow] (process) -- (decision);
+\draw [arrow] (decision) -| node[anchor=south, near start] {Vero} ++(-3,0) |- (process);
+\draw [arrow] (decision) -- node[anchor=east] {Falso} (stop);
+\end{tikzpicture}
+\end{center}
+
+\subsubsection{Ciclo FOR (a contatore)}
+
+Il ciclo \textbf{for} è usato quando si conosce esattamente il numero di iterazioni da eseguire. Utilizza una variabile contatore.
+
+\textbf{Sintassi:}
+\begin{lstlisting}
+PER i DA valore_iniziale A valore_finale [PASSO incremento] FARE
+    istruzioni
+FINE PER
+\end{lstlisting}
+
+\textbf{Caratteristiche:}
+\begin{itemize}[leftmargin=*]
+    \item Numero di iterazioni noto a priori
+    \item Gestisce automaticamente il contatore
+    \item Usato per iterare su intervalli numerici
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (init) [process, below of=start, text width=3.5cm] {$i \leftarrow valore\_iniziale$};
+\node (decision) [decision, below of=init, yshift=-0.5cm, text width=2.8cm] {$i \leq valore\_finale$?};
+\node (process) [process, below right=2.5cm and 1cm of decision] {Istruzioni};
+\node (increment) [process, below of=process] {$i \leftarrow i + passo$};
+\node (stop) [startstop, below=2cm of decision] {Fine};
+
+\draw [arrow] (start) -- (init);
+\draw [arrow] (init) -- (decision);
+\draw [arrow] (decision) -- node[anchor=south] {Vero} (process);
+\draw [arrow] (process) -- (increment);
+\draw [arrow] (increment) -| ++(2cm,0) |- (decision);
+\draw [arrow] (decision) -- node[anchor=east] {Falso} (stop);
+\end{tikzpicture}
+\end{center}
+
+\newpage
+\subsection{Componenti Fondamentali di un Ciclo}
+
+Ogni ciclo ben strutturato deve avere:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Inizializzazione}: Preparare le variabili prima del ciclo
+    \item \textbf{Condizione di controllo}: Determina se continuare o terminare
+    \item \textbf{Corpo del ciclo}: Le istruzioni da ripetere
+    \item \textbf{Aggiornamento}: Modificare le variabili per avvicinarsi alla fine
+\end{enumerate}
+
+\begin{tcolorbox}[colback=red!10!white,colframe=red!75!black,title=Attenzione: Cicli Infiniti!]
+Un \textbf{ciclo infinito} si verifica quando la condizione di uscita non diventa mai falsa. Questo causa il blocco del programma!
+
+\textbf{Esempio di errore:}
+\begin{lstlisting}
+i <- 0
+MENTRE i < 10 FARE
+    SCRIVI i
+    // ERRORE: manca i <- i + 1
+FINE MENTRE
+\end{lstlisting}
+
+Assicurati sempre che il ciclo modifichi le variabili della condizione!
+\end{tcolorbox}
+
+\subsection{Confronto tra i Cicli}
+
+\begin{center}
+\begin{tabular}{|p{3cm}|p{4cm}|p{4cm}|p{3cm}|}
+\hline
+\textbf{Tipo} & \textbf{Controllo} & \textbf{Quando usarlo} & \textbf{Iterazioni} \\
+\hline
+WHILE & Prima & Numero iterazioni sconosciuto & 0 o più \\
+\hline
+DO-WHILE & Dopo & Almeno una esecuzione necessaria & 1 o più \\
+\hline
+FOR & Prima & Numero iterazioni noto & 0 o più \\
+\hline
+\end{tabular}
+\end{center}
+
+\newpage
+\subsection{Esercizi Svolti con Cicli}
+
+\subsubsection{Esercizio 1: Contare da 1 a 10 (Ciclo FOR)}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che stampi i numeri da 1 a 10 utilizzando un ciclo FOR.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (init) [process, below of=start] {$i \leftarrow 1$};
+\node (decision) [decision, below of=init, yshift=-0.5cm] {$i \leq 10$?};
+\node (output) [io, below right=1cm and 2cm of decision] {Scrivi i};
+\node (increment) [process, below of=output] {$i \leftarrow i + 1$};
+\node (stop) [startstop, below=2cm of decision] {Fine};
+
+\draw [arrow] (start) -- (init);
+\draw [arrow] (init) -- (decision);
+\draw [arrow] (decision) -- node[anchor=south] {V} (output);
+\draw [arrow] (output) -- (increment);
+\draw [arrow] (increment) -| ++(2cm,0) |- (decision);
+\draw [arrow] (decision) -- node[anchor=east] {F} (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Inizializza il contatore $i$ a 1
+    \item Verifica se $i \leq 10$:
+    \begin{itemize}
+        \item Se VERO: stampa il valore di $i$, incrementa $i$ di 1 e torna alla verifica
+        \item Se FALSO: esce dal ciclo e termina
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Traccia di esecuzione:}
+\begin{itemize}
+    \item Iterazione 1: $i=1$, stampa 1, $i$ diventa 2
+    \item Iterazione 2: $i=2$, stampa 2, $i$ diventa 3
+    \item ... (continua fino a $i=10$)
+    \item Iterazione 10: $i=10$, stampa 10, $i$ diventa 11
+    \item Verifica: $11 \leq 10$ è FALSO → esce dal ciclo
+\end{itemize}
+
+\textbf{Output:} \texttt{1 2 3 4 5 6 7 8 9 10}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    PER i DA 1 A 10 FARE
+        SCRIVI i
+    FINE PER
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 2: Somma dei primi N numeri (Ciclo WHILE)}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che calcoli la somma dei primi N numeri naturali (da 1 a N), dove N è inserito dall'utente.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (input) [io, below of=start] {Leggi N};
+\node (init1) [process, below of=input] {$somma \leftarrow 0$};
+\node (init2) [process, below of=init1] {$i \leftarrow 1$};
+\node (decision) [decision, below of=init2, yshift=-0.5cm] {$i \leq N$?};
+\node (calc) [process, below right=1cm and 2.5cm of decision, yshift=-0.5cm] {$somma \leftarrow somma + i$};
+\node (increment) [process, below of=calc] {$i \leftarrow i + 1$};
+\node (output) [io, below=2.5cm of decision] {Scrivi somma};
+\node (stop) [startstop, below of=output] {Fine};
+
+\draw [arrow] (start) -- (input);
+\draw [arrow] (input) -- (init1);
+\draw [arrow] (init1) -- (init2);
+\draw [arrow] (init2) -- (decision);
+\draw [arrow] (decision) -- node[anchor=south] {V} (calc);
+\draw [arrow] (calc) -- (increment);
+\draw [arrow] (increment) -| ++(3cm,0) |-  (decision);
+\draw [arrow] (decision) -- node[anchor=east] {F} (output);
+\draw [arrow] (output) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item L'utente inserisce il valore di N
+    \item Inizializza $somma = 0$ e $i = 1$
+    \item Finché $i \leq N$:
+    \begin{itemize}
+        \item Aggiunge $i$ alla somma
+        \item Incrementa $i$ di 1
+    \end{itemize}
+    \item Stampa il risultato finale
+\end{enumerate}
+
+\textbf{Esempio di esecuzione (N=5):}
+\begin{itemize}
+    \item Input: $N = 5$
+    \item Inizializzazione: $somma = 0$, $i = 1$
+    \item Iter. 1: $somma = 0 + 1 = 1$, $i = 2$
+    \item Iter. 2: $somma = 1 + 2 = 3$, $i = 3$
+    \item Iter. 3: $somma = 3 + 3 = 6$, $i = 4$
+    \item Iter. 4: $somma = 6 + 4 = 10$, $i = 5$
+    \item Iter. 5: $somma = 10 + 5 = 15$, $i = 6$
+    \item Verifica: $6 \leq 5$ è FALSO → Output: \texttt{15}
+\end{itemize}
+
+\textbf{Formula matematica:} $\sum_{i=1}^{N} i = \frac{N(N+1)}{2}$
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI N
+    somma <- 0
+    i <- 1
+    MENTRE i <= N FARE
+        somma <- somma + i
+        i <- i + 1
+    FINE MENTRE
+    SCRIVI somma
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 3: Fattoriale di un Numero (Ciclo FOR)}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che calcoli il fattoriale di un numero N (N! = 1 × 2 × 3 × ... × N).
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (input) [io, below of=start] {Leggi N};
+\node (init1) [process, below of=input] {$fattoriale \leftarrow 1$};
+\node (init2) [process, below of=init1] {$i \leftarrow 1$};
+\node (decision) [decision, below of=init2, yshift=-0.5cm] {$i \leq N$?};
+\node (calc) [process, right=2.8cm of decision, yshift=-0.5cm] {$fattoriale \leftarrow fattoriale \times i$};
+\node (increment) [process, below of=calc] {$i \leftarrow i + 1$};
+\node (output) [io, below=2.5cm of decision] {Scrivi fattoriale};
+\node (stop) [startstop, below of=output] {Fine};
+
+\draw [arrow] (start) -- (input);
+\draw [arrow] (input) -- (init1);
+\draw [arrow] (init1) -- (init2);
+\draw [arrow] (init2) -- (decision);
+\draw [arrow] (decision) -- node[anchor=south] {V} (calc);
+\draw [arrow] (calc) -- (increment);
+\draw [arrow] (increment) |- (decision);
+\draw [arrow] (decision) -- node[anchor=east] {F} (output);
+\draw [arrow] (output) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item L'utente inserisce il numero N
+    \item Inizializza $fattoriale = 1$ (elemento neutro della moltiplicazione)
+    \item Per ogni $i$ da 1 a N:
+    \begin{itemize}
+        \item Moltiplica $fattoriale$ per $i$
+    \end{itemize}
+    \item Stampa il risultato
+\end{enumerate}
+
+\textbf{Esempio di esecuzione (N=5):}
+\begin{itemize}
+    \item Input: $N = 5$
+    \item Inizializzazione: $fattoriale = 1$
+    \item Iter. 1: $fattoriale = 1 \times 1 = 1$
+    \item Iter. 2: $fattoriale = 1 \times 2 = 2$
+    \item Iter. 3: $fattoriale = 2 \times 3 = 6$
+    \item Iter. 4: $fattoriale = 6 \times 4 = 24$
+    \item Iter. 5: $fattoriale = 24 \times 5 = 120$
+    \item Output: \texttt{120} (5! = 120)
+\end{itemize}
+
+\textbf{Nota:} Il fattoriale cresce molto rapidamente: 10! = 3,628,800
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI N
+    fattoriale <- 1
+    PER i DA 1 A N FARE
+        fattoriale <- fattoriale * i
+    FINE PER
+    SCRIVI fattoriale
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 4: Validazione Input (Ciclo DO-WHILE)}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che chieda all'utente di inserire un numero compreso tra 1 e 10. Se il numero non è valido, continua a chiederlo fino a quando non viene inserito un valore corretto.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (input) [io, below of=start] {Leggi numero};
+\node (decision) [decision, below of=input, yshift=-0.5cm, text width=3cm] {$numero < 1$ OR $numero > 10$?};
+\node (error) [io, right=2.5cm of decision, yshift=-1.5cm] {Scrivi "Errore! Riprova"};
+\node (success) [io, below=2cm of decision] {Scrivi "Valido!"};
+\node (stop) [startstop, below of=success] {Fine};
+
+\draw [arrow] (start) -- (input);
+\draw [arrow] (input) -- (decision);
+\draw [arrow] (decision) -- node[anchor=south] {V} (error);
+\draw [arrow] (error) |- ++(0,3) -| (input);
+\draw [arrow] (decision) -- node[anchor=east] {F} (success);
+\draw [arrow] (success) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Il programma chiede di inserire un numero
+    \item Verifica se il numero è fuori dall'intervallo [1, 10]:
+    \begin{itemize}
+        \item Se VERO (numero non valido): stampa messaggio di errore e torna all'input
+        \item Se FALSO (numero valido): stampa "Valido!" e termina
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Perché DO-WHILE?} Almeno un tentativo di input deve essere fatto, quindi il ciclo DO-WHILE è perfetto per la validazione.
+
+\textbf{Esempio di esecuzione:}
+\begin{itemize}
+    \item Tentativo 1: utente inserisce 15 → "Errore! Riprova"
+    \item Tentativo 2: utente inserisce -3 → "Errore! Riprova"
+    \item Tentativo 3: utente inserisce 7 → "Valido!" → fine
+\end{itemize}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    FARE
+        LEGGI numero
+        SE numero < 1 OR numero > 10 ALLORA
+            SCRIVI "Errore! Riprova"
+        FINE SE
+    MENTRE numero < 1 OR numero > 10
+    SCRIVI "Valido!"
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 5: Tavola Pitagorica (Cicli Annidati)}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che stampi la tavola pitagorica del 5 (5×1, 5×2, ... 5×10) usando un ciclo FOR.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=2cm]
+\node (start) [startstop] {Inizio};
+\node (const) [process, below of=start] {$numero \leftarrow 5$};
+\node (init) [process, below of=const] {$i \leftarrow 1$};
+\node (decision) [decision, below of=init, yshift=-0.5cm] {$i \leq 10$?};
+\node (calc) [process, right=2.5cm of decision, yshift=-0.5cm] {$risultato \leftarrow numero \times i$};
+\node (output) [io, below of=calc, text width=3.5cm] {Scrivi numero, "x", i, "=", risultato};
+\node (increment) [process, below of=output] {$i \leftarrow i + 1$};
+\node (stop) [startstop, below=3cm of decision] {Fine};
+
+\draw [arrow] (start) -- (const);
+\draw [arrow] (const) -- (init);
+\draw [arrow] (init) -- (decision);
+\draw [arrow] (decision) -- node[anchor=south] {V} (calc);
+\draw [arrow] (calc) -- (output);
+\draw [arrow] (output) -- (increment);
+\draw [arrow] (increment) |- (decision);
+\draw [arrow] (decision) -- node[anchor=east] {F} (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Imposta il numero base (5)
+    \item Per ogni $i$ da 1 a 10:
+    \begin{itemize}
+        \item Calcola $risultato = numero \times i$
+        \item Stampa l'operazione e il risultato
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Output:}
+\begin{verbatim}
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+5 x 5 = 25
+5 x 6 = 30
+5 x 7 = 35
+5 x 8 = 40
+5 x 9 = 45
+5 x 10 = 50
+\end{verbatim}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    numero <- 5
+    PER i DA 1 A 10 FARE
+        risultato <- numero * i
+        SCRIVI numero, " x ", i, " = ", risultato
+    FINE PER
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 6: Contare i Numeri Pari (Ciclo WHILE)}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che conti quanti numeri pari ci sono tra 1 e N (dove N è inserito dall'utente).
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.8cm]
+\node (start) [startstop] {Inizio};
+\node (input) [io, below of=start] {Leggi N};
+\node (init1) [process, below of=input] {$contatore \leftarrow 0$};
+\node (init2) [process, below of=init1] {$i \leftarrow 1$};
+\node (d1) [decision, below of=init2, yshift=-0.3cm] {$i \leq N$?};
+\node (d2) [decision, right=2.3cm of d1, yshift=-1cm] {$i \bmod 2 = 0$?};
+\node (count) [process, right=1.5cm of d2] {$contatore \leftarrow contatore + 1$};
+\node (incr) [process, below=1.5cm of d2] {$i \leftarrow i + 1$};
+\node (output) [io, below=2.5cm of d1] {Scrivi contatore};
+\node (stop) [startstop, below of=output] {Fine};
+
+\draw [arrow] (start) -- (input);
+\draw [arrow] (input) -- (init1);
+\draw [arrow] (init1) -- (init2);
+\draw [arrow] (init2) -- (d1);
+\draw [arrow] (d1) -- node[anchor=south] {V} (d2);
+\draw [arrow] (d2) -- node[anchor=south] {V} (count);
+\draw [arrow] (d2) -- node[anchor=east] {F} (incr);
+\draw [arrow] (count) |- (incr);
+\draw [arrow] (incr) -- ++(0,-0.5) -| (d1);
+\draw [arrow] (d1) -- node[anchor=east] {F} (output);
+\draw [arrow] (output) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item L'utente inserisce N
+    \item Inizializza il contatore a 0 e $i$ a 1
+    \item Per ogni numero da 1 a N:
+    \begin{itemize}
+        \item Se il numero è pari (resto della divisione per 2 è zero), incrementa il contatore
+        \item Passa al numero successivo
+    \end{itemize}
+    \item Stampa quanti numeri pari sono stati trovati
+\end{enumerate}
+
+\textbf{Esempio di esecuzione (N=10):}
+\begin{itemize}
+    \item Input: $N = 10$
+    \item Numeri pari trovati: 2, 4, 6, 8, 10
+    \item Output: \texttt{5} (ci sono 5 numeri pari tra 1 e 10)
+\end{itemize}
+
+\textbf{Formula diretta:} Per N pari: $\frac{N}{2}$, per N dispari: $\frac{N-1}{2}$
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI N
+    contatore <- 0
+    i <- 1
+    MENTRE i <= N FARE
+        SE i MOD 2 = 0 ALLORA
+            contatore <- contatore + 1
+        FINE SE
+        i <- i + 1
+    FINE MENTRE
+    SCRIVI contatore
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 7: Media di N Numeri (Ciclo WHILE)}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che calcoli la media di N numeri inseriti dall'utente. Prima chiede quanti numeri verranno inseriti, poi li legge uno alla volta e infine calcola la media.
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=1.8cm]
+\node (start) [startstop] {Inizio};
+\node (in1) [io, below of=start] {Leggi N};
+\node (init1) [process, below of=in1] {$somma \leftarrow 0$};
+\node (init2) [process, below of=init1] {$i \leftarrow 1$};
+\node (d1) [decision, below of=init2, yshift=-0.3cm] {$i \leq N$?};
+\node (in2) [io, right=2.5cm of d1] {Leggi numero};
+\node (calc) [process, below of=in2] {$somma \leftarrow somma + numero$};
+\node (incr) [process, below of=calc] {$i \leftarrow i + 1$};
+\node (media) [process, below=2.5cm of d1] {$media \leftarrow somma / N$};
+\node (output) [io, below of=media] {Scrivi media};
+\node (stop) [startstop, below of=output] {Fine};
+
+\draw [arrow] (start) -- (in1);
+\draw [arrow] (in1) -- (init1);
+\draw [arrow] (init1) -- (init2);
+\draw [arrow] (init2) -- (d1);
+\draw [arrow] (d1) -- node[anchor=south] {V} (in2);
+\draw [arrow] (in2) -- (calc);
+\draw [arrow] (calc) -- (incr);
+\draw [arrow] (incr) |- (d1);
+\draw [arrow] (d1) -- node[anchor=east] {F} (media);
+\draw [arrow] (media) -- (output);
+\draw [arrow] (output) -- (stop);
+\end{tikzpicture}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Chiede quanti numeri verranno inseriti (N)
+    \item Inizializza la somma a 0
+    \item Per N volte:
+    \begin{itemize}
+        \item Legge un numero
+        \item Lo aggiunge alla somma
+    \end{itemize}
+    \item Calcola la media: $media = somma / N$
+    \item Stampa la media
+\end{enumerate}
+
+\textbf{Esempio di esecuzione:}
+\begin{itemize}
+    \item Input: $N = 4$
+    \item Input numeri: 8, 6, 7, 9
+    \item Somma: $8 + 6 + 7 + 9 = 30$
+    \item Media: $30 / 4 = 7.5$
+    \item Output: \texttt{7.5}
+\end{itemize}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI N
+    somma <- 0
+    i <- 1
+    MENTRE i <= N FARE
+        LEGGI numero
+        somma <- somma + numero
+        i <- i + 1
+    FINE MENTRE
+    media <- somma / N
+    SCRIVI media
+FINE
+\end{lstlisting}
+
+\newpage
+\subsubsection{Esercizio 8: Sequenza di Fibonacci (Ciclo FOR)}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Traccia]
+Creare un diagramma di flusso che stampi i primi N numeri della sequenza di Fibonacci, dove ogni numero è la somma dei due precedenti (1, 1, 2, 3, 5, 8, 13, ...).
+\end{tcolorbox}
+
+\textbf{Soluzione:}
+
+\begin{center}
+\scalebox{0.85}{
+\begin{tikzpicture}[node distance=1.8cm]
+\node (start) [startstop] {Inizio};
+\node (input) [io, below of=start] {Leggi N};
+\node (init1) [process, below of=input] {$a \leftarrow 1, b \leftarrow 1$};
+\node (out1) [io, below of=init1] {Scrivi a};
+\node (check) [decision, below of=out1, yshift=-0.3cm] {$N > 1$?};
+\node (out2) [io, below of=check] {Scrivi b};
+\node (init2) [process, below of=out2] {$i \leftarrow 3$};
+\node (d1) [decision, below of=init2, yshift=-0.3cm] {$i \leq N$?};
+\node (calc) [process, right=2.5cm of d1, yshift=-0.5cm] {$temp \leftarrow a + b$};
+\node (out3) [io, below of=calc] {Scrivi temp};
+\node (update) [process, below of=out3] {$a \leftarrow b, b \leftarrow temp$};
+\node (incr) [process, below of=update] {$i \leftarrow i + 1$};
+\node (stop) [startstop, below=3.5cm of d1] {Fine};
+
+\draw [arrow] (start) -- (input);
+\draw [arrow] (input) -- (init1);
+\draw [arrow] (init1) -- (out1);
+\draw [arrow] (out1) -- (check);
+\draw [arrow] (check) -- node[anchor=east] {V} (out2);
+\draw [arrow] (check) -| node[anchor=south, near start] {F} ++(3,0) |- (stop);
+\draw [arrow] (out2) -- (init2);
+\draw [arrow] (init2) -- (d1);
+\draw [arrow] (d1) -- node[anchor=south] {V} (calc);
+\draw [arrow] (calc) -- (out3);
+\draw [arrow] (out3) -- (update);
+\draw [arrow] (update) -- (incr);
+\draw [arrow] (incr) |- (d1);
+\draw [arrow] (d1) -- node[anchor=east] {F} (stop);
+\end{tikzpicture}
+}
+\end{center}
+
+\textbf{Spiegazione:}
+\begin{enumerate}
+    \item Chiede quanti numeri di Fibonacci stampare
+    \item Inizializza i primi due numeri: $a=1, b=1$
+    \item Stampa il primo numero
+    \item Se $N > 1$, stampa anche il secondo numero
+    \item Per i numeri successivi (da 3 a N):
+    \begin{itemize}
+        \item Calcola il nuovo numero: $temp = a + b$
+        \item Stampa $temp$
+        \item Aggiorna: $a = b$ e $b = temp$
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Esempio di esecuzione (N=8):}
+\begin{itemize}
+    \item Output: 1, 1, 2, 3, 5, 8, 13, 21
+    \item Calcoli: $1+1=2$, $1+2=3$, $2+3=5$, $3+5=8$, $5+8=13$, $8+13=21$
+\end{itemize}
+
+\textbf{Codice equivalente (pseudocodice):}
+\begin{lstlisting}
+INIZIO
+    LEGGI N
+    a <- 1, b <- 1
+    SCRIVI a
+    SE N > 1 ALLORA
+        SCRIVI b
+        PER i DA 3 A N FARE
+            temp <- a + b
+            SCRIVI temp
+            a <- b
+            b <- temp
+        FINE PER
+    FINE SE
+FINE
+\end{lstlisting}
+
+\newpage
+\subsection{Esercizi Proposti sui Cicli}
+
+Per consolidare le conoscenze sui cicli, prova a risolvere i seguenti esercizi:
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Numeri dispari}: Creare un diagramma che stampi tutti i numeri dispari da 1 a 50 (Ciclo FOR)
+    
+    \item \textbf{Conto alla rovescia}: Creare un diagramma che conti alla rovescia da 10 a 0 (Ciclo FOR)
+    
+    \item \textbf{Somma fino a zero}: Creare un diagramma che continui a leggere numeri e sommarli finché l'utente non inserisce 0, poi stampi la somma totale (Ciclo WHILE)
+    
+    \item \textbf{Massimo di N numeri}: Creare un diagramma che trovi il numero più grande tra N numeri inseriti dall'utente (Ciclo WHILE)
+    
+    \item \textbf{Password}: Creare un diagramma che chieda una password e continui a richiederla finché non viene inserita quella corretta "1234" (Ciclo DO-WHILE)
+    
+    \item \textbf{Potenza}: Creare un diagramma che calcoli $base^{esponente}$ usando un ciclo (es. $2^5 = 2 \times 2 \times 2 \times 2 \times 2$) (Ciclo FOR)
+    
+    \item \textbf{Divisori}: Creare un diagramma che stampi tutti i divisori di un numero N (Ciclo FOR)
+    
+    \item \textbf{Numero primo}: Creare un diagramma che verifichi se un numero è primo (divisibile solo per 1 e se stesso) (Ciclo WHILE)
+    
+    \item \textbf{MCD}: Creare un diagramma che calcoli il Massimo Comun Divisore tra due numeri usando l'algoritmo di Euclide (Ciclo WHILE)
+    
+    \item \textbf{Quadrato di asterischi}: Creare un diagramma che stampi un quadrato di asterischi di dimensione N×N (Cicli annidati FOR)
+\end{enumerate}
+
+\vspace{1cm}
+\begin{tcolorbox}[colback=green!10!white,colframe=green!75!black,title=Suggerimenti per i Cicli]
+\begin{itemize}
+    \item \textbf{Inizializzazione}: Imposta sempre i valori iniziali delle variabili prima del ciclo
+    \item \textbf{Condizione di uscita}: Assicurati che la condizione diventi falsa prima o poi
+    \item \textbf{Aggiornamento}: Ricorda di modificare le variabili nel corpo del ciclo
+    \item \textbf{Test con casi limite}: Prova il ciclo con 0, 1 e molte iterazioni
+    \item \textbf{Traccia manuale}: Esegui il ciclo passo-passo su carta per verificare la logica
+    \item \textbf{Cicli annidati}: Fai attenzione a usare variabili diverse per cicli esterni e interni
+\end{itemize}
+\end{tcolorbox}
+
+\newpage
+\section{Appendice: Convenzioni e Suggerimenti}
+
+\subsection{Convenzioni di Scrittura}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Nomi delle variabili}: Usare nomi significativi (es. \texttt{prezzo}, \texttt{eta}, \texttt{somma})
+    \item \textbf{Assegnazione}: Si può usare sia $\leftarrow$ che $=$ (es. $x \leftarrow 5$ oppure $x = 5$)
+    \item \textbf{Operatori matematici}: 
+    \begin{itemize}
+        \item Somma: $+$
+        \item Sottrazione: $-$
+        \item Moltiplicazione: $\times$ o $*$
+        \item Divisione: $/$
+        \item Modulo (resto): $\%$ o $mod$
+    \end{itemize}
+    \item \textbf{Operatori di confronto}: $=, \neq, <, >, \leq, \geq$
+\end{itemize}
+
+\subsection{Suggerimenti per Disegnare Diagrammi}
+
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Pianifica prima di disegnare}: Scrivi prima l'algoritmo in pseudocodice
+    \item \textbf{Mantieni la semplicità}: Un blocco = un'operazione semplice
+    \item \textbf{Usa spaziature uniformi}: Mantieni distanze regolari tra i blocchi
+    \item \textbf{Allinea i blocchi}: Cerca di mantenere un allineamento verticale
+    \item \textbf{Etichetta le frecce}: Nelle decisioni, indica sempre Vero/Falso o Sì/No
+    \item \textbf{Verifica il flusso}: Segui mentalmente il percorso per verificare la correttezza
+    \item \textbf{Testa con esempi}: Prova il diagramma con valori concreti
+\end{enumerate}
+
+\subsection{Errori Comuni da Evitare}
+
+\begin{itemize}[leftmargin=*]
+    \item Dimenticare di inizializzare le variabili prima di usarle
+    \item Confondere l'operatore di assegnazione ($\leftarrow$) con quello di confronto ($=$)
+    \item Non specificare la direzione Vero/Falso nei rombi decisionali
+    \item Creare cicli infiniti senza condizione di uscita
+    \item Lasciare percorsi senza sbocco (che non arrivano alla fine)
+    \item Usare lo stesso nome per variabili diverse
+    \item Fare operazioni con variabili di tipo incompatibile
+\end{itemize}
+
+\end{document}
