@@ -1532,5 +1532,401 @@ I_3 &= \frac{V_{23}}{R_3} = \frac{20.58}{150} = 137.2\,mA
 \end{circuitikz}
 \end{center}
 
+\textit{Soluzione:}
 
+Questo circuito può essere risolto notando che il ponte centrale crea un cortocircuito tra i nodi intermedi dei due rami paralleli.
+
+\textbf{Analisi del circuito:}
+
+Il cortocircuito tra i punti intermedi rende le resistenze $R_4$ e $R_5$ inutilizzabili nel percorso della corrente (la corrente preferisce il percorso a resistenza zero).
+
+Quindi il circuito si semplifica a:
+\begin{itemize}
+    \item $R_1$ in serie con il parallelo di $R_2$ e $R_3$
+    \item Il tutto in serie con $R_7$
+\end{itemize}
+
+\begin{align*}
+R_{23} &= \frac{R_2 \cdot R_3}{R_2 + R_3} = \frac{80 \cdot 120}{80 + 120} = \frac{9600}{200} = 48\,\Omega \\
+R_{eq} &= R_1 + R_{23} + R_7 = 40 + 48 + 50 = 138\,\Omega \\
+V_{eq} &= I_g \cdot R_{eq} = 2 \cdot 138 = 276\,V \\
+V_1 &= R_1 \cdot I_{tot} = 40 \cdot 2 = 80\,V \\
+V_{23} &= R_{23} \cdot I_{tot} = 48 \cdot 2 = 96\,V \\
+V_7 &= R_7 \cdot I_{tot} = 50 \cdot 2 = 100\,V
+\end{align*}
+
+Poiché il nodo intermedio sinistro e destro sono collegati da un filo (cortocircuito), sono allo stesso potenziale. Quindi:
+
+\begin{align*}
+I_2 &= \frac{V_{23}}{R_2} = \frac{96}{80} = 1.2\,A \\
+I_3 &= \frac{V_{23}}{R_3} = \frac{96}{120} = 0.8\,A \\
+I_6 &= I_2 - 0 = 1.2\,A \quad \text{(corrente nel ponte)}
+\end{align*}
+
+Dal momento che la corrente può passare attraverso il cortocircuito, tutta la corrente che arriva in $R_2$ passa per il cortocircuito e non attraversa $R_4$:
+
+\begin{equation}
+\boxed{I_4 = 0\,A}
+\end{equation}
+
+Allo stesso modo, $I_5 = 0\,A$.
+
+\textbf{Verifiche:}
+\begin{itemize}
+    \item $V_1 + V_{23} + V_7 = 80 + 96 + 100 = 276\,V$ \checkmark
+    \item Al nodo superiore del cortocircuito: $I_2 = I_6 + I_4 \Rightarrow 1.2 = 1.2 + 0$ \checkmark
+    \item $I_2 + I_3 = 1.2 + 0.8 = 2\,A = I_{tot}$ \checkmark
+\end{itemize}
+
+\newpage
+\section{Teoremi di Thevenin e Norton}
+
+\subsection{Teoria}
+
+I teoremi di Thevenin e Norton sono strumenti fondamentali per semplificare l'analisi dei circuiti elettrici. Permettono di sostituire una rete complessa di generatori e resistenze con un circuito equivalente molto più semplice.
+
+\subsubsection{Teorema di Thevenin}
+
+Il \textbf{Teorema di Thevenin} afferma che:
+
+\textit{Qualsiasi rete lineare di generatori e resistenze, vista da due terminali A e B, può essere sostituita da un generatore di tensione ideale $V_{Th}$ in serie con una resistenza $R_{Th}$.}
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    % Rete complessa (box)
+    \draw[thick] (0,0) rectangle (3,2);
+    \node at (1.5,1) {Rete};
+    \node at (1.5,0.5) {complessa};
+    \draw (3,1.5) to[short, -o] (4,1.5) node[right] {A};
+    \draw (3,0.5) to[short, -o] (4,0.5) node[right] {B};
+    
+    % Freccia di equivalenza
+    \draw[->, very thick] (4.5,1) -- (5.5,1);
+    
+    % Equivalente di Thevenin
+    \draw (6,0.5) to[battery1, invert, v=$V_{Th}$] (6,1.5)
+          to[short] (7,1.5)
+          to[R=$R_{Th}$, -o] (9,1.5) node[right] {A};
+    \draw (6,0.5) to[short, -o] (9,0.5) node[right] {B};
+\end{circuitikz}
+\end{center}
+
+\textbf{Parametri dell'equivalente di Thevenin:}
+
+\begin{itemize}
+    \item \textbf{$V_{Th}$} (Tensione di Thevenin): È la tensione a vuoto tra i terminali A e B, cioè la tensione misurata quando nessun carico è collegato
+    \item \textbf{$R_{Th}$} (Resistenza di Thevenin): È la resistenza vista dai terminali A e B quando tutti i generatori indipendenti sono spenti (generatori di tensione sostituiti da cortocircuiti, generatori di corrente sostituiti da circuiti aperti)
+\end{itemize}
+
+\textbf{Procedura per trovare l'equivalente di Thevenin:}
+
+\begin{enumerate}
+    \item \textbf{Identificare i terminali A e B} di interesse
+    \item \textbf{Calcolare $V_{Th}$}: 
+    \begin{itemize}
+        \item Rimuovere il carico (se presente)
+        \item Calcolare la tensione a vuoto tra A e B
+        \item $V_{Th} = V_{AB}$ (a circuito aperto)
+    \end{itemize}
+    \item \textbf{Calcolare $R_{Th}$}:
+    \begin{itemize}
+        \item Spegnere tutti i generatori indipendenti
+        \item Calcolare la resistenza equivalente vista dai terminali A e B
+        \item $R_{Th} = R_{eq}$ (con generatori spenti)
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Teorema di Norton}
+
+Il \textbf{Teorema di Norton} afferma che:
+
+\textit{Qualsiasi rete lineare di generatori e resistenze, vista da due terminali A e B, può essere sostituita da un generatore di corrente ideale $I_{N}$ in parallelo con una resistenza $R_{N}$.}
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    % Rete complessa (box)
+    \draw[thick] (0,0) rectangle (3,2);
+    \node at (1.5,1) {Rete};
+    \node at (1.5,0.5) {complessa};
+    \draw (3,1.5) to[short, -o] (4,1.5) node[right] {A};
+    \draw (3,0.5) to[short, -o] (4,0.5) node[right] {B};
+    
+    % Freccia di equivalenza
+    \draw[->, very thick] (4.5,1) -- (5.5,1);
+    
+    % Equivalente di Norton
+    \draw (6,0.5) to[I, l=$I_{N}$, i>^=$I_N$] (6,1.5)
+          to[short, -o] (7,1.5) node[right] {A};
+    \draw (6,1.5) to[short] (8,1.5)
+          to[R=$R_{N}$] (8,0.5)
+          to[short] (6,0.5)
+          to[short, -o] (7,0.5) node[right] {B};
+\end{circuitikz}
+\end{center}
+
+\textbf{Parametri dell'equivalente di Norton:}
+
+\begin{itemize}
+    \item \textbf{$I_{N}$} (Corrente di Norton): È la corrente di cortocircuito tra i terminali A e B, cioè la corrente che scorre quando A e B sono collegati direttamente
+    \item \textbf{$R_{N}$} (Resistenza di Norton): È la stessa della resistenza di Thevenin, cioè $R_{N} = R_{Th}$
+\end{itemize}
+
+\textbf{Procedura per trovare l'equivalente di Norton:}
+
+\begin{enumerate}
+    \item \textbf{Identificare i terminali A e B} di interesse
+    \item \textbf{Calcolare $I_{N}$}:
+    \begin{itemize}
+        \item Cortocircuitare i terminali A e B
+        \item Calcolare la corrente che scorre nel cortocircuito
+        \item $I_{N} = I_{cc}$ (corrente di cortocircuito)
+    \end{itemize}
+    \item \textbf{Calcolare $R_{N}$}:
+    \begin{itemize}
+        \item Procedere come per $R_{Th}$
+        \item $R_{N} = R_{Th}$
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Conversione tra Thevenin e Norton}
+
+Gli equivalenti di Thevenin e Norton sono \textbf{duali} e possono essere convertiti l'uno nell'altro:
+
+\begin{equation}
+I_{N} = \frac{V_{Th}}{R_{Th}}
+\end{equation}
+
+\begin{equation}
+V_{Th} = I_{N} \cdot R_{N}
+\end{equation}
+
+\begin{equation}
+R_{Th} = R_{N}
+\end{equation}
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    % Thevenin
+    \draw (0,0) to[battery1, invert, v=$V_{Th}$] (0,2)
+          to[short] (1,2)
+          to[R=$R_{Th}$, -o] (3,2) node[right] {A};
+    \draw (0,0) to[short, -o] (3,0) node[right] {B};
+    
+    % Freccia doppia
+    \draw[<->, very thick] (3.5,1) -- (4.5,1);
+    \node at (4,1.5) {$I_N = \frac{V_{Th}}{R_{Th}}$};
+    
+    % Norton
+    \draw (5,0) to[I, l=$I_{N}$, i>^=$I_N$] (5,2)
+          to[short, -o] (6,2) node[right] {A};
+    \draw (5,2) to[short] (7,2)
+          to[R=$R_{N}$] (7,0)
+          to[short] (5,0)
+          to[short, -o] (6,0) node[right] {B};
+\end{circuitikz}
+\end{center}
+
+\subsubsection{Quando Usare Thevenin o Norton}
+
+\textbf{Usa Thevenin quando:}
+\begin{itemize}
+    \item Il carico da collegare è prevalentemente resistivo
+    \item È più facile calcolare la tensione a vuoto
+    \item Si vogliono analizzare gli effetti di carichi variabili
+\end{itemize}
+
+\textbf{Usa Norton quando:}
+\begin{itemize}
+    \item Il carico da collegare è una resistenza bassa
+    \item È più facile calcolare la corrente di cortocircuito
+    \item Si lavora con generatori di corrente
+\end{itemize}
+
+\subsection{Esercizi Svolti}
+
+\textbf{Esercizio 6.1:} Trovare l'equivalente di Thevenin del seguente circuito visto dai terminali A e B:
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    \draw (0,0) to[battery1, invert, v=$V_g{=}24\,V$] (0,3)
+          to[short] (1,3)
+          to[R=$R_1{=}100\,\Omega$, i>^=$I$] (3,3)
+          to[short] (3,2.5);
+    
+    \draw (3,2.5) to[R=$R_2{=}200\,\Omega$] (3,0.5)
+          to[short] (3,0);
+    
+    \draw (3,2.5) to[short] (5,2.5)
+          to[R=$R_3{=}300\,\Omega$] (5,0.5)
+          to[short] (5,0);
+    
+    \draw (3,0) to[short] (5,0)
+          to[short] (5,0)
+          to[short] (0,0);
+    
+    % Terminali A e B
+    \draw (3,2.5) to[short, -o] (6,2.5) node[right] {A};
+    \draw (3,0) to[short, -o] (6,0) node[right] {B};
+\end{circuitikz}
+\end{center}
+
+\textit{Soluzione:}
+
+\textbf{Passo 1: Calcolare $V_{Th}$}
+
+La tensione di Thevenin è la tensione a vuoto tra A e B. Il circuito è un partitore di tensione tra R1 e $R_2$ e $R_3$ in parallelo.
+
+\begin{align*}
+R_{23} &= \frac{R_2 \cdot R_3}{R_2 + R_3} = \frac{200 \cdot 300}{500} = 120\,\Omega \\
+V_{Th} &= V_g \cdot \frac{R_{23}}{R_1 + R_{23}} = 24 \cdot \frac{120}{220} = 24 \cdot 0.545 = 13.09\,V
+\end{align*}
+
+\textbf{Passo 2: Calcolare $R_{Th}$}
+
+Spegniamo il generatore (cortocircuito) e calcoliamo la resistenza vista da A e B:
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    \draw (0,0) to[short] (0,3)
+          to[short] (1,3)
+          to[R=$R_1{=}100\,\Omega$] (3,3)
+          to[short] (3,2.5);
+    
+    \draw (3,2.5) to[R=$R_2{=}200\,\Omega$] (3,0.5)
+          to[short] (3,0);
+    
+    \draw (3,2.5) to[short] (5,2.5)
+          to[R=$R_3{=}300\,\Omega$] (5,0.5)
+          to[short] (5,0);
+    
+    \draw (3,0) to[short] (0,0);
+    
+    % Terminali A e B
+    \draw (3,2.5) to[short, -o] (6,2.5) node[right] {A};
+    \draw (3,0) to[short, -o] (6,0) node[right] {B};
+\end{circuitikz}
+\end{center}
+
+\begin{align*}
+R_{23} &= \frac{200 \cdot 300}{500} = 120\,\Omega \\
+R_{Th} &= R_1 \parallel R_{23} = \frac{100 \cdot 120}{220} = 54.5\,\Omega
+\end{align*}
+
+\textbf{Equivalente di Thevenin:}
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    \draw (0,0) to[battery1, invert, v=$V_{Th}{=}13.09\,V$] (0,2)
+          to[short] (1,2)
+          to[R=$R_{Th}{=}54.5\,\Omega$, -o] (3,2) node[right] {A};
+    \draw (0,0) to[short, -o] (3,0) node[right] {B};
+\end{circuitikz}
+\end{center}
+
+\textbf{Esercizio 6.2:} Per il circuito dell'esercizio precedente, trovare anche l'equivalente di Norton e verificare la conversione.
+
+\textit{Soluzione:}
+
+\textbf{Metodo 1: Da Thevenin a Norton}
+
+\begin{align*}
+I_{N} &= \frac{V_{Th}}{R_{Th}} = \frac{13.09}{54.5} = 0.240\,A = 240\,mA \\
+R_{N} &= R_{Th} = 54.5\,\Omega
+\end{align*}
+
+\textbf{Metodo 2: Calcolo diretto}
+
+Cortocircuitiamo A e B e calcoliamo la corrente:
+
+Nel cortocircuito, tutta la corrente passa per il corto, quindi $R_3$ e $R_2$ sono in parallelo al cortocircuito (quindi ignorate).
+
+\begin{align*}
+I_{cc} &= \frac{V_g}{R_1 + R_2} = \frac{24}{100} = 0.24\,A = 240\,mA
+\end{align*}
+
+\textbf{Equivalente di Norton:}
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    \draw (0,0) to[I, l=$I_{N}{=}240\,mA$, i>^=$I_N$] (0,2)
+          to[short, -o] (1,2) node[right] {A};
+    \draw (0,2) to[short] (2,2)
+          to[R=$R_{N}{=}54.5\,\Omega$] (2,0)
+          to[short] (0,0)
+          to[short, -o] (1,0) node[right] {B};
+\end{circuitikz}
+\end{center}
+
+\textbf{Verifica:} $V_{Th} = I_N \cdot R_N = 0.24 \cdot 54.5 = 12.96 \approx 13.09\,V$ \checkmark
+
+\textbf{Esercizio 6.3:} Trovare l'equivalente di Thevenin del seguente circuito visto dai terminali A e B:
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    \draw (0,0) to[battery1, invert, v=$V_{g1}{=}12\,V$] (0,2)
+          to[short] (1,2)
+          to[R=$R_1{=}50\,\Omega$, i>^=$I_1$] (3,2)
+          to[short] (3,1.5);
+    
+    \draw (3,1.5) to[R=$R_2{=}100\,\Omega$] (3,0.5)
+          to[short] (3,0);
+    
+    \draw (3,0) to[short] (0,0);
+    
+    \draw (3,1.5) to[short] (5,1.5)
+          to[R=$R_3{=}150\,\Omega$] (5,0)
+          to[battery1, v<=$V_{g2}{=}6\,V$] (3,0);
+    
+    % Terminali A e B
+    \draw (3,1.5) to[short, -o] (6,1.5) node[right] {A};
+    \draw (3,0) to[short, -o] (6,0) node[right] {B};
+\end{circuitikz}
+\end{center}
+
+\textbf{Esercizio 6.4:} Usando l'equivalente di Thevenin trovato nell'Esercizio 6.1, calcolare la corrente e la potenza dissipata in un carico $R_L = 100\,\Omega$ collegato tra A e B.
+
+\textit{Soluzione:}
+
+Colleghiamo il carico all'equivalente di Thevenin:
+
+\begin{center}
+\begin{circuitikz}[scale=1.3]
+    \draw (0,0) to[battery1, invert, v=$V_{Th}{=}13.09\,V$] (0,2)
+          to[short] (1,2)
+          to[R=$R_{Th}{=}54.5\,\Omega$] (3,2)
+          to[R=$R_L{=}100\,\Omega$, v=$V_L$, i>^=$I_L$] (3,0)
+          to[short] (0,0);
+\end{circuitikz}
+\end{center}
+
+\begin{align*}
+I_L &= \frac{V_{Th}}{R_{Th} + R_L} = \frac{13.09}{54.5 + 100} = \frac{13.09}{154.5} = 0.0847\,A = 84.7\,mA \\
+V_L &= R_L \cdot I_L = 100 \cdot 0.0847 = 8.47\,V \\
+P_L &= V_L \cdot I_L = 8.47 \cdot 0.0847 = 0.717\,W = 717\,mW
+\end{align*}
+
+Oppure: $P_L = R_L \cdot I_L^2 = 100 \cdot (0.0847)^2 = 0.717\,W$ \checkmark
+
+\textbf{Esercizio 6.5:} Per il circuito dell'Esercizio 6.1, determinare il valore di $R_L$ che massimizza la potenza trasferita al carico (teorema del massimo trasferimento di potenza).
+
+\textit{Soluzione:}
+
+Il \textbf{teorema del massimo trasferimento di potenza} afferma che la massima potenza viene trasferita al carico quando:
+
+\begin{equation}
+R_L = R_{Th}
+\end{equation}
+
+Quindi:
+\begin{align*}
+R_L &= R_{Th} = 54.5\,\Omega
+\end{align*}
+
+La potenza massima trasferita è:
+\begin{align*}
+I_L &= \frac{V_{Th}}{2 R_{Th}} = \frac{13.09}{2 \cdot 54.5} = 0.120\,A = 120\,mA \\
+P_{max} &= \frac{V_{Th}^2}{4 R_{Th}} = \frac{(13.09)^2}{4 \cdot 54.5} = \frac{171.35}{218} = 0.786\,W = 786\,mW
+\end{align*}
+
+\textbf{Osservazione:} Con $R_L = 100\,\Omega$ (Esercizio 6.4) abbiamo ottenuto $P_L = 717\,mW < P_{max}$.
 \end{document}
