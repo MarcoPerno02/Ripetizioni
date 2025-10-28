@@ -1630,7 +1630,7 @@ Il \textbf{Teorema di Thevenin} afferma che:
     \end{itemize}
     \item \textbf{Calcolare $R_{Th}$}:
     \begin{itemize}
-        \item Spegnere tutti i generatori indipendenti
+        \item Spegnere tutti i generatori indipendenti (I generatori di tensione diventano cortocircuiti, i generatori di corrente diventano circuiti aperti)
         \item Calcolare la resistenza equivalente vista dai terminali A e B
         \item $R_{Th} = R_{eq}$ (con generatori spenti)
     \end{itemize}
@@ -1841,7 +1841,7 @@ Cortocircuitiamo A e B e calcoliamo la corrente:
 Nel cortocircuito, tutta la corrente passa per il corto, quindi $R_3$ e $R_2$ sono in parallelo al cortocircuito (quindi ignorate).
 
 \begin{align*}
-I_{cc} &= \frac{V_g}{R_1 + R_2} = \frac{24}{100} = 0.24\,A = 240\,mA
+I_{cc} &= \frac{V_g}{R_1} = \frac{24}{100} = 0.24\,A = 240\,mA
 \end{align*}
 
 \textbf{Equivalente di Norton:}
@@ -1894,7 +1894,7 @@ Colleghiamo il carico all'equivalente di Thevenin:
     \draw (0,0) to[battery1, invert, v=$V_{Th}{=}13.09\,V$] (0,2)
           to[short] (1,2)
           to[R=$R_{Th}{=}54.5\,\Omega$] (3,2)
-          to[R=$R_L{=}100\,\Omega$, v=$V_L$, i>^=$I_L$] (3,0)
+          to[R=$R_L{=}100\,\Omega$, v<=$V_L$, i>^=$I_L$] (3,0)
           to[short] (0,0);
 \end{circuitikz}
 \end{center}
