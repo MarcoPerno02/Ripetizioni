@@ -1,0 +1,1019 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+\title{Architettura del Computer}
+\author{Corso di Sistemi e Reti}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+\section{Introduzione alle Reti di Calcolatori}
+
+Immagina di dover condividere un file con un tuo compagno di classe: potresti usare una chiavetta USB, inviare una mail o magari usare WhatsApp. Tutte queste soluzioni hanno una cosa in comune: sfruttano una \textbf{rete di calcolatori}. Le reti sono diventate così importanti nella nostra vita quotidiana che spesso non ci rendiamo nemmeno conto di quanto dipenda da esse.
+
+\subsection{Cos'è una rete di calcolatori}
+
+Una \textbf{rete di calcolatori} è un insieme di dispositivi elettronici (computer, smartphone, tablet, stampanti, server) collegati tra loro in modo da poter scambiare informazioni e condividere risorse.
+
+Possiamo pensare a una rete come a un sistema di strade che collegano diverse città: così come le strade permettono alle persone e alle merci di spostarsi da un luogo all'altro, le reti permettono ai dati di viaggiare da un dispositivo all'altro.
+
+Gli elementi fondamentali di una rete sono:
+\begin{itemize}
+    \item \textbf{Dispositivi} (o nodi): i computer, smartphone e altri apparecchi connessi
+    \item \textbf{Mezzi trasmissivi}: i "canali" attraverso cui viaggiano i dati (cavi, onde radio, fibra ottica)
+    \item \textbf{Protocolli}: le "regole" che i dispositivi seguono per comunicare correttamente
+\end{itemize}
+
+\subsection{Vantaggi delle reti}
+
+Perché le reti sono così importanti? I vantaggi sono numerosi e hanno rivoluzionato il modo in cui lavoriamo, studiamo e ci divertiamo:
+
+\begin{enumerate}
+    \item \textbf{Condivisione di risorse}: invece di comprare una stampante per ogni computer, possiamo condividerne una sola attraverso la rete. Lo stesso vale per file, programmi e altre risorse.
+    
+    \item \textbf{Comunicazione}: le reti permettono di comunicare istantaneamente con persone in tutto il mondo attraverso email, chat, videochiamte e social network.
+    
+    \item \textbf{Accesso alle informazioni}: grazie a Internet (la più grande rete del mondo), possiamo accedere a una quantità enorme di informazioni in pochi secondi.
+    
+    \item \textbf{Collaborazione}: più persone possono lavorare contemporaneamente sullo stesso progetto, anche se si trovano in luoghi diversi.
+    
+    \item \textbf{Risparmio economico}: condividere risorse significa ridurre i costi di acquisto e manutenzione dell'hardware.
+    
+    \item \textbf{Affidabilità}: se un componente si guasta, spesso è possibile utilizzarne un altro presente nella rete, garantendo continuità nel lavoro.
+\end{enumerate}
+
+\subsection{Classificazione delle reti (LAN, MAN, WAN)}
+
+Non tutte le reti sono uguali: possono variare per dimensione, velocità, tecnologia utilizzata e scopo. La classificazione più comune si basa sull'\textbf{estensione geografica}:
+
+\subsubsection*{LAN - Local Area Network (Rete Locale)}
+
+Una \textbf{LAN} è una rete che copre un'area limitata, come una casa, un ufficio, una scuola o un edificio. È il tipo di rete che probabilmente hai a casa tua!
+
+Caratteristiche principali:
+\begin{itemize}
+    \item \textbf{Estensione}: da pochi metri fino a qualche chilometro
+    \item \textbf{Velocità}: molto elevata (da 100 Mbps fino a 10 Gbps o più)
+    \item \textbf{Proprietà}: solitamente appartiene a un'unica organizzazione o persona
+    \item \textbf{Esempi}: la rete Wi-Fi di casa tua, la rete del laboratorio informatico della scuola
+\end{itemize}
+
+\subsubsection*{MAN - Metropolitan Area Network (Rete Metropolitana)}
+
+Una \textbf{MAN} copre un'area più vasta di una LAN, tipicamente una città o un campus universitario. È meno comune delle LAN e delle WAN.
+
+Caratteristiche principali:
+\begin{itemize}
+    \item \textbf{Estensione}: da qualche chilometro fino a circa 100 km
+    \item \textbf{Velocità}: elevata, ma generalmente inferiore a una LAN
+    \item \textbf{Proprietà}: può appartenere a un'azienda, un ente pubblico o un provider
+    \item \textbf{Esempi}: la rete che collega tutti gli uffici comunali di una città, la rete di un grande campus universitario
+\end{itemize}
+
+\subsubsection*{WAN - Wide Area Network (Rete Geografica)}
+
+Una \textbf{WAN} è una rete che si estende su aree geografiche molto vaste, collegando città, nazioni o addirittura continenti. Internet è l'esempio più famoso di WAN!
+
+Caratteristiche principali:
+\begin{itemize}
+    \item \textbf{Estensione}: da centinaia a migliaia di chilometri
+    \item \textbf{Velocità}: variabile, generalmente inferiore rispetto a LAN e MAN a causa delle grandi distanze
+    \item \textbf{Proprietà}: di solito gestita da provider di servizi o da più organizzazioni
+    \item \textbf{Esempi}: Internet, la rete che collega le filiali di una multinazionale in diversi paesi
+\end{itemize}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Caratteristica} & \textbf{LAN} & \textbf{MAN} & \textbf{WAN} \\
+\hline
+Estensione & Fino a 1-2 km & Fino a 100 km & Oltre 100 km \\
+Velocità & Molto alta & Alta & Variabile \\
+Costo & Basso & Medio & Alto \\
+Gestione & Privata & Pubblica/Privata & Provider \\
+\hline
+\end{tabular}
+\caption{Confronto tra LAN, MAN e WAN}
+\end{table}
+
+\vspace{0.5cm}
+\noindent
+\textbf{Nota importante}: nella pratica moderna, esistono anche altre classificazioni come le \textbf{PAN} (Personal Area Network, reti personali come il Bluetooth tra il tuo smartphone e le cuffie wireless) e le \textbf{GAN} (Global Area Network, reti globali). Tuttavia, LAN e WAN rimangono le categorie più importanti e utilizzate.
+
+\section{Modelli di Riferimento}
+
+Quando due persone parlano lingue diverse, hanno bisogno di regole comuni per capirsi: magari usano un traduttore o imparano una lingua comune. Lo stesso vale per i computer: per comunicare in una rete, devono seguire delle regole ben precise chiamate \textbf{protocolli}.
+
+Per organizzare questi protocolli in modo ordinato, gli esperti hanno creato dei \textbf{modelli di riferimento}: strutture teoriche che dividono il processo di comunicazione in vari \textbf{livelli}, ognuno con compiti specifici. I due modelli più importanti sono il modello \textbf{ISO/OSI} e il modello \textbf{TCP/IP}.
+
+\subsection{Il modello ISO/OSI}
+
+Il modello \textbf{ISO/OSI} (Open Systems Interconnection) è stato creato negli anni '80 dall'ISO (International Organization for Standardization) per standardizzare le comunicazioni tra computer di diversi produttori.
+
+La caratteristica principale di questo modello è la suddivisione del processo di comunicazione in \textbf{7 livelli}, organizzati come una pila (stack). Ogni livello:
+\begin{itemize}
+    \item Svolge funzioni specifiche
+    \item Comunica solo con il livello immediatamente superiore e inferiore
+    \item È indipendente dagli altri (possiamo modificare un livello senza toccare gli altri)
+\end{itemize}
+
+Immagina di dover spedire un pacco: lo prepari, lo inscatoli, scrivi l'indirizzo, lo porti alle poste, viene trasportato e infine consegnato. Ogni fase è un "livello" del processo!
+
+\subsubsection{I sette livelli del modello OSI}
+
+I livelli sono numerati dal basso verso l'alto (dal 1 al 7). Vediamoli in dettaglio:
+
+\paragraph{Livello 1 - Fisico (Physical Layer)}
+È il livello più basso e si occupa della trasmissione fisica dei dati.
+
+\textbf{Cosa fa:}
+\begin{itemize}
+    \item Trasmette i bit (0 e 1) attraverso il mezzo fisico
+    \item Definisce le caratteristiche elettriche, meccaniche e funzionali dei cavi
+    \item Gestisce i segnali elettrici, ottici o radio
+\end{itemize}
+
+\textbf{Esempi:} cavi di rete, connettori, hub, schede di rete (parte hardware), onde radio
+
+\paragraph{Livello 2 - Collegamento Dati (Data Link Layer)}
+Questo livello garantisce una trasmissione affidabile tra due dispositivi direttamente connessi.
+
+\textbf{Cosa fa:}
+\begin{itemize}
+    \item Organizza i bit in \textbf{frame} (pacchetti di dati)
+    \item Gestisce gli indirizzi fisici (\textbf{MAC address})
+    \item Rileva e corregge eventuali errori di trasmissione
+    \item Controlla il flusso di dati per evitare sovraccarichi
+\end{itemize}
+
+\textbf{Esempi:} switch, bridge, protocollo Ethernet, Wi-Fi
+
+\paragraph{Livello 3 - Rete (Network Layer)}
+Si occupa dell'instradamento dei dati attraverso reti diverse.
+
+\textbf{Cosa fa:}
+\begin{itemize}
+    \item Gestisce l'indirizzamento logico (\textbf{indirizzi IP})
+    \item Trova il percorso migliore per i dati (\textbf{routing})
+    \item Framenta i pacchetti troppo grandi per la rete
+\end{itemize}
+
+\textbf{Esempi:} router, protocollo IP (Internet Protocol)
+
+\paragraph{Livello 4 - Trasporto (Transport Layer)}
+Garantisce che i dati arrivino completamente e nell'ordine corretto.
+
+\textbf{Cosa fa:}
+\begin{itemize}
+    \item Divide i dati in \textbf{segmenti} gestibili
+    \item Garantisce la consegna affidabile (con TCP) o veloce (con UDP)
+    \item Controlla il flusso e gestisce la congestione
+    \item Identifica le applicazioni tramite \textbf{porte}
+\end{itemize}
+
+\textbf{Esempi:} protocolli TCP e UDP
+
+\paragraph{Livello 5 - Sessione (Session Layer)}
+Gestisce l'apertura, il mantenimento e la chiusura delle connessioni tra applicazioni.
+
+\textbf{Cosa fa:}
+\begin{itemize}
+    \item Stabilisce, gestisce e termina le sessioni di comunicazione
+    \item Sincronizza il dialogo tra le applicazioni
+    \item Gestisce i checkpoint per il recupero in caso di interruzioni
+\end{itemize}
+
+\textbf{Esempi:} autenticazione, gestione delle sessioni web
+
+\paragraph{Livello 6 - Presentazione (Presentation Layer)}
+Si occupa della rappresentazione e del formato dei dati.
+
+\textbf{Cosa fa:}
+\begin{itemize}
+    \item Traduce i dati in un formato comprensibile per l'applicazione
+    \item Gestisce la \textbf{crittografia} e la decrittografia
+    \item Comprime i dati per ridurre la quantità da trasmettere
+    \item Converte tra diversi formati di codifica
+\end{itemize}
+
+\textbf{Esempi:} SSL/TLS (sicurezza), JPEG, MP3, ASCII, Unicode
+
+\paragraph{Livello 7 - Applicazione (Application Layer)}
+È il livello più alto, quello con cui interagiscono direttamente gli utenti.
+
+\textbf{Cosa fa:}
+\begin{itemize}
+    \item Fornisce servizi di rete alle applicazioni dell'utente
+    \item Gestisce l'interfaccia tra l'utente e la rete
+    \item Implementa i protocolli specifici delle applicazioni
+\end{itemize}
+
+\textbf{Esempi:} browser web (HTTP), email (SMTP, POP3), trasferimento file (FTP), DNS
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|l|l|l|}
+\hline
+\textbf{Livello} & \textbf{Nome} & \textbf{Funzione principale} & \textbf{Esempio} \\
+\hline
+7 & Applicazione & Servizi all'utente & HTTP, FTP \\
+6 & Presentazione & Formato dati & SSL, JPEG \\
+5 & Sessione & Gestione connessioni & Autenticazione \\
+4 & Trasporto & Consegna affidabile & TCP, UDP \\
+3 & Rete & Instradamento & IP, Router \\
+2 & Collegamento & Trasmissione locale & Ethernet, Switch \\
+1 & Fisico & Trasmissione bit & Cavi, Hub \\
+\hline
+\end{tabular}
+\caption{I 7 livelli del modello OSI}
+\end{table}
+
+\subsection{Il modello TCP/IP}
+
+Il modello \textbf{TCP/IP} (Transmission Control Protocol/Internet Protocol) è il modello effettivamente utilizzato su Internet. È stato sviluppato dal Dipartimento della Difesa degli Stati Uniti negli anni '70 ed è più semplice e pratico del modello OSI.
+
+A differenza del modello OSI (che è teorico), il TCP/IP è nato dall'esperienza pratica ed è composto da \textbf{4 livelli}:
+
+\paragraph{Livello 1 - Accesso alla Rete (Network Access/Link Layer)}
+Corrisponde ai livelli Fisico e Collegamento Dati del modello OSI.
+
+\textbf{Cosa fa:}
+\begin{itemize}
+    \item Gestisce l'accesso fisico alla rete
+    \item Si occupa della trasmissione dei frame
+    \item Include protocolli come Ethernet e Wi-Fi
+\end{itemize}
+
+\paragraph{Livello 2 - Internet (Internet Layer)}
+Corrisponde al livello Rete del modello OSI.
+
+\textbf{Cosa fa:}
+\begin{itemize}
+    \item Gestisce l'indirizzamento IP e il routing
+    \item Frammenta e riassembla i pacchetti
+    \item Protocollo principale: \textbf{IP} (Internet Protocol)
+\end{itemize}
+
+\paragraph{Livello 3 - Trasporto (Transport Layer)}
+Corrisponde al livello Trasporto del modello OSI.
+
+\textbf{Cosa fa:}
+\begin{itemize}
+    \item Garantisce la comunicazione end-to-end
+    \item Protocolli principali: \textbf{TCP} (affidabile) e \textbf{UDP} (veloce)
+\end{itemize}
+
+\paragraph{Livello 4 - Applicazione (Application Layer)}
+Corrisponde ai livelli Sessione, Presentazione e Applicazione del modello OSI.
+
+\textbf{Cosa fa:}
+\begin{itemize}
+    \item Fornisce servizi alle applicazioni utente
+    \item Include protocolli come HTTP, FTP, SMTP, DNS
+\end{itemize}
+
+\subsubsection{Confronto tra OSI e TCP/IP}
+
+Entrambi i modelli sono importanti, ma hanno caratteristiche diverse:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Aspetto} & \textbf{Modello OSI} & \textbf{Modello TCP/IP} \\
+\hline
+Numero di livelli & 7 livelli & 4 livelli \\
+\hline
+Origine & Teorico, creato da ISO & Pratico, nato da Internet \\
+\hline
+Utilizzo & Riferimento didattico & Implementazione reale \\
+\hline
+Flessibilità & Molto strutturato & Più flessibile \\
+\hline
+Sviluppo & Prima il modello, poi i protocolli & Prima i protocolli, poi il modello \\
+\hline
+Separazione & Chiara distinzione tra livelli & Alcuni livelli sono unificati \\
+\hline
+\end{tabular}
+\caption{Confronto tra modello OSI e TCP/IP}
+\end{table}
+
+\vspace{0.5cm}
+\noindent
+\textbf{Quale usare?}
+\begin{itemize}
+    \item Il modello \textbf{OSI} è perfetto per \textit{studiare} e \textit{comprendere} le reti, perché suddivide ogni funzione in modo molto chiaro
+    \item Il modello \textbf{TCP/IP} è quello che \textit{funziona davvero} su Internet e nelle reti moderne
+\end{itemize}
+
+Nella pratica professionale, si usa il TCP/IP ma si fa riferimento alla terminologia OSI per descrivere i componenti di rete. Per esempio, uno switch si dice che opera al "livello 2" (riferimento OSI), anche se nella rete reale usa TCP/IP!
+
+\vspace{0.5cm}
+\noindent
+\textbf{Concetto chiave - Incapsulamento:} Quando invii un dato, questo passa attraverso tutti i livelli dall'alto verso il basso. Ogni livello aggiunge le proprie informazioni (header) creando una sorta di "matrioska digitale". Il destinatario farà il processo inverso, togliendo gli header livello per livello fino ad arrivare al dato originale.
+
+\section{Livello 1 - Livello Fisico}
+
+Il \textbf{livello fisico} è la base di tutto: senza di esso, nessun dato potrebbe viaggiare da un dispositivo all'altro. È come le fondamenta di una casa: invisibili ma essenziali. Questo livello si occupa della trasmissione fisica dei bit (gli 0 e 1) attraverso un mezzo di comunicazione.
+
+Immagina di voler inviare la parola "CIAO" a un amico. Il computer trasforma questa parola in una sequenza di bit come 01000011 01001001 01000001 01001111. Il livello fisico ha il compito di trasformare questi bit in segnali elettrici, ottici o radio e inviarli attraverso i cavi o l'aria.
+
+\subsection{Mezzi trasmissivi}
+
+I \textbf{mezzi trasmissivi} sono i "canali" attraverso cui viaggiano i nostri dati. La scelta del mezzo giusto dipende da diversi fattori: distanza da coprire, velocità richiesta, costo e ambiente in cui verrà installato.
+
+\subsubsection{Cavi in rame (doppino intrecciato, coassiale)}
+
+I cavi in rame sono stati i primi ad essere utilizzati e sono ancora molto diffusi oggi.
+
+\subsubsection*{Doppino intrecciato (Twisted Pair)}
+Il \textbf{doppino intrecciato} è il tipo di cavo più comune nelle reti locali. È composto da coppie di fili di rame intrecciati tra loro.
+
+\textbf{Perché i fili sono intrecciati?} L'intreccio riduce le interferenze elettromagnetiche esterne e quelle tra i fili stessi (diafonia). È come quando parli a bassa voce in un ambiente rumoroso: l'intreccio "filtra" i disturbi.
+
+Esistono diverse categorie:
+\begin{itemize}
+    \item \textbf{UTP (Unshielded Twisted Pair)}: senza schermatura, il più economico e diffuso
+    \item \textbf{STP (Shielded Twisted Pair)}: con schermatura metallica, protegge meglio dalle interferenze
+    \item \textbf{FTP (Foiled Twisted Pair)}: schermatura in alluminio, compromesso tra UTP e STP
+\end{itemize}
+
+Le categorie più comuni sono:
+\begin{itemize}
+    \item \textbf{Cat 5e}: fino a 1 Gbps, adatto per reti domestiche e piccoli uffici
+    \item \textbf{Cat 6}: fino a 10 Gbps (su distanze brevi, max 55m), ottimo per uffici moderni
+    \item \textbf{Cat 6a}: fino a 10 Gbps (fino a 100m), professionale
+    \item \textbf{Cat 7/8}: fino a 40-100 Gbps, per data center e applicazioni future
+\end{itemize}
+
+\textbf{Vantaggi:}
+\begin{itemize}
+    \item Economico e facile da installare
+    \item Ampiamente supportato da tutti i dispositivi
+    \item Flessibile e maneggevole
+\end{itemize}
+
+\textbf{Svantaggi:}
+\begin{itemize}
+    \item Sensibile alle interferenze elettromagnetiche
+    \item Distanza massima limitata (circa 100 metri per Ethernet)
+    \item Velocità inferiore rispetto alla fibra ottica
+\end{itemize}
+
+\subsubsection*{Cavo coassiale}
+Il \textbf{cavo coassiale} è composto da un conduttore centrale in rame, circondato da uno strato isolante, una schermatura metallica e una guaina esterna protettiva.
+
+Questo tipo di cavo era molto usato nelle prime reti (come Ethernet 10Base2 e 10Base5) e oggi è principalmente utilizzato per:
+\begin{itemize}
+    \item Televisione via cavo e antenna TV
+    \item Connessioni a Internet via cavo (DOCSIS)
+    \item Applicazioni industriali specifiche
+\end{itemize}
+
+\textbf{Vantaggi:}
+\begin{itemize}
+    \item Buona resistenza alle interferenze grazie alla schermatura
+    \item Può coprire distanze maggiori del doppino intrecciato
+    \item Affidabile in ambienti industriali
+\end{itemize}
+
+\textbf{Svantaggi:}
+\begin{itemize}
+    \item Più costoso e rigido del doppino intrecciato
+    \item Meno flessibile nell'installazione
+    \item Tecnologia superata per le reti LAN moderne
+\end{itemize}
+
+\subsubsection{Fibra ottica}
+
+La \textbf{fibra ottica} rappresenta il futuro (e in parte il presente) delle telecomunicazioni. Invece di usare segnali elettrici, trasmette i dati sotto forma di impulsi di luce attraverso sottili filamenti di vetro o plastica.
+
+\textbf{Come funziona?} La luce viaggia all'interno della fibra rimbalzando sulle pareti grazie al principio della \textit{riflessione totale}. È come quando fai rimbalzare una pallina in un tubo: se l'angolo è giusto, continua a rimbalzare senza uscire.
+
+Esistono due tipi principali:
+
+\paragraph{Fibra monomodale (Single-Mode)}
+Ha un nucleo molto sottile (circa 9 micrometri, più sottile di un capello!) e permette il passaggio di un solo raggio di luce.
+
+\textbf{Caratteristiche:}
+\begin{itemize}
+    \item Distanze molto lunghe (decine di chilometri senza amplificazione)
+    \item Velocità elevatissime (fino a 100 Gbps e oltre)
+    \item Costo elevato (cavi e apparati)
+    \item Utilizzo: dorsali Internet, collegamenti tra città, data center
+\end{itemize}
+
+\paragraph{Fibra multimodale (Multi-Mode)}
+Ha un nucleo più largo (50 o 62,5 micrometri) che permette il passaggio di più raggi di luce contemporaneamente.
+
+\textbf{Caratteristiche:}
+\begin{itemize}
+    \item Distanze medie (fino a 2 km circa)
+    \item Velocità elevate (fino a 10-40 Gbps)
+    \item Costo inferiore rispetto alla monomodale
+    \item Utilizzo: reti LAN aziendali, campus universitari, edifici
+\end{itemize}
+
+\textbf{Vantaggi della fibra ottica:}
+\begin{itemize}
+    \item Velocità enormemente superiori al rame
+    \item Immune alle interferenze elettromagnetiche
+    \item Distanze maggiori senza perdita di segnale
+    \item Leggerezza e dimensioni ridotte
+    \item Sicurezza: difficile intercettare i dati
+    \item Durata nel tempo superiore
+\end{itemize}
+
+\textbf{Svantaggi:}
+\begin{itemize}
+    \item Costo elevato (sia cavi che apparecchiature)
+    \item Installazione più complessa e delicata
+    \item Difficile da riparare in caso di rottura
+    \item Richiede competenze specializzate
+\end{itemize}
+
+\subsubsection{Comunicazioni wireless}
+
+Le \textbf{comunicazioni wireless} (senza fili) utilizzano onde radio o infrarossi per trasmettere dati attraverso l'aria. Sono ovunque: Wi-Fi, Bluetooth, reti cellulari (4G, 5G), satelliti.
+
+\paragraph{Wi-Fi (Wireless Fidelity)}
+È lo standard più diffuso per le reti locali wireless. Gli standard principali sono:
+
+\begin{itemize}
+    \item \textbf{802.11n (Wi-Fi 4)}: fino a 600 Mbps, frequenza 2.4/5 GHz
+    \item \textbf{802.11ac (Wi-Fi 5)}: fino a 3,5 Gbps, frequenza 5 GHz
+    \item \textbf{802.11ax (Wi-Fi 6/6E)}: fino a 9,6 Gbps, frequenza 2.4/5/6 GHz, maggiore efficienza
+    \item \textbf{802.11be (Wi-Fi 7)}: fino a 46 Gbps, standard di nuova generazione
+\end{itemize}
+
+\textbf{Frequenze radio:}
+\begin{itemize}
+    \item \textbf{2,4 GHz}: maggiore copertura, attraversa meglio i muri, ma più soggetta a interferenze (microonde, Bluetooth)
+    \item \textbf{5 GHz}: velocità superiori, meno interferenze, ma copertura ridotta
+    \item \textbf{6 GHz}: (Wi-Fi 6E) maggiore capacità, meno affollata, ancora più veloce
+\end{itemize}
+
+\paragraph{Bluetooth}
+Utilizzato per connessioni a corto raggio (generalmente entro 10 metri) tra dispositivi come cuffie, mouse, tastiere, smartphone.
+
+\paragraph{Reti cellulari (4G LTE, 5G)}
+Permettono la connessione a Internet e la comunicazione mobile su ampie aree geografiche.
+
+\textbf{Vantaggi del wireless:}
+\begin{itemize}
+    \item Mobilità totale: nessun cavo necessario
+    \item Installazione rapida e flessibile
+    \item Ideale per dispositivi mobili
+    \item Facile espandibilità
+\end{itemize}
+
+\textbf{Svantaggi:}
+\begin{itemize}
+    \item Velocità generalmente inferiore ai cavi
+    \item Maggiore latenza (ritardo)
+    \item Sensibile a interferenze e ostacoli fisici
+    \item Sicurezza: più facile intercettare segnali radio
+    \item Copertura limitata dal raggio d'azione
+\end{itemize}
+
+\subsection{Dispositivi di livello fisico}
+
+I dispositivi che operano al livello fisico si occupano semplicemente di ricevere e ritrasmettere segnali, senza "capire" cosa contengono.
+
+\subsubsection{Scheda di rete (NIC) - aspetti hardware}
+
+La \textbf{NIC} (Network Interface Card) è la scheda che permette al computer di collegarsi fisicamente alla rete. Può essere integrata nella scheda madre o aggiunta come componente separato.
+
+\textbf{Funzioni hardware:}
+\begin{itemize}
+    \item Converte i dati digitali del computer in segnali elettrici/ottici
+    \item Riceve i segnali dalla rete e li converte in dati digitali
+    \item Gestisce la connessione fisica al mezzo trasmissivo
+    \item Possiede un indirizzo MAC univoco (approfondiremo al livello 2)
+\end{itemize}
+
+Esistono NIC per cavi Ethernet (porta RJ-45), per fibra ottica (porta SFP/SFP+) e wireless (antenne integrate).
+
+\subsubsection{Hub e Repeater}
+
+\paragraph{Hub}
+L'\textbf{hub} è un dispositivo molto semplice con più porte di rete. Quando riceve un segnale su una porta, lo ritrasmette \textit{a tutte le altre porte} contemporaneamente, senza alcuna intelligenza.
+
+\textbf{Caratteristiche:}
+\begin{itemize}
+    \item Opera al livello fisico (livello 1)
+    \item Non legge gli indirizzi MAC o IP
+    \item Crea un unico \textit{dominio di collisione}: se due dispositivi trasmettono insieme, i segnali si scontrano
+    \item Spreca banda perché tutti ricevono tutto
+    \item Oggi praticamente in disuso, sostituito dagli switch
+\end{itemize}
+
+\textbf{Analogia:} Un hub è come una persona che urla in una stanza: tutti sentono, anche chi non dovrebbe.
+
+\paragraph{Repeater}
+Il \textbf{repeater} (ripetitore) è un dispositivo che amplifica e rigenera il segnale per estendere la distanza di trasmissione.
+
+\textbf{Quando serve?} I segnali elettrici si indeboliscono viaggiando nei cavi (fenomeno chiamato \textit{attenuazione}). Dopo una certa distanza (es. 100m per Ethernet), il segnale diventa troppo debole. Il repeater lo "rinfresca", permettendo di coprire distanze maggiori.
+
+\textbf{Esempi pratici:}
+\begin{itemize}
+    \item Ripetitori Wi-Fi che estendono la copertura in casa
+    \item Amplificatori di segnale per cavi lunghi
+\end{itemize}
+
+\subsection{Caratteristiche dei segnali}
+
+Per capire bene come funziona il livello fisico, è importante conoscere alcune caratteristiche fondamentali dei segnali.
+
+\subsubsection{Larghezza di banda}
+
+La \textbf{larghezza di banda} (bandwidth) indica la quantità massima di dati che può essere trasmessa in un determinato periodo di tempo. Si misura in bit per secondo (bps) o suoi multipli (Kbps, Mbps, Gbps).
+
+\textbf{Analogia:} Pensa a una strada: la larghezza di banda è come il numero di corsie. Più corsie ci sono, più auto (dati) possono passare contemporaneamente.
+
+\textbf{Esempi pratici:}
+\begin{itemize}
+    \item ADSL: 20 Mbps in download
+    \item Fibra ottica domestica: 1 Gbps (1000 Mbps)
+    \item Wi-Fi 6: fino a 9,6 Gbps teorici
+    \item Fibra ottica professionale: 100 Gbps o più
+\end{itemize}
+
+\textbf{Attenzione:} La banda \textit{teorica} è diversa da quella \textit{effettiva}. La velocità reale dipende da interferenze, distanza, numero di utenti connessi e qualità dei dispositivi.
+
+\subsubsection{Attenuazione e interferenze}
+
+\paragraph{Attenuazione}
+L'\textbf{attenuazione} è l'indebolimento del segnale mentre viaggia nel mezzo trasmissivo. È misurata in decibel (dB).
+
+\textbf{Cause:}
+\begin{itemize}
+    \item Resistenza del materiale conduttore
+    \item Lunghezza del cavo (più è lungo, più segnale si perde)
+    \item Frequenza del segnale (frequenze alte si attenuano di più)
+\end{itemize}
+
+\textbf{Soluzioni:}
+\begin{itemize}
+    \item Usare cavi di qualità superiore
+    \item Limitare la lunghezza dei collegamenti
+    \item Utilizzare repeater o amplificatori
+    \item Passare a fibra ottica (attenuazione minima)
+\end{itemize}
+
+\paragraph{Interferenze}
+Le \textbf{interferenze} sono disturbi esterni che alterano il segnale, causando errori nella trasmissione.
+
+\textbf{Tipi di interferenze:}
+\begin{itemize}
+    \item \textbf{EMI (Electromagnetic Interference)}: causate da campi elettromagnetici di motori, trasformatori, linee elettriche
+    \item \textbf{RFI (Radio Frequency Interference)}: causate da trasmissioni radio, telefoni cellulari, microonde
+    \item \textbf{Crosstalk (Diafonia)}: interferenza tra cavi vicini o tra coppie di fili nello stesso cavo
+\end{itemize}
+
+\textbf{Soluzioni:}
+\begin{itemize}
+    \item Usare cavi schermati (STP, FTP)
+    \item Intrecciare i fili (twisted pair)
+    \item Mantenere distanza da fonti di interferenza
+    \item Utilizzare fibra ottica (immune alle interferenze elettromagnetiche)
+\end{itemize}
+
+\vspace{0.5cm}
+\noindent
+\textbf{Concetto chiave:} Il livello fisico è "stupido" nel senso che non capisce il contenuto dei dati. Il suo unico compito è trasportare i bit da A a B nel modo più affidabile e veloce possibile. Tutta l'"intelligenza" (indirizzamento, controllo errori, routing) viene gestita dai livelli superiori.
+
+\section{Livello 2 - Livello Collegamento Dati}
+
+Se il livello fisico è come una strada, il livello 2 (Data Link Layer) è come il sistema di regole del traffico: garantisce che i dati viaggino in modo ordinato, senza collisioni e che arrivino al destinatario corretto nella rete locale.
+
+Il \textbf{livello collegamento dati} si occupa di organizzare i bit ricevuti dal livello fisico in \textbf{frame} (pacchetti strutturati) e di gestire la comunicazione tra dispositivi direttamente connessi. Ha due compiti fondamentali:
+\begin{enumerate}
+    \item \textbf{Indirizzamento fisico}: identificare univocamente ogni dispositivo tramite l'indirizzo MAC
+    \item \textbf{Controllo degli errori}: rilevare (e in alcuni casi correggere) errori nella trasmissione
+\end{enumerate}
+
+Questo livello è diviso in due sottolivelli:
+\begin{itemize}
+    \item \textbf{LLC (Logical Link Control)}: gestisce il controllo del flusso e degli errori
+    \item \textbf{MAC (Media Access Control)}: controlla l'accesso al mezzo fisico e gestisce gli indirizzi MAC
+\end{itemize}
+
+\subsection{Indirizzi MAC}
+
+L'\textbf{indirizzo MAC} (Media Access Control) è l'identificativo fisico univoco di ogni scheda di rete. È come il numero di telaio di un'automobile: ogni dispositivo ne ha uno diverso, assegnato dal produttore.
+
+\subsubsection{Struttura degli indirizzi MAC}
+
+Un indirizzo MAC è composto da \textbf{48 bit} (6 byte), solitamente rappresentati in formato esadecimale separato da due punti o trattini.
+
+\textbf{Esempio:} 
+\begin{verbatim}
+    00:1A:2B:3C:4D:5E  oppure  00-1A-2B-3C-4D-5E
+\end{verbatim}
+
+L'indirizzo è diviso in due parti:
+\begin{itemize}
+    \item \textbf{OUI (Organizationally Unique Identifier)}: i primi 3 byte (24 bit) identificano il produttore
+    \begin{itemize}
+        \item Esempio: 00:1A:2B potrebbe essere Dell, mentre 3C:D9:2B potrebbe essere HP
+    \end{itemize}
+    \item \textbf{NIC (Network Interface Controller)}: gli ultimi 3 byte (24 bit) identificano univocamente la scheda
+    \begin{itemize}
+        \item Assegnato dal produttore in modo sequenziale
+    \end{itemize}
+\end{itemize}
+
+\textbf{Tipi di indirizzi MAC:}
+\begin{itemize}
+    \item \textbf{Unicast}: destinato a un singolo dispositivo (primo byte pari)
+    \item \textbf{Multicast}: destinato a un gruppo di dispositivi (primo byte dispari)
+    \item \textbf{Broadcast}: destinato a tutti i dispositivi della rete (FF:FF:FF:FF:FF:FF)
+\end{itemize}
+
+\textbf{Caratteristiche importanti:}
+\begin{itemize}
+    \item L'indirizzo MAC è \textbf{hardcoded} (scritto permanentemente nella scheda di rete)
+    \item È univoco a livello mondiale (almeno in teoria)
+    \item Opera solo nella rete locale (LAN), non viene usato per comunicazioni su Internet
+    \item Può essere modificato via software (MAC spoofing), ma non è la sua destinazione d'uso normale
+\end{itemize}
+
+\subsubsection{Tabella MAC}
+
+Gli switch (che vedremo tra poco) mantengono una \textbf{tabella MAC} (o CAM table - Content Addressable Memory) per sapere su quale porta si trova ogni dispositivo.
+
+\textbf{Come funziona:}
+\begin{enumerate}
+    \item Quando un dispositivo invia un frame, lo switch registra il suo indirizzo MAC e la porta da cui proviene
+    \item La tabella MAC associa ogni indirizzo MAC alla porta corrispondente
+    \item Quando arriva un frame destinato a un certo MAC, lo switch consulta la tabella e inoltra il frame solo sulla porta corretta
+    \item Se il MAC di destinazione non è in tabella, lo switch invia il frame a tutte le porte (\textit{flooding})
+\end{enumerate}
+
+\textbf{Esempio di tabella MAC:}
+\begin{verbatim}
+    Porta    |    Indirizzo MAC        |  Timestamp
+    ---------|-------------------------|-------------
+      1      |  00:1A:2B:3C:4D:5E     |  10:23:45
+      2      |  AA:BB:CC:DD:EE:FF     |  10:24:12
+      3      |  11:22:33:44:55:66     |  10:25:03
+\end{verbatim}
+
+Le voci della tabella MAC hanno un \textbf{timeout} (solitamente 5 minuti): se un dispositivo non comunica per quel tempo, la voce viene rimossa. Questo permette di adattarsi quando un dispositivo viene spostato o disconnesso.
+
+\subsection{Frame Ethernet}
+
+Il \textbf{frame} è l'unità di dati del livello 2: i bit provenienti dal livello fisico vengono organizzati in frame strutturati che contengono non solo i dati, ma anche informazioni di controllo.
+
+\subsubsection{Struttura del frame}
+
+Il frame Ethernet (standard IEEE 802.3) ha una struttura ben definita:
+
+\begin{enumerate}
+    \item \textbf{Preambolo (7 byte)}: sequenza di bit (10101010...) che serve a sincronizzare i dispositivi
+    \item \textbf{SFD - Start Frame Delimiter (1 byte)}: indica l'inizio del frame (10101011)
+    \item \textbf{Indirizzo MAC destinazione (6 byte)}: a chi è destinato il frame
+    \item \textbf{Indirizzo MAC sorgente (6 byte)}: chi ha inviato il frame
+    \item \textbf{Tipo/Lunghezza (2 byte)}: indica il protocollo del livello superiore (es. IPv4, IPv6) o la lunghezza del payload
+    \item \textbf{Payload (46-1500 byte)}: i dati veri e propri
+    \begin{itemize}
+        \item Minimo 46 byte: se i dati sono meno, viene aggiunto padding (riempimento)
+        \item Massimo 1500 byte: chiamato \textbf{MTU} (Maximum Transmission Unit)
+    \end{itemize}
+    \item \textbf{FCS - Frame Check Sequence (4 byte)}: codice di controllo errori (CRC-32)
+\end{enumerate}
+
+\textbf{Dimensioni totali:}
+\begin{itemize}
+    \item Frame minimo: 64 byte (senza preambolo e SFD)
+    \item Frame massimo: 1518 byte (senza preambolo e SFD)
+    \item Con preambolo e SFD: da 72 a 1526 byte
+\end{itemize}
+
+\textbf{Controllo degli errori:}
+Il campo FCS contiene un codice CRC (Cyclic Redundancy Check) calcolato su tutto il frame. Il ricevente ricalcola il CRC: se non corrisponde, il frame è corrotto e viene scartato (il livello 2 rileva gli errori ma non li corregge; sarà il livello 4 a richiedere la ritrasmissione).
+
+\subsubsection{CSMA/CD e CSMA/CA}
+
+Quando più dispositivi condividono lo stesso mezzo fisico, serve un meccanismo per evitare che trasmettano contemporaneamente causando \textbf{collisioni}. Questi sono i protocolli di \textit{accesso multiplo}.
+
+\paragraph{CSMA/CD - Carrier Sense Multiple Access with Collision Detection}
+
+Utilizzato nelle reti Ethernet cablate (ormai poco rilevante con gli switch moderni che usano comunicazione full-duplex).
+
+\textbf{Come funziona:}
+\begin{enumerate}
+    \item \textbf{Carrier Sense}: prima di trasmettere, il dispositivo "ascolta" il canale
+    \item Se il canale è libero, inizia a trasmettere
+    \item \textbf{Collision Detection}: mentre trasmette, continua ad ascoltare
+    \item Se rileva una collisione (segnale distorto), interrompe immediatamente la trasmissione
+    \item Invia un \textit{jam signal} per avvisare tutti della collisione
+    \item Attende un tempo casuale (\textit{backoff}) prima di riprovare
+    \item Riprova la trasmissione (con backoff esponenziale in caso di collisioni ripetute)
+\end{enumerate}
+
+\textbf{Nota:} Con gli switch moderni e le connessioni full-duplex (trasmissione e ricezione simultanee), le collisioni sono praticamente eliminate, quindi CSMA/CD è meno rilevante oggi.
+
+\paragraph{CSMA/CA - Carrier Sense Multiple Access with Collision Avoidance}
+
+Utilizzato nelle reti \textbf{Wi-Fi} (IEEE 802.11) perché nelle reti wireless è difficile rilevare le collisioni mentre si trasmette.
+
+\textbf{Come funziona:}
+\begin{enumerate}
+    \item Il dispositivo ascolta il canale
+    \item Se è libero, attende un tempo casuale (per ridurre la probabilità di collisione)
+    \item Trasmette il frame
+    \item Il destinatario invia un \textbf{ACK} (acknowledgment) per confermare la ricezione
+    \item Se non riceve l'ACK, il mittente assume che ci sia stata una collisione e ritrasmette
+\end{enumerate}
+
+\textbf{Meccanismo RTS/CTS (opzionale):}
+Per frame grandi, si può usare un sistema di "prenotazione":
+\begin{itemize}
+    \item Il mittente invia un \textbf{RTS} (Request To Send) breve
+    \item L'access point risponde con \textbf{CTS} (Clear To Send)
+    \item Solo allora il mittente trasmette il frame completo
+    \item Questo riduce il tempo perso in caso di collisione
+\end{itemize}
+
+\subsection{Dispositivi di livello 2}
+
+I dispositivi di livello 2 sono "intelligenti": leggono gli indirizzi MAC e prendono decisioni su dove inoltrare i frame.
+
+\subsubsection{Switch}
+
+Lo \textbf{switch} è il dispositivo più importante delle reti LAN moderne. Ha sostituito quasi completamente gli hub grazie alla sua intelligenza.
+
+\textbf{Come funziona:}
+\begin{enumerate}
+    \item Riceve un frame su una porta
+    \item Legge l'indirizzo MAC di destinazione
+    \item Consulta la tabella MAC per trovare su quale porta si trova il destinatario
+    \item Inoltra il frame \textit{solo} su quella porta (invece che su tutte come fa l'hub)
+\end{enumerate}
+
+\textbf{Vantaggi rispetto all'hub:}
+\begin{itemize}
+    \item \textbf{Maggiore sicurezza}: ogni dispositivo riceve solo i frame destinati a lui
+    \item \textbf{Migliori prestazioni}: elimina le collisioni creando domini di collisione separati
+    \item \textbf{Banda dedicata}: ogni porta ha la banda completa disponibile
+    \item \textbf{Full-duplex}: può trasmettere e ricevere contemporaneamente
+    \item \textbf{Auto-apprendimento}: costruisce automaticamente la tabella MAC
+\end{itemize}
+
+\textbf{Tipologie di switch:}
+\begin{itemize}
+    \item \textbf{Unmanaged}: configurazione automatica, plug-and-play, economici
+    \item \textbf{Managed}: configurabili, supportano VLAN, QoS, monitoraggio, per uso professionale
+    \item \textbf{PoE (Power over Ethernet)}: forniscono alimentazione attraverso il cavo di rete (utile per telecamere IP, access point, telefoni VoIP)
+\end{itemize}
+
+\textbf{Caratteristiche tecniche importanti:}
+\begin{itemize}
+    \item \textbf{Backplane/Switching capacity}: la capacità totale di commutazione (es. 52 Gbps)
+    \item \textbf{Forwarding rate}: quanti pacchetti al secondo può gestire (es. 38,69 Mpps)
+    \item \textbf{Dimensione tabella MAC}: quanti indirizzi può memorizzare (es. 8000 voci)
+    \item \textbf{Numero e tipo di porte}: 8, 16, 24, 48 porte a 1 Gbps o 10 Gbps
+\end{itemize}
+
+\textbf{Modalità di switching:}
+\begin{itemize}
+    \item \textbf{Store-and-forward}: riceve tutto il frame, controlla gli errori, poi inoltra (più affidabile)
+    \item \textbf{Cut-through}: inizia a inoltrare appena letto l'indirizzo MAC di destinazione (più veloce ma non controlla errori)
+    \item \textbf{Fragment-free}: via di mezzo, legge i primi 64 byte prima di inoltrare
+\end{itemize}
+
+\subsubsection{Bridge}
+
+Il \textbf{bridge} è un dispositivo che collega due segmenti di rete LAN, simile allo switch ma generalmente con solo 2-4 porte.
+
+\textbf{Funzioni:}
+\begin{itemize}
+    \item Divide la rete in segmenti separati, riducendo il traffico e le collisioni
+    \item Filtra il traffico: inoltra solo i frame destinati all'altro segmento
+    \item Mantiene una tabella MAC come lo switch
+\end{itemize}
+
+\textbf{Differenza con lo switch:}
+Lo switch è essenzialmente un \textit{multiport bridge}: mentre un bridge ha 2-4 porte, uno switch ne ha molte di più (8, 16, 24, 48...). Oggi il termine "bridge" è meno usato, quasi tutto è fatto da switch.
+
+\textbf{Utilizzo moderno:}
+I bridge software sono ancora usati in virtualizzazione e container per collegare reti virtuali.
+
+\subsection{Topologie di rete}
+
+La \textbf{topologia} è il modo in cui i dispositivi sono fisicamente o logicamente connessi tra loro. La scelta della topologia influenza prestazioni, affidabilità e costi.
+
+\subsubsection{Topologia a bus}
+
+Nella topologia \textbf{a bus}, tutti i dispositivi sono collegati a un unico cavo centrale (il "bus").
+
+\textbf{Caratteristiche:}
+\begin{itemize}
+    \item Un solo cavo principale con terminatori alle estremità
+    \item Tutti i dispositivi condividono lo stesso mezzo
+    \item I dati viaggiano in entrambe le direzioni
+\end{itemize}
+
+\textbf{Vantaggi:}
+\begin{itemize}
+    \item Semplice ed economica
+    \item Poco cablaggio necessario
+    \item Facile aggiungere dispositivi
+\end{itemize}
+
+\textbf{Svantaggi:}
+\begin{itemize}
+    \item Se il cavo principale si rompe, tutta la rete si blocca
+    \item Difficile individuare guasti
+    \item Prestazioni degradano con molti dispositivi (collisioni frequenti)
+    \item Tecnologia obsoleta, non più usata
+\end{itemize}
+
+\textbf{Esempio storico:} Ethernet 10Base2 (coassiale thin) e 10Base5 (coassiale thick)
+
+\subsubsection{Topologia a stella}
+
+Nella topologia \textbf{a stella}, tutti i dispositivi sono collegati a un punto centrale (switch o hub).
+
+\textbf{Caratteristiche:}
+\begin{itemize}
+    \item Ogni dispositivo ha un cavo dedicato verso il centro
+    \item Il dispositivo centrale smista il traffico
+    \item Topologia più diffusa oggi
+\end{itemize}
+
+\textbf{Vantaggi:}
+\begin{itemize}
+    \item Affidabile: se un cavo si rompe, solo quel dispositivo è isolato
+    \item Facile individuare e risolvere problemi
+    \item Buone prestazioni (specialmente con switch)
+    \item Facile espandere la rete
+    \item Gestione centralizzata
+\end{itemize}
+
+\textbf{Svantaggi:}
+\begin{itemize}
+    \item Dipendenza dal dispositivo centrale (single point of failure)
+    \item Richiede più cablaggio rispetto al bus
+    \item Costo del dispositivo centrale
+\end{itemize}
+
+\textbf{Utilizzo:} Praticamente tutte le reti LAN moderne (Ethernet con switch centrale)
+
+\subsubsection{Topologia ad anello}
+
+Nella topologia \textbf{ad anello}, ogni dispositivo è collegato a due vicini, formando un circuito chiuso.
+
+\textbf{Caratteristiche:}
+\begin{itemize}
+    \item I dati viaggiano in una sola direzione (o entrambe negli anelli doppi)
+    \item Ogni dispositivo riceve e ritrasmette i dati al successivo
+    \item Utilizza un sistema a token per evitare collisioni
+\end{itemize}
+
+\textbf{Vantaggi:}
+\begin{itemize}
+    \item Prestazioni prevedibili (grazie al token)
+    \item Nessun rischio di collisioni
+    \item Uguale accesso al mezzo per tutti
+\end{itemize}
+
+\textbf{Svantaggi:}
+\begin{itemize}
+    \item Se un dispositivo si guasta, tutta la rete può bloccarsi (negli anelli singoli)
+    \item Difficile aggiungere/rimuovere dispositivi
+    \item Costi di manutenzione elevati
+\end{itemize}
+
+\textbf{Esempio:} Token Ring (IBM), FDDI (Fiber Distributed Data Interface) - tecnologie obsolete
+
+\textbf{Utilizzo moderno:} Reti metropolitane in fibra ottica con anelli ridondanti (doppio anello per affidabilità)
+
+\subsubsection{Topologie ibride}
+
+Le topologie \textbf{ibride} combinano due o più topologie base per sfruttare i vantaggi di ciascuna.
+
+\textbf{Esempi comuni:}
+
+\paragraph{Stella estesa (Hierarchical Star)}
+Più switch collegati in struttura gerarchica: switch centrale con switch secondari collegati, ognuno con i propri dispositivi. È la topologia più comune in aziende e campus.
+
+\paragraph{Stella-Bus}
+Più topologie a stella collegate tramite un backbone (dorsale) lineare.
+
+\paragraph{Mesh (maglia)}
+Ogni dispositivo è collegato a più altri dispositivi, creando percorsi ridondanti. Usata in:
+\begin{itemize}
+    \item Reti wireless mesh (Wi-Fi mesh domestici)
+    \item Backbone di Internet
+    \item Reti critiche che richiedono alta affidabilità
+\end{itemize}
+
+\textbf{Vantaggi delle ibride:}
+\begin{itemize}
+    \item Flessibilità nella progettazione
+    \item Scalabilità ottimale
+    \item Affidabilità migliorata grazie a ridondanza
+\end{itemize}
+
+\textbf{Svantaggi:}
+\begin{itemize}
+    \item Complessità di progettazione e gestione
+    \item Costi più elevati
+\end{itemize}
+
+\vspace{0.5cm}
+\noindent
+\textbf{Concetto chiave:} Il livello 2 è fondamentale per le reti locali. Gli indirizzi MAC identificano i dispositivi fisicamente, i frame organizzano i dati in modo strutturato, e gli switch smistano intelligentemente il traffico. Questo livello garantisce comunicazione affidabile tra dispositivi direttamente connessi, ma opera solo nella LAN. Per comunicare tra reti diverse serve il livello 3!
+
+\section{Livello 3 - Livello Rete}
+\subsection{Indirizzi IP}
+\subsubsection{IPv4: struttura e classi}
+\subsubsection{IPv6: il futuro dell'indirizzamento}
+\subsubsection{Indirizzi pubblici e privati}
+\subsection{Subnetting}
+\subsubsection{Maschere di sottorete}
+\subsubsection{Calcolo delle subnet}
+\subsubsection{CIDR (Classless Inter-Domain Routing)}
+\subsection{Routing}
+\subsubsection{Tabelle di routing}
+\subsubsection{Routing statico e dinamico}
+\subsubsection{Protocolli di routing (RIP, OSPF)}
+\subsection{Dispositivi di livello 3}
+\subsubsection{Router}
+\subsubsection{Layer 3 Switch}
+\subsection{Protocolli di supporto}
+\subsubsection{ARP (Address Resolution Protocol)}
+\subsubsection{ICMP (Internet Control Message Protocol)}
+
+\section{Livello 4 - Livello Trasporto}
+\subsection{Il protocollo TCP}
+\subsubsection{Caratteristiche di TCP}
+\subsubsection{Three-way handshake}
+\subsubsection{Controllo di flusso e congestione}
+\subsection{Il protocollo UDP}
+\subsubsection{Caratteristiche di UDP}
+\subsubsection{Quando usare UDP}
+\subsection{Confronto tra TCP e UDP}
+\subsection{Porte e socket}
+\subsubsection{Porte well-known}
+\subsubsection{Porte registrate e dinamiche}
+
+\section{Livelli 5, 6, 7 - Sessione, Presentazione e Applicazione}
+\subsection{Protocolli del livello applicazione}
+\subsubsection{HTTP e HTTPS (Web)}
+\subsubsection{FTP e SFTP (Trasferimento file)}
+\subsubsection{SMTP, POP3, IMAP (Email)}
+\subsubsection{DNS (Risoluzione nomi)}
+\subsubsection{DHCP (Configurazione automatica)}
+\subsection{Crittografia e sicurezza}
+\subsubsection{SSL/TLS}
+\subsubsection{Certificati digitali}
+\subsection{Formati e codifiche}
+\subsubsection{Compressione dati}
+\subsubsection{Codifiche (ASCII, Unicode)}
+
+\section{Sicurezza nelle Reti}
+\subsection{Concetti base di sicurezza}
+\subsubsection{Confidenzialità, integrità e disponibilità}
+\subsubsection{Autenticazione e autorizzazione}
+\subsection{Minacce e attacchi}
+\subsubsection{Malware e virus}
+\subsubsection{Attacchi DDoS}
+\subsubsection{Phishing e social engineering}
+\subsubsection{Man-in-the-middle}
+\subsection{Strumenti di protezione}
+\subsubsection{Firewall}
+\subsubsection{IDS e IPS}
+\subsubsection{VPN (Virtual Private Network)}
+\subsubsection{Antivirus e antimalware}
+
+\section{Applicazioni Pratiche}
+\subsection{Configurazione di una rete locale}
+\subsubsection{Pianificazione della rete}
+\subsubsection{Configurazione degli indirizzi IP}
+\subsubsection{Configurazione di router e switch}
+\subsection{Strumenti diagnostici}
+\subsubsection{Ping}
+\subsubsection{Traceroute/Tracert}
+\subsubsection{Ipconfig/Ifconfig}
+\subsubsection{Nslookup e Dig}
+\subsubsection{Netstat}
+\subsection{Troubleshooting di base}
+\subsubsection{Metodologia di risoluzione problemi}
+\subsubsection{Problemi comuni e soluzioni}
+
+
+\end{document}

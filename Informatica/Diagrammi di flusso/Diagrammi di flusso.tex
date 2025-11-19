@@ -653,14 +653,14 @@ FINE SE
 \node (start) [startstop] {Inizio};
 \node (input) [io, below of=start] {Leggi x};
 \node (decision) [decision, below of=input] {$x > 0$?};
-\node (process) [process, right=2cm of decision] {Scrivi "Positivo"};
+\node (output) [io, right=2cm of decision] {Scrivi "Positivo"};
 \node (stop) [startstop, below=2cm of decision] {Fine};
 
 \draw [arrow] (start) -- (input);
 \draw [arrow] (input) -- (decision);
-\draw [arrow] (decision) -- node[anchor=south] {Vero} (process);
+\draw [arrow] (decision) -- node[anchor=south] {Vero} (output);
 \draw [arrow] (decision) -- node[anchor=east] {Falso} (stop);
-\draw [arrow] (process) |- (stop);
+\draw [arrow] (output) |- (stop);
 \end{tikzpicture}
 \end{center}
 
@@ -722,8 +722,8 @@ $=$ o $==$ & Uguale a & $x = 5$ \\
 $\neq$ o $!=$ & Diverso da & $x \neq 0$ \\
 $<$ & Minore di & $x < 10$ \\
 $>$ & Maggiore di & $x > 0$ \\
-$\leq$ & Minore o uguale & $x \leq 100$ \\
-$\geq$ & Maggiore o uguale & $x \geq 18$ \\
+$\leq$ o $>=$ & Minore o uguale & $x \leq 100$ \\
+$\geq$ o $<=$ & Maggiore o uguale & $x \geq 18$ \\
 \hline
 \end{tabular}
 \end{center}
@@ -737,9 +737,9 @@ Per combinare più condizioni:
 \hline
 \textbf{Operatore} & \textbf{Significato} & \textbf{Esempio} \\
 \hline
-AND (E) & Entrambe vere & $(x > 0)$ AND $(x < 10)$ \\
-OR (O) & Almeno una vera & $(x < 0)$ OR $(x > 100)$ \\
-NOT (NON) & Negazione & NOT $(x = 0)$ \\
+AND o \&\& (E) & Entrambe vere & $(x > 0)$ AND $(x < 10)$ \\
+OR o $||$ (O) & Almeno una vera & $(x < 0)$ OR $(x > 100)$ \\
+NOT o $!$ (NON) & Negazione & NOT $(x = 0)$ \\
 \hline
 \end{tabular}
 \end{center}
@@ -958,7 +958,7 @@ Creare un diagramma di flusso che determini se un numero è pari o dispari. Un n
 \begin{tikzpicture}[node distance=2cm]
 \node (start) [startstop] {Inizio};
 \node (input) [io, below of=start] {Leggi numero};
-\node (calc) [process, below of=input] {$resto \leftarrow numero \bmod 2$};
+\node (calc) [process, below of=input] {$resto \leftarrow numero \% 2$};
 \node (decision) [decision, below of=calc, yshift=-0.5cm] {$resto = 0$?};
 \node (pari) [io, left=2.5cm of decision, yshift=-2.5cm] {Scrivi "Pari"};
 \node (dispari) [io, right=2.5cm of decision, yshift=-2.5cm] {Scrivi "Dispari"};
