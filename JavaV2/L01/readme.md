@@ -31,6 +31,45 @@ L'istruzione `System.out.println()` permette di mostrare messaggi sullo schermo.
 Il testo va inserito tra virgolette doppie.
 Il simbolo `+` viene usato per la **concatenazione**, ovvero per incollare del testo al valore contenuto in una variabile.
 
+## 6. Operatori
+Gli operatori permettono di eseguire operazioni matematiche sui valori contenuti nelle variabili. Di seguito, l'elenco completo degli operatori che utilizzeremo:
+* `+`: addizione
+* `-`: sottrazione
+* `*`: moltiplicazione
+* `/`: divisione
+* `%`: modulo (resto della divisione)
+
+# 7. Blocco di condizionali if-else
+Un blocco di condizionali è un insieme di istruzioni che vengono eseguite solo se una determinata condizione è vera. 
+Ad esempio, se vogliamo stampare un messaggio solo se una variabile è maggiore di 10, useremo un blocco di condizionali.
+
+L'istruzione `if` viene usata per controllare se una condizione è vera. 
+Se la condizione è vera, il blocco di istruzioni viene eseguito. 
+Se la condizione è falsa, il blocco di istruzioni viene saltato.
+
+L'istruzione `else` viene usata per eseguire un blocco di istruzioni se la condizione è falsa.
+
+# 8. Cicli
+I cicli sono un insieme di istruzioni che vengono eseguite più volte. Di seguito, l'elenco completo dei cicli che utilizzeremo:
+* `for`: ciclo for
+* `while`: ciclo while
+* `do-while`: ciclo do-while
+
+# 9. Operatori relazionali
+Gli operatori relazionali permettono di confrontare i valori contenuti nelle variabili, per poi esser usati all'interno di un blocco condizionale o di un ciclo. Di seguito, l'elenco completo degli operatori relazionali che utilizzeremo:
+* `==`: uguale a
+* `!=`: diverso da
+* `>`: maggiore di
+* `<`: minore di
+* `>=`: maggiore o uguale a
+* `<=`: minore o uguale a
+
+# 10. Operatori logici
+Gli operatori logici permettono di combinare più condizioni tra loro, per poi esser usati all'interno di un blocco condizionale o di un ciclo. Di seguito, l'elenco completo degli operatori logici che utilizzeremo:
+* `&&`: AND logico
+* `||`: OR logico
+* `!`: NOT logico
+
 ---
 
 ## Tracce degli Esercizi
@@ -47,3 +86,21 @@ Usa questa formula per la conversione:
 Scrivi un programma che definisce il peso di una persona in chilogrammi (es. 75.5) e l'altezza in metri (es. 1.80). Calcola l'Indice di Massa Corporea (IMC) e stampa il risultato a video.
 Usa questa formula per il calcolo:
 `IMC = peso / (altezza * altezza)`
+
+### Esercizio 4: Sconto Percentuale
+Scrivi un programma che definisce il prezzo di un prodotto (es. 100) e il valore percentuale dello sconto (es. 10). Il programma deve calcolare il prezzo scontato e stampare il risultato a video. 
+Usa questa formula per il calcolo:
+`prezzoScontato = prezzo - (prezzo * percentuale / 100)`
+
+### Esercizio 5: Pari o Dispari
+Scrivi un programma che definisce un numero intero. Il programma deve determinare se il numero è pari o dispari e stampare il risultato a video. 
+Suggerimento: usa l'operatore modulo (`%`).
+
+### Esercizio 6: Tipo di triangolo
+Scrivi un programma che definisce tre lati di un triangolo (a, b, c). Successivamente, determinare se i tre lati possono formare un triangolo e stampare il risultato. In caso affermativo, indicare di che tipo di triangolo si tratta (equilatero, isoscele o scaleno).
+
+### Esercizio 7: Calcolatrice Semplice
+Scrivi un programma che definisce due numeri interi e un operatore (+, -, *, /). Il programma deve eseguire l'operazione richiesta e stampare il risultato a video.
+
+### Esercizio 8: Stampa numeri primi compresi tra due numeri inseriti dall'utente
+Scrivi un programma che definisce due numeri interi (il primo minore del secondo) e ne stampa tutti i numeri primi compresi tra i due. 
