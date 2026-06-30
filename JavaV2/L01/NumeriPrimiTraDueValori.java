@@ -19,7 +19,7 @@ public class NumeriPrimiTraDueValori {
         if (numero <= 1) {
             return false;
         }
-        for (int i = 2; i <= Math.sqrt(numero); i++) {
+        for (int i = 2; i < numero; i++) {
             if (numero % i == 0) {
                 return false;
             }

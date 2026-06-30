@@ -97,7 +97,7 @@ Scrivi un programma che definisce un numero intero. Il programma deve determinar
 Suggerimento: usa l'operatore modulo (`%`).
 
 ### Esercizio 6: Tipo di triangolo
-Scrivi un programma che definisce tre lati di un triangolo (a, b, c). Successivamente, determinare se i tre lati possono formare un triangolo e stampare il risultato. In caso affermativo, indicare di che tipo di triangolo si tratta (equilatero, isoscele o scaleno).
+Scrivi un programma che definisce tre lati di un triangolo (a, b, c). Successivamente, determinare se i tre lati possono formare un triangolo e stampare il risultato (la somma di due lati qualsiasi deve essere maggiore del lato non considerato sempre). In caso affermativo, indicare di che tipo di triangolo si tratta (equilatero, isoscele o scaleno).
 
 ### Esercizio 7: Calcolatrice Semplice
 Scrivi un programma che definisce due numeri interi e un operatore (+, -, *, /). Il programma deve eseguire l'operazione richiesta e stampare il risultato a video.
