@@ -87,4 +87,31 @@ Crea una classe `Rettangolo`.
 
 Crea il tester, istanzia un rettangolo di dimensioni 5x10. Salva i risultati dei metodi in due variabili dentro il `main` e stampale a video.
 
+### Esercizio 4: Il Personaggio del Videogioco (Gestione dello Stato)
+Crea una classe `Personaggio` per simulare l'eroe di un videogioco.
+* **Attributi:** `nome` (String), `puntiVita` (int).
+* **Metodi:**
+  * Un metodo `void riceviDanno(int danno)` che sottrae il danno ricevuto ai punti vita attuali.
+  * Un metodo `void beviPozione(int cura)` che aggiunge punti vita.
+  * Un metodo `void stampaStato()` che stampa il nome del personaggio e i suoi punti vita rimanenti.
+
+Crea la classe `TesterVideogioco` con il `main`. Istanzia un personaggio (es. "Guerriero" con 100 punti vita). Fagli ricevere 30 danni, poi fagli bere una pozione da 15, e infine stampa il suo stato.
+
+### Esercizio 5: Il Prodotto in Negozio (Parametri e Return)
+Crea una classe `Prodotto` per simulare un e-commerce.
+* **Attributi:** `nome` (String), `prezzoOriginale` (double).
+* **Metodi:**
+  * Un metodo `double calcolaPrezzoScontato(double percentualeSconto)`. Questo metodo non deve modificare il prezzo originale, ma calcolare il prezzo scontato e restituirlo usando `return`.
+
+Crea la classe `TesterNegozio`. Istanzia un prodotto (es. "Cuffie Bluetooth" a 50.0 euro). Usa il metodo per calcolare il prezzo con il 20% di sconto, salva il risultato in una variabile nel `main` e stampa sia il prezzo originale che quello scontato.
+
+### Esercizio 6: Il Distributore di Bibite (Logica e Metodi)
+Crea una classe `Distributore`.
+* **Attributi:** `lattineDisponibili` (int), `cassa` (double - i soldi incassati).
+* **Metodi:**
+  * Un metodo `void inserisciMonetaECompra(double moneta)`. Al suo interno usa un `if`: se ci sono lattine disponibili (maggiore di 0), diminuisci le lattine di 1, aggiungi la moneta alla cassa e stampa "Lattina erogata". Altrimenti, stampa "Lattine esaurite, moneta restituita".
+  * Un metodo `void stampaResoconto()` che mostra quante lattine restano e quanti soldi ci sono in cassa.
+
+Crea un `TesterDistributore`. Inizializza un distributore con 2 lattine e 0.0 in cassa. Prova a comprare 3 lattine e stampa il resoconto finale per verificare che l'`if` abbia funzionato.
+
 ---
