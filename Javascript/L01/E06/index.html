@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatore Consumi Elettrici</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 25px;
+            max-width: 650px;
+            background-color: #f0f4f8;
+            color: #2d3748;
+        }
+        h2 {
+            color: #2b6cb0;
+            border-bottom: 2px solid #cbd5e0;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #4a5568;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #a0aec0;
+            border-radius: 4px;
+        }
+        button {
+            padding: 12px 20px;
+            background-color: #3182ce;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #2c5282;
+        }
+        #errore {
+            color: #e53e3e;
+            font-weight: bold;
+            margin-top: 15px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        table, th, td {
+            border: 1px solid #e2e8f0;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4a5568;
+            color: white;
+        }
+        
+        /* Classi CSS per lo stato energetico */
+        .basso-consumo {
+            background-color: #c6f6d5; /* Verde tenue */
+            color: #22543d;
+        }
+        .moderato {
+            background-color: #feebc8; /* Arancione tenue */
+            color: #7b341e;
+        }
+        .energivoro {
+            background-color: #fed7d7; /* Rosso tenue */
+            color: #742a2a;
+        }
+
+        #avviso-eco {
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #fffaf0;
+            border-left: 5px solid #dd6b20;
+            color: #c05621;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>⚡ Calcolatore Consumi Elettrodomestici</h2>
+
+    <div class="form-group">
+        <label for="apparecchio">Nome dell'elettrodomestico:</label>
+        <input type="text" id="apparecchio" placeholder="Es. Lavatrice, Forno, Phon...">
+    </div>
+
+    <div class="form-group">
+        <label for="stanza">Stanza di utilizzo:</label>
+        <select id="stanza">
+            <option value="">-- Seleziona una stanza --</option>
+            <option value="Cucina">Cucina</option>
+            <option value="Bagno">Bagno</option>
+            <option value="Salotto">Salotto</option>
+            <option value="Camera da letto">Camera da letto</option>
+            <option value="Altro">Altro</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="watt">Potenza dell'apparecchio (Watt):</label>
+        <input type="number" id="watt" placeholder="Es. 2000" min="1">
+    </div>
+
+    <div class="form-group">
+        <label for="ore_giorno">Ore di utilizzo al giorno:</label>
+        <input type="number" id="ore_giorno" placeholder="Es. 2" min="0" max="24">
+    </div>
+
+    <div class="form-group">
+        <label>Fascia oraria prevalente di utilizzo:</label>
+        <input type="radio" id="fascia_f1" name="fascia" value="F1 - Ore diurne">
+        <label for="fascia_f1" style="display:inline; font-weight:normal; margin-right:15px;">F1 - Ore diurne</label>
+        
+        <input type="radio" id="fascia_f2" name="fascia" value="F2/F3 - Sera e Weekend">
+        <label for="fascia_f2" style="display:inline; font-weight:normal;">F2/F3 - Sera e Weekend</label>
+    </div>
+
+    <button onclick="calcolaEnergia()">Calcola Consumi in Bolletta</button>
+
+    <div id="errore"></div>
+    <div id="avviso-eco"></div>
+    <div id="risultato-tabella"></div>
+
+    <script>
+        function calcolaEnergia() {
+            // 1. Acquisizione Dati
+            let apparecchio = document.getElementById("apparecchio").value;
+            let stanza = document.getElementById("stanza").value;
+            let watt = parseFloat(document.getElementById("watt").value);
+            let ore = parseFloat(document.getElementById("ore_giorno").value);
+            
+            let fasciaSelezionata = document.querySelector('input[name="fascia"]:checked');
+
+            let divErrore = document.getElementById("errore");
+            let divAvviso = document.getElementById("avviso-eco");
+            let divTabella = document.getElementById("risultato-tabella");
+
+            // Reset UI
+            divErrore.innerHTML = "";
+            divAvviso.innerHTML = "";
+            divAvviso.style.display = "none";
+            divTabella.innerHTML = "";
+
+            // 2. Validazioni
+            if (apparecchio === "" || stanza === "" || !fasciaSelezionata) {
+                divErrore.innerHTML = "Errore: Inserisci il nome, seleziona la stanza e la fascia oraria.";
+                return;
+            }
+
+            if (isNaN(watt) || watt <= 0) {
+                divErrore.innerHTML = "Errore: La potenza in Watt deve essere un numero maggiore di 0.";
+                return;
+            }
+
+            if (isNaN(ore) || ore < 0 || ore > 24) {
+                divErrore.innerHTML = "Errore: Le ore di utilizzo al giorno devono essere comprese tra 0 e 24.";
+                return;
+            }
+
+            let fasciaOraria = fasciaSelezionata.value;
+
+            // 3. Calcoli Energetici ed Economici
+            // Costo fisso ipotizzato per l'energia
+            let costoPerKwh = 0.25; 
+            
+            // Formula: (Watt * Ore * 30 Giorni) / 1000 = kWh mensili
+            let kwhMensili = (watt * ore * 30) / 1000;
+            let costoMensile = kwhMensili * costoPerKwh;
+
+            // Arrotondamento a 2 cifre decimali
+            kwhMensili = Math.round(kwhMensili * 100) / 100;
+            costoMensile = Math.round(costoMensile * 100) / 100;
+
+            // 4. Valutazione Impatto e Classi CSS
+            let impatto = "";
+            let classeCss = "";
+
+            if (costoMensile <= 5) {
+                impatto = "Basso Consumo";
+                classeCss = "basso-consumo";
+            } else if (costoMensile <= 15) {
+                impatto = "Moderato";
+                classeCss = "moderato";
+            } else {
+                impatto = "Energivoro";
+                classeCss = "energivoro";
+            }
+
+            // 5. Alert di Consigli Ecologici (Logica AND)
+            if (fasciaOraria === "F1 - Ore diurne" && impatto === "Energivoro") {
+                divAvviso.innerHTML = "⚠️ Attenzione: Stai usando un apparecchio molto dispendioso nelle ore di punta. Valuta di spostare l'utilizzo nelle ore serali (F2/F3) per risparmiare e alleggerire il carico sulla rete elettrica!";
+                divAvviso.style.display = "block";
+            }
+
+            // 6. Costruzione e inserimento Tabella nel DOM
+            let htmlTabella = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Elettrodomestico</th>
+                            <th>Stanza</th>
+                            <th>Fascia</th>
+                            <th>Consumo Mensile (kWh)</th>
+                            <th>Costo Stimato Mensile</th>
+                            <th>Impatto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="${classeCss}">
+                            <td><strong>${apparecchio}</strong></td>
+                            <td>${stanza}</td>
+                            <td>${fasciaOraria}</td>
+                            <td>${kwhMensili.toFixed(2)} kWh</td>
+                            <td><strong>${costoMensile.toFixed(2)} €</strong></td>
+                            <td>${impatto}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+
+            divTabella.innerHTML = htmlTabella;
+        }
+    </script>
+</body>
+</html>

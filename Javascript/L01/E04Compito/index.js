@@ -34,15 +34,27 @@ function inserisciLibro() {
         riga.className = "libroCompletato";
     }
 
-    riga.innerHTML = `
-        <td>${titolo}</td>
-        <td>${autore}</td>
-        <td>${genere}</td>
-        <td>${numeroPagineTotali}</td>
-        <td>${numeroPagineLette}</td>
-        <td>${((numeroPagineLette / numeroPagineTotali) * 100).toFixed(2)}%</td>
-        <td>${stato}</td>
-    `;
+    let cella = document.createElement("td")
+    cella.textContent = titolo
+    riga.appendChild(cella)
+    cella = document.createElement("td")
+    cella.textContent = autore
+    riga.appendChild(cella)
+    cella = document.createElement("td")
+    cella.textContent = genere
+    riga.appendChild(cella)
+    cella = document.createElement("td")
+    cella.textContent = numeroPagineTotali
+    riga.appendChild(cella)
+    cella = document.createElement("td")
+    cella.textContent = numeroPagineLette
+    riga.appendChild(cella)
+    cella = document.createElement("td")
+    cella.textContent = ((numeroPagineLette / numeroPagineTotali) * 100).toFixed(2) + "%";
+    riga.appendChild(cella)
+    cella = document.createElement("td")
+    cella.textContent = stato
+    riga.appendChild(cella)
 
     let td = document.createElement("td");
     riga.appendChild(td);

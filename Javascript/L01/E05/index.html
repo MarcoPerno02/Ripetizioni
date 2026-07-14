@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divisione Conto Ristorante</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 25px;
+            max-width: 600px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 12px 20px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #219653;
+        }
+        #errore {
+            color: #c0392b;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            background-color: white;
+        }
+        table, th, td {
+            border: 1px solid #bdc3c7;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #34495e;
+            color: white;
+        }
+        
+        /* Classi CSS per le fasce di prezzo */
+        .economico {
+            background-color: #d4efdf; /* Verde chiaro */
+            color: #145a32;
+        }
+        .medio {
+            background-color: #fdebd0; /* Giallo chiaro */
+            color: #7e5109;
+        }
+        .costoso {
+            background-color: #fadbd8; /* Rosso chiaro */
+            color: #78281f;
+        }
+
+        #avviso-pos {
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #fcf3cf;
+            border-left: 5px solid #f1c40f;
+            color: #7e5109;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+    </style>
+    <script src="./script.js"></script>
+</head>
+<body>
+
+    <h2>SplitTheBill - Divisione Conto Spese</h2>
+
+    <div class="form-group">
+        <label for="tavolo">Nome del Tavolo / Gruppo:</label>
+        <input type="text" id="tavolo" placeholder="Es. I ragazzi del calcetto">
+    </div>
+
+    <div class="form-group">
+        <label for="persone">Numero di persone:</label>
+        <input type="number" id="persone" placeholder="Quanti siete?" min="1">
+    </div>
+
+    <div class="form-group">
+        <label for="conto_totale">Conto totale del ristorante (€):</label>
+        <input type="number" id="conto_totale" placeholder="Es. 125.50" step="0.01" min="0.01">
+    </div>
+
+    <div class="form-group">
+        <label for="servizio">Qualità del servizio (Mancia):</label>
+        <select id="servizio">
+            <option value="">-- Scegli come vi siete trovati --</option>
+            <option value="15">Ottimo [+15% Mancia]</option>
+            <option value="10">Buono [+10% Mancia]</option>
+            <option value="5">Sufficiente [+5% Mancia]</option>
+            <option value="0">Pessimo [0% Mancia]</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Metodo di pagamento preferito:</label>
+        <input type="radio" id="pag_contanti" name="metodo" value="Contanti">
+        <label for="pag_contanti" style="display:inline; font-weight:normal; margin-right:15px;">Contanti</label>
+        
+        <input type="radio" id="pag_carta" name="metodo" value="Carta di Credito">
+        <label for="pag_carta" style="display:inline; font-weight:normal;">Carta di Credito</label>
+    </div>
+
+    <button onclick="calcolaConto()">Calcola e Dividi il Conto</button>
+
+    <div id="errore"></div>
+    <div id="avviso-pos"></div>
+    <div id="risultato-tabella"></div>
+</body>
+</html>
