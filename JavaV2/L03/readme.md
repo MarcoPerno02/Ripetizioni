@@ -114,4 +114,52 @@ Crea una classe `Distributore`.
 
 Crea un `TesterDistributore`. Inizializza un distributore con 2 lattine e 0.0 in cassa. Prova a comprare 3 lattine e stampa il resoconto finale per verificare che l'`if` abbia funzionato.
 
+### Esercizio 7: Il Registro degli Studenti (Creazione e Scansione)
+Crea una classe `Studente`.
+* **Attributi:** `nome` (String), `cognome` (String), `mediaVoti` (double).
+* **Metodi:**
+  * Un metodo `void presentati()` che stampa a video: "Ciao, sono [nome] [cognome] e ho una media del [mediaVoti]".
+  * Un metodo `boolean ePromosso()` che restituisce `true` se la media è maggiore o uguale a 6.0, altrimenti `false`.
+
+Crea una classe `TesterScuola` con il `main`. Dichiara un vettore di tipo `Studente` di 4 elementi. Istanzia 4 studenti diversi (alcuni con media sufficiente e altri no) e inseriscili nel vettore. Usa un ciclo `for` per scorrere l'array: fai presentare ogni studente e, usando il metodo `ePromosso()`, stampa a video se è stato promosso o bocciato.
+
+---
+
+### Esercizio 8: Il Carrello dell'E-Commerce (Calcoli su un Vettore)
+Crea una classe `Articolo`.
+* **Attributi:** `descrizione` (String), `prezzo` (double).
+* **Metodi:**
+  * Un metodo `double getPrezzo()` che restituisce il prezzo dell'articolo.
+  * Un metodo `void stampaDettagli()` che stampa descrizione e prezzo.
+
+Crea una classe `TesterCarrello` con il `main`. Istanzia un array di 4 articoli con prezzi a tua scelta. Usa un ciclo per scorrere l'array, calcolare la somma totale dei prezzi e stamparla. Trova inoltre l'articolo con il prezzo più alto e stampa a video la sua descrizione e il suo prezzo.
+
+---
+
+### Esercizio 9: Il Garage (Una Classe che contiene un Vettore)
+*Nota per lo studente: Per questo esercizio dovrai creare TRE file distinti: `Auto.java`, `Garage.java` e `TesterGarage.java`.*
+
+Crea una classe `Auto`.
+* **Attributi:** `targa` (String), `marca` (String), `modello` (String).
+* **Metodi:** Un metodo `void stampaInfo()` che mostra targa, marca e modello dell'auto.
+
+Crea una classe `Garage`.
+* **Attributi:** `posti` (un array di oggetti `Auto`), `autoPresenti` (int - un contatore per le auto effettivamente caricate).
+* **Costruttore:** Un costruttore `Garage(int capienzaMax)` che inizializza l'array `posti` con la dimensione massima passata come parametro e imposta `autoPresenti` a 0.
+* **Metodi:**
+  * Un metodo `void parcheggia(Auto nuovaAuto)`: se c'è ancora spazio disponibile nel garage, inserisce l'auto nell'array alla posizione `autoPresenti`, incrementa il contatore e stampa un messaggio di successo. Altrimenti, stampa "Garage pieno!".
+  * Un metodo `void stampaParcoAuto()`: usa un ciclo `for` per scorrere solo le auto effettivamente presenti nel garage e richiama il loro metodo `stampaInfo()`.
+
+Crea la classe `TesterGarage`. Inizializza un garage con una capienza di 2 posti. Crea 3 auto differenti. Prova a parcheggiare tutte e tre le auto per verificare che il limite di capienza funzioni e, infine, stampa a video l'elenco delle auto riuscite a entrare.
+
+---
+
+### Esercizio 10: La Squadra di Eroi (Ricerca e Modifica dello Stato)
+*Nota per lo studente: Per questo esercizio riutilizza la classe `Personaggio` creata nell'Esercizio 4.*
+
+Crea una classe `TesterSquadra` con il `main`.
+* Dichiara un array `Personaggio[] party = new Personaggio[3];` e inserisci tre eroi: "Guerriero" (100 HP), "Mago" (60 HP) e "Arciere" (80 HP).
+* Fai subire 20 punti di danno a tutti i personaggi del gruppo usando un ciclo `for`.
+* Usa un secondo ciclo `for` per cercare l'eroe di nome "Mago" (utilizza il metodo `.equals()` per il confronto tra stringhe). Se lo trovi, fagli recuperare 30 HP facendogli bere una pozione.
+* Stampa lo stato finale di tutti i membri della squadra per verificare l'esito della battaglia e delle cure.
 ---
