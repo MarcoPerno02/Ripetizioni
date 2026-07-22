@@ -163,6 +163,8 @@ Crea una classe `TesterSquadra` con il `main`.
 * Usa un secondo ciclo `for` per cercare l'eroe di nome "Mago" (utilizza il metodo `.equals()` per il confronto tra stringhe). Se lo trovi, fagli recuperare 30 HP facendogli bere una pozione.
 * Stampa lo stato finale di tutti i membri della squadra per verificare l'esito della battaglia e delle cure.
 
+---
+
 ### Esercizio 11: Il Bonifico Bancario (Interazione tra Oggetti)
 *Obiettivo: Imparare a passare un oggetto come parametro a un metodo di un altro oggetto della stessa classe.*
 
@@ -176,4 +178,25 @@ Crea una classe `ContoBancario`.
 Crea una classe `TesterBonifico` con il `main`. Istanzia due conti (es. "Alice" con 500€ e "Bob" con 100€). 
 Fai fare ad Alice un bonifico di 200€ a Bob. Stampa i saldi per verificare. 
 Poi prova a farle fare un bonifico di 1000€ (dovrebbe fallire) e stampa nuovamente i saldi, che dovranno essere rimasti invariati.
+
+---
+
+### Esercizio 12: La Playlist Musicale (Filtri e Accumulatori)
+*Nota per lo studente: Questo esercizio richiede 3 file (`Brano.java`, `Playlist.java`, `TesterPlaylist.java`).*
+*Obiettivo: Filtrare un array di oggetti in base a una stringa e calcolare somme complesse.*
+
+Crea una classe `Brano`.
+* **Attributi:** `titolo` (String), `artista` (String), `durataSecondi` (int).
+* **Metodi:** `void stampaDettagli()` che stampa ad esempio: *"Shape of You" - Ed Sheeran (233 sec)*.
+
+Crea una classe `Playlist`.
+* **Attributi:** `canzoni` (array di `Brano`).
+* **Costruttore:** Inizializza l'array passando i brani direttamente (es. `public Playlist(Brano[] canzoni) { this.canzoni = canzoni; }`).
+* **Metodi:**
+  * `int calcolaDurataTotale()`: Scorre l'array, somma tutte le durate in secondi e restituisce il totale.
+  * `void stampaBraniDi(String artistaCercato)`: Scorre l'array e stampa i dettagli **solo** dei brani in cui l'attributo `artista` è uguale ad `artistaCercato` (ricordati di usare `.equals()`).
+
+Crea una classe `TesterPlaylist` con il `main`. Istanzia 4 o 5 brani (assicurati che almeno 2 siano dello stesso artista). Inseriscili in un array e passali al costruttore della `Playlist`. 
+Stampa la durata totale di tutta la playlist. Poi testa il filtro: stampa solo le canzoni dell'artista che ne ha scritte 2.
+
 ---
