@@ -162,4 +162,18 @@ Crea una classe `TesterSquadra` con il `main`.
 * Fai subire 20 punti di danno a tutti i personaggi del gruppo usando un ciclo `for`.
 * Usa un secondo ciclo `for` per cercare l'eroe di nome "Mago" (utilizza il metodo `.equals()` per il confronto tra stringhe). Se lo trovi, fagli recuperare 30 HP facendogli bere una pozione.
 * Stampa lo stato finale di tutti i membri della squadra per verificare l'esito della battaglia e delle cure.
+
+### Esercizio 11: Il Bonifico Bancario (Interazione tra Oggetti)
+*Obiettivo: Imparare a passare un oggetto come parametro a un metodo di un altro oggetto della stessa classe.*
+
+Crea una classe `ContoBancario`.
+* **Attributi:** `titolare` (String), `saldo` (double).
+* **Metodi:**
+  * `void versa(double importo)`
+  * `boolean preleva(double importo)`: se il saldo è sufficiente (>= importo), sottrae i soldi e restituisce `true`. Altrimenti, non fa nulla e restituisce `false`.
+  * `boolean bonifico(ContoBancario destinatario, double importo)`: Questo è il cuore dell'esercizio! Il metodo deve provare a prelevare l'importo dal conto attuale (`this`). Se il prelievo ha successo (restituisce `true`), deve versare i soldi sul conto `destinatario` e restituire `true`. Altrimenti restituisce `false`.
+
+Crea una classe `TesterBonifico` con il `main`. Istanzia due conti (es. "Alice" con 500€ e "Bob" con 100€). 
+Fai fare ad Alice un bonifico di 200€ a Bob. Stampa i saldi per verificare. 
+Poi prova a farle fare un bonifico di 1000€ (dovrebbe fallire) e stampa nuovamente i saldi, che dovranno essere rimasti invariati.
 ---
