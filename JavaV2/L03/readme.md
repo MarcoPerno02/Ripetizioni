@@ -200,3 +200,23 @@ Crea una classe `TesterPlaylist` con il `main`. Istanzia 4 o 5 brani (assicurati
 Stampa la durata totale di tutta la playlist. Poi testa il filtro: stampa solo le canzoni dell'artista che ne ha scritte 2.
 
 ---
+
+### Esercizio 13: Il Cinema (Ricerca del Primo Posto Libero)
+*Nota per lo studente: Questo esercizio richiede 3 file (`Posto.java`, `Sala.java`, `TesterCinema.java`).*
+*Obiettivo: Interrompere la scansione di un array non appena si trova ciò che si cerca (utilizzando `return`).*
+
+Crea una classe `Posto`.
+* **Attributi:** `numero` (int), `occupato` (boolean - di default a `false`).
+* **Metodi:**
+  * `boolean prenota()`: Se il posto è libero (`occupato == false`), lo imposta a `true` e restituisce `true` (successo). Se era già occupato, restituisce `false`.
+
+Crea una classe `Sala`.
+* **Attributi:** `posti` (array di `Posto`).
+* **Costruttore:** Prende in input la capienza (es. `int nPosti`), inizializza l'array e usa un ciclo `for` per istanziare ogni singolo `Posto` assegnandogli un numero da 1 a `nPosti`.
+* **Metodi:**
+  * `int prenotaPrimoLibero()`: Scorre l'array dall'inizio alla fine. Non appena trova un posto libero (ovvero il cui metodo `prenota()` restituisce `true`), **ritorna immediatamente il numero del posto** interrompendo il ciclo (basta fare `return posti[i].numero;`). Se il ciclo finisce e non ci sono posti liberi, restituisce `-1`.
+
+Crea una classe `TesterCinema` con il `main`. Istanzia una Sala molto piccola (es. 3 posti). 
+Chiama il metodo `prenotaPrimoLibero()` 4 volte. Stampa ogni volta il risultato: le prime tre volte dovrebbe stampare i numeri dei posti (1, 2, 3), la quarta volta dovrebbe stampare "Sala piena!" (perché il metodo ha restituito -1).
+
+---
